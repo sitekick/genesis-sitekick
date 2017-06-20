@@ -1,0 +1,45 @@
+.site-header,
+.site-inner,
+.footer-widgets,
+.site-footer {
+	border: 1px solid rgba(255, 255, 255, .25);
+	margin: .25em;
+}
+
+.site-header {
+	
+	.wrap {
+		border: 1px solid rgba(255, 255, 255, .25);
+		margin: .25em;
+		
+		.title-area,
+		.widget-area  {
+			border: 1px solid rgba(255, 255, 255, .5);
+			margin: .25em;		
+		}
+	}
+}
+
+
+.content-sidebar-wrap,
+.sidebar-secondary {
+	border: 1px solid rgba(255, 255, 255, .5);
+	margin: .25em;
+}
+.content-sidebar-wrap {
+	
+	.content,
+	.sidebar-primary {
+		border: 1px solid rgba(255, 255, 255, .75);
+		margin: .25em;
+	}	
+}
+
+
+.footer-widgets{
+	
+	.footer-widget-area {
+		border: 1px solid rgba(255, 255, 255, .75);
+		margin: .25em;
+	}
+}

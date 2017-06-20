@@ -1,0 +1,34 @@
+@mixin screen-small {
+  @media screen and (max-width: #{$screen-medium}) {
+    @content;
+  }
+}
+
+
+@mixin screen-medium {
+  @media screen and (max-width: #{$screen-large}) {
+    @content;
+  }
+}
+
+@mixin screen-large {
+  @media screen and (min-width: #{$screen-large}) and (max-width: #{$screen-full}) {
+    @content;
+  }
+}
+
+@mixin screen-full {
+  @media screen and (min-width: #{$screen-full}) {
+    @content;
+  }
+}
+
+@mixin screen-immobile {
+  @media screen and (min-width: #{$screen-small}) {
+    @content;
+  }
+}
+
+
+
+

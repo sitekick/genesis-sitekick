@@ -1,0 +1,16 @@
+#menu-main-menu {
+	
+		
+		
+	@include screen-immobile {
+		list-style: none;
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+		
+		li {
+			flex: 1 1 25%;
+		}
+	}	
+	
+}

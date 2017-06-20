@@ -1,0 +1,104 @@
+body {
+	background: $darkBlue;
+}
+
+.site-container {
+	margin: 0 0;
+	
+	.site-header,
+	.site-inner,
+	.footer-widgets,
+	.site-footer {
+	flex: 1 1 25%;
+	}
+
+
+@include screen-immobile {
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+	flex-direction: column;
+}
+}
+
+
+.site-inner, 
+.site-header .wrap,
+.footer-widgets .wrap {	
+@include screen-immobile {
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	flex-direction: row;
+}
+}
+
+.site-header {
+	
+	.wrap {
+		
+	@include screen-immobile{
+		align-items: center;
+		
+		.title-area {
+			flex: 1 0 0;
+			margin-right: 24px;
+		}
+		
+		.widget-area  {
+			flex: 3 0 0;
+		}
+	}
+	}
+}
+
+
+.content-sidebar-wrap {
+	
+	.content {
+		background: $baseWhite;
+		
+	}
+	.sidebar-primary {}
+	
+@include screen-immobile{
+ 	flex: 3 0 0;
+ 	margin-right: 24px;
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+	
+	.content {
+		flex: 3 1 0;
+	}
+	
+	.sidebar-primary {
+		flex: 1 1 0;
+		margin-right: 24px;
+
+	}
+}
+}
+
+.sidebar-secondary {
+	
+@include screen-immobile{
+ 	flex: 1 1 0;
+}
+}
+
+.footer-widgets{
+	
+	
+	.footer-widget-area {
+	
+	@include screen-immobile{
+		flex: 1 1 0;
+		margin-right: 24px;
+	&:last-child {
+		margin-right: 0;
+	}
+	}
+	}
+}

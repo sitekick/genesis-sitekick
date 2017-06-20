@@ -1,0 +1,23 @@
+{
+  "name": "genesis-sitekick",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hunter Williams",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-cached": "^1.1.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-watch": "^4.3.11",
+    "require-dir": "^0.3.2",
+    "run-sequence": "^1.2.2"
+  }
+}
