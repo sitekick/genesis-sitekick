@@ -1,6 +1,6 @@
 #menu-main-menu {
-	
-		
+	font-size: 1.5em;
+	margin: 0;
 		
 	@include screen-immobile {
 		list-style: none;
@@ -10,7 +10,15 @@
 		
 		li {
 			flex: 1 1 25%;
+			
+			a {
+				color: $lightBlue;
+				text-decoration: none;
+				
+			&:hover{
+				text-decoration: underline;
+			}
+			}
 		}
 	}	
-	
 }

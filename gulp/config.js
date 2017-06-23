@@ -7,17 +7,9 @@ module.exports = {
 		},
 		options: {
 			dev : {
-				noCache: true,
-				compass: false,
-				bundleExec: false,
-				sourcemap: true,
 				style: 'expanded'
   			},
   			prod : {
-				noCache: true,
-				compass: false,
-				bundleExec: false,
-				sourcemap: false,
 				style: 'compressed'
   			}
 		}

@@ -47,8 +47,8 @@ add_theme_support( 'genesis-responsive-viewport' );
 add_theme_support( 'genesis-after-entry-widget-area' );
 
 // Add support for 4-column footer widgets.
-add_theme_support( 'genesis-footer-widgets', 4 );
+add_theme_support( 'genesis-footer-widgets', 2 );
 
-
-
-
+foreach (glob(__DIR__ . '/functions_genesis/*.php') as $filename){
+    require_once( $filename );
+}

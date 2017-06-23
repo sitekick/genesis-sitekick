@@ -1,0 +1,14 @@
+.sitekick-logo {
+	max-width: 300px;
+	margin: 0 auto;
+	
+	a {
+		@include sprite-responsive-calcs(250, 100, 0, 0, 'img/sprite.svg');
+	
+
+	.no-svg &{
+		@include sprite-responsive-calcs(250, 100, 0, 0, 'img/sprite.png');
+	}
+	}
+
+}

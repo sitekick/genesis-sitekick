@@ -6,7 +6,7 @@
 
 
 @mixin screen-medium {
-  @media screen and (max-width: #{$screen-large}) {
+  @media screen and (min-width: #{$screen-small}) and (max-width: #{$screen-large}) {
     @content;
   }
 }
@@ -29,6 +29,40 @@
   }
 }
 
+@mixin sprite-responsive-calcs($imgWidth, $imgHeight, $spriteX, $spriteY, $path){
+	/* Params:
+		$imgWidth: width of image on the sprite file
+		$imgHeight: height of image on the sprite file
+		$spriteX: horizontal position of image on the sprite file 
+		$spriteY: vertial position of image on the sprite file
+		$spriteWidth: width of the sprite file (sass variable)
+		$spriteHeight: height of the sprite file (sass variable)
+		$path: path to sprite file.
+	*/
+	
+	display: block;
+	content: "";
+	background-image: url('#{$path}');
+	background-position-x: if(  $spriteWidth != $imgWidth, ( $spriteX / ($spriteWidth - $imgWidth) ) * 100%, 0  );
+	background-position-y: if(  $spriteHeight != $imgHeight, ( $spriteY / ($spriteHeight - $imgHeight) ) * 100%, 0  );
+	background-size:  $spriteWidth / $imgWidth * 100%;
+	padding-bottom:  $imgHeight / $imgWidth  * 100%;
+	width: 100%;
+	height: 0;
+}
 
 
 
+@mixin spanFullWidth {
+	margin: 0 auto;
+	width: 100%;
+	background: #082A3D;
+	
+	.wrap {
+		margin: 0 auto;
+		width: 80%;
+	
+	@include screen-large{ width: 90%; }
+	@include screen-medium { width: 95%; }
+	}	
+}

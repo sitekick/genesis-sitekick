@@ -1,4 +1,4 @@
-@import "utils/box-guides";
+//@import "utils/box-guides";
 @import "utils/vars";
 @import "utils/mixins";
 
@@ -8,5 +8,11 @@
 @import "base/accessibility";
 @import "base/box";
 @import "base/font";
+@import "base/anchor";
 
+
+@import "components/header";
 @import "components/nav";
+@import "components/widget";
+@import "components/content";
+@import "components/footer";

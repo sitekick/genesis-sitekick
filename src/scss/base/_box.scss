@@ -1,25 +1,28 @@
 body {
 	background: $darkBlue;
+	margin: 0;
 }
 
 .site-container {
-	margin: 0 0;
-	
-	.site-header,
-	.site-inner,
-	.footer-widgets,
-	.site-footer {
-	flex: 1 1 25%;
-	}
-
 
 @include screen-immobile {
 	display: flex;
-	justify-content: space-between;
-	align-items: stretch;
 	flex-direction: column;
 }
 }
+
+.site-inner, 
+.site-header,
+.footer-widgets,
+.site-footer {
+ 	margin: 1em auto;
+ 	width: 98%;	
+
+@include screen-medium{ width: 95%; }
+@include screen-large{ width: 90%; }
+@include screen-full{ width: 80%; }
+}
+
 
 
 .site-inner, 
@@ -34,71 +37,145 @@ body {
 }
 
 .site-header {
+	margin-bottom: $boxMargin;
 	
 	.wrap {
 		
 	@include screen-immobile{
-		align-items: center;
+		align-items: flex-end;
 		
-		.title-area {
-			flex: 1 0 0;
-			margin-right: 24px;
-		}
+		.title-area { flex: 1 0; }
+		
+		.widget-area  { margin-left: $boxMargin;}
+	}
+	
+	@include screen-medium {
+		align-items: initial;		
+		justify-content: initial;
+		flex-direction: column;
 		
 		.widget-area  {
-			flex: 3 0 0;
-		}
+			margin-top: $boxMargin;
+			flex: 2;
+			}
+	}
+	
+	@include screen-large{
+		.widget-area  {flex: 2;}
+	}
+	
+	@include screen-full{
+		.widget-area  { flex: 3;}
 	}
 	}
 }
 
+.site-inner{
+
+@include screen-medium {
+	flex-direction: column;
+}
+@include screen-large {
+	flex-direction: column;
+}
+}
 
 .content-sidebar-wrap {
 	
-	.content {
-		background: $baseWhite;
-		
-	}
-	.sidebar-primary {}
-	
 @include screen-immobile{
- 	flex: 3 0 0;
- 	margin-right: 24px;
 	display: flex;
-	align-items: stretch;
 	justify-content: space-between;
-	flex-direction: row-reverse;
+	//align-items: flex-start;
+}
+
+@include screen-medium {
+	flex-direction: column;
+	//align-items: stretch;
+	justify-content: space-around;
+	.content { margin-bottom: $boxMargin; }
+	
+	.sidebar-primary { 
+		display: flex;
+		flex-flow: row wrap;
+		
+		.widget {
+			flex: 0 1 50%;
+		
+			.widget-wrap { margin-right: $boxMargin; }
+		
+		&:nth-of-type(even){ 
+			.widget-wrap { margin-right: 0; }	
+		}
+		}
+	}
+}
+
+@include screen-large {
+	flex-direction: row;
 	
 	.content {
-		flex: 3 1 0;
+		flex: 2;
+		margin-right: $boxMargin;
 	}
 	
-	.sidebar-primary {
-		flex: 1 1 0;
-		margin-right: 24px;
+	.sidebar-primary { flex: 1 0; }
 
+}
+@include screen-full {
+	flex: 3;
+	flex-direction: row-reverse;
+	margin-right: $boxMargin;
+	
+	.content {
+		flex: 0 1 66.66666%;
+		margin-left: $boxMargin;
 	}
+	
+	.sidebar-primary { flex: 0 0 33.33333%; }
 }
 }
 
 .sidebar-secondary {
 	
+@include screen-immobile{ flex: 1 0; }
+@include screen-large { width: 66.3%; }
+}
+
+.footer-widgets {
+
 @include screen-immobile{
- 	flex: 1 1 0;
+	@include spanFullWidth;
+	
+	.footer-widgets-1  {
+			flex: 3; 
+			display: flex;
+			align-content: flex-start;
+			margin-right: $boxMargin;
+			
+			.widget{
+				flex: 1 1;
+			
+				.widget-wrap { margin-left: $boxMargin;}
+			
+			&:first-child{
+				.widget-wrap {margin-left: 0;}
+			}
+			}
+	}
+		
+	.footer-widgets-2 { flex: 1 0; }
+}
+@include screen-medium{
+	
+	.wrap { flex-direction: column; }
+	
+	.footer-widgets-1  { flex: 1; }
 }
 }
 
-.footer-widgets{
-	
-	
-	.footer-widget-area {
-	
-	@include screen-immobile{
-		flex: 1 1 0;
-		margin-right: 24px;
-	&:last-child {
-		margin-right: 0;
-	}
-	}
-	}
+.site-footer {
+
+@include screen-immobile{
+	@include spanFullWidth;
+}	
 }

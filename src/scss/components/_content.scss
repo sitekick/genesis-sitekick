@@ -1,0 +1,14 @@
+.content {
+	background: $baseWhite;
+	padding: 1em;
+	margin-bottom: $boxMargin;
+	box-sizing: border-box;
+	border-color: $aqua;
+	border-style: solid;
+	border-width: 2px;
+	
+@include screen-immobile{
+	min-height: 400px;
+	border-width: 4px;
+}
+}
