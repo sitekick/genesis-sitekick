@@ -18,6 +18,14 @@ function sitekick_genesis_do_header() {
 				'close'   => '</div>',
 				'content' => '<a href="/"></a>',
 				'context' => 'sitekick-logo',
+			) );
+			//mobile menu toggle
+			//create empty anchor for logo sprite
+			genesis_markup( array(
+				'open'   => '<button %s>',
+				'close'   => '</button>',
+				'content' => '☰',
+				'context' => 'menu-toggle',
 			) );	
 				
 	genesis_markup( array(

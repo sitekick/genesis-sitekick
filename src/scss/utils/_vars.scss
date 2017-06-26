@@ -1,9 +1,15 @@
-/* Colors */
+/* Fonts */ 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600');
 
+$open : 'Open Sans', sans-serif;
+
+
+/* Colors */
+$superDarkBlue : #082A3D;	//rgb(8,42,61)
 $darkBlue : #0B3954;
 $lightBlue : #CEE5F2;
-$brightBlue : #2589BD;
-$aqua : #4ECDC4;
+$brightBlue : #2589BD;		//rgb(37,137,189)
+$aqua : #4ECDC4;			//rgb(78,205,196)
 $baseWhite : #FFF;
 
 // Viewport sizes 
@@ -18,3 +24,4 @@ $boxMargin : 1.5em;
 //Sprite size
 $spriteWidth : 250;
 $spriteHeight : 100;
+

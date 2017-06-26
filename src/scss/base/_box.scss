@@ -4,9 +4,12 @@ body {
 }
 
 .site-container {
-
+	//padding-top: 100px;
+	//position: relative;
+	
 @include screen-immobile {
 	display: flex;
+	padding-top: 0;
 	flex-direction: column;
 }
 }
@@ -16,13 +19,12 @@ body {
 .footer-widgets,
 .site-footer {
  	margin: 1em auto;
- 	width: 98%;	
 
+@include screen-small{ width: 100%; }
 @include screen-medium{ width: 95%; }
 @include screen-large{ width: 90%; }
 @include screen-full{ width: 80%; }
 }
-
 
 
 .site-inner, 
@@ -37,11 +39,17 @@ body {
 }
 
 .site-header {
+	margin-top: 0;
 	margin-bottom: $boxMargin;
+	position: fixed;
+	top: 0;
+	background: $darkBlue;
 	
 	.wrap {
-		
+		margin: 1em 0;
+	
 	@include screen-immobile{
+		margin: 1em auto ;
 		align-items: flex-end;
 		
 		.title-area { flex: 1 0; }
@@ -68,15 +76,21 @@ body {
 		.widget-area  { flex: 3;}
 	}
 	}
+@include screen-immobile{
+	position: static;
+	background: none;
+}
 }
 
 .site-inner{
+margin-top: 100px;
 
-@include screen-medium {
+@include screen-immobile {
 	flex-direction: column;
+	margin-top: inherit;
 }
-@include screen-large {
-	flex-direction: column;
+@include screen-full {
+	flex-direction: row;
 }
 }
 

@@ -25,20 +25,12 @@ define( 'CHILD_THEME_NAME', 'Genesis Sitekick' );
 define( 'CHILD_THEME_URL', 'http://www.sitekick.com/' );
 define( 'CHILD_THEME_VERSION', '1.0.0' );
 
-// Enqueue Scripts and Styles
-add_action( 'wp_enqueue_scripts', 'genesis_sitekick_enqueue_scripts_styles' );
-function genesis_sitekick_enqueue_scripts_styles() {
-
-	wp_enqueue_style( 'genesis-sitekick-fonts', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700', array(), CHILD_THEME_VERSION );
-	wp_enqueue_style( 'dashicons' );
-
-}
 
 // Add HTML5 markup structure.
 add_theme_support( 'html5', array( 'caption', 'comment-form', 'comment-list', 'gallery', 'search-form' ) );
 
 // Add Accessibility support.
-add_theme_support( 'genesis-accessibility', array( '404-page', 'drop-down-menu', 'headings', 'rems', 'search-form', 'skip-links' ) );
+add_theme_support( 'genesis-accessibility', array( '404-page', 'headings', 'rems', 'search-form', 'skip-links' ) );
 
 // Add viewport meta tag for mobile browsers.
 add_theme_support( 'genesis-responsive-viewport' );

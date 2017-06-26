@@ -1,5 +1,8 @@
-.sitekick-logo {
-	max-width: 300px;
+.title-area {
+	position: relative;
+
+	.sitekick-logo {
+	max-width: 200px;
 	margin: 0 auto;
 	
 	a {
@@ -11,4 +14,40 @@
 	}
 	}
 
+	@include screen-immobile {
+		max-width: 300px;
+	}
+	}
+
+	.menu-toggle {
+		position: absolute;
+		background-color: $darkBlue;
+		color: $lightBlue;
+		right: 10px;
+		bottom: 0;
+		width: 40px;
+		height: 40px;
+		font-size: 2em;
+		padding: 0;
+		border: 0;
+		cursor: pointer;
+		transition: 250ms all;
+		transition-property: color, background-color;
+		-moz-outline-color: red;
+		
+	&.active {
+		background: $aqua;
+		color: $baseWhite;
+	}
+	
+	@include screen-immobile {
+		display: none;
+	}
+	}
+
 }
+
+
+
+
+
