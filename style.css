@@ -1,6 +1,11 @@
 @charset "UTF-8";
 /* Fonts */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600");
+@font-face {
+  font-family: 'Sitekick';
+  src: url("assets/fonts/UniformRegular.woff2");
+  src: url("assets/fonts/UniformRegular.woff") format("woff"), url("assets/fonts/UniformRegular.otf") format("otf");
+}
 /* Colors */
 /*
 	Theme Name: Genesis Sitekick
@@ -98,7 +103,7 @@ body {
   .site-header,
   .footer-widgets,
   .site-footer {
-    width: 100%;
+    width: 97.5%;
   }
 }
 @media screen and (min-width: 600px) and (max-width: 1024px) {
@@ -224,9 +229,14 @@ body {
     background: none;
   }
 }
+@media screen and (max-width: 768px) {
+  .site-header {
+    width: 100%;
+  }
+}
 
 .site-inner {
-  margin-top: 100px;
+  margin-top: 8em;
 }
 @media screen and (min-width: 600px) {
   .site-inner {
@@ -270,9 +280,6 @@ body {
     -webkit-justify-content: space-around;
         -ms-flex-pack: distribute;
             justify-content: space-around;
-  }
-  .content-sidebar-wrap .content {
-    margin-bottom: 1.5em;
   }
   .content-sidebar-wrap .sidebar-primary {
     display: -webkit-box;
@@ -318,6 +325,7 @@ body {
     -webkit-flex: 1 0;
         -ms-flex: 1 0;
             flex: 1 0;
+    margin-top: 4em;
   }
 }
 @media screen and (min-width: 1366px) {
@@ -345,6 +353,7 @@ body {
     -webkit-flex: 0 0 33.33333%;
         -ms-flex: 0 0 33.33333%;
             flex: 0 0 33.33333%;
+    margin-top: 4em;
   }
 }
 
@@ -359,6 +368,11 @@ body {
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
   .sidebar-secondary {
     width: 66.3%;
+  }
+}
+@media screen and (min-width: 1366px) {
+  .sidebar-secondary {
+    margin-top: 4em;
   }
 }
 
@@ -457,6 +471,21 @@ body {
 
 body {
   font-size: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 1.75em;
+}
+
+h3 {
+  margin: .25em 0 .5em;
+}
+
+p,
+ul {
+  margin: 0 0 1.5em;
 }
 
 .title-area {
@@ -478,37 +507,22 @@ body {
   */
   display: block;
   content: "";
-  background-image: url("img/sprite.svg");
-  background-position-x: 0;
-  background-position-y: 0;
-  background-size: 100%;
-  padding-bottom: 40%;
-  width: 100%;
-  height: 0;
-}
-.no-svg .title-area .sitekick-logo a {
-  /* Params:
-  	$imgWidth: width of image on the sprite file
-  	$imgHeight: height of image on the sprite file
-  	$spriteX: horizontal position of image on the sprite file 
-  	$spriteY: vertial position of image on the sprite file
-  	$spriteWidth: width of the sprite file (sass variable)
-  	$spriteHeight: height of the sprite file (sass variable)
-  	$path: path to sprite file.
-  */
-  display: block;
-  content: "";
   background-image: url("img/sprite.png");
-  background-position-x: 0;
-  background-position-y: 0;
-  background-size: 100%;
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-size: 154%;
   padding-bottom: 40%;
   width: 100%;
   height: 0;
 }
 @media screen and (min-width: 600px) {
   .title-area .sitekick-logo {
-    max-width: 300px;
+    max-width: 250px;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  .title-area .sitekick-logo {
+    margin: 0 0;
   }
 }
 .title-area .menu-toggle {
@@ -856,13 +870,70 @@ body {
 }
 
 .widget {
-  color: #CEE5F2;
+  color: #FFF;
+}
+.widget .widget-title {
+  font-family: "Sitekick", sans-serif;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+.widget a {
+  color: #FFF;
+}
+.widget h3 {
+  font-size: 1em;
+}
+.widget p {
+  font-size: .875em;
+}
+.widget ul {
+  padding-left: .75em;
+  margin-bottom: 1em;
+  font-size: .875em;
+}
+.widget ul.inline {
+  overflow: hidden;
+  list-style-position: inside;
+}
+.widget ul.inline li {
+  float: left;
+  margin-right: 5px;
 }
 .sidebar .widget {
   margin-bottom: 1.5em;
 }
 .sidebar .widget .widget-title {
   margin-top: 0;
+}
+.sidebar .widget.widget_tag_cloud {
+  margin-bottom: 0;
+}
+.sidebar .widget.widget_search .search-form {
+  background: #FFF;
+}
+.sidebar .widget.widget_search input[id^=searchform] {
+  padding: .25em;
+  font-size: 1em;
+  border: 0;
+  width: 70%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.sidebar .widget.widget_search input[type=submit] {
+  width: -webkit-calc(30% - 5px);
+  width: calc(30% - 5px);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  background: #2589BD;
+  border: 0;
+  color: #FFF;
+  padding: 0;
+  font-size: 1em;
+  cursor: pointer;
+}
+.sidebar-primary .widget {
+  color: #CEE5F2;
 }
 
 .sidebar-primary .widget-wrap {
@@ -874,19 +945,88 @@ body {
   padding: 1em;
 }
 
+#profile {
+  overflow: hidden;
+  margin: 2em 0 1em;
+}
+#profile .headshot {
+  width: 40%;
+  display: inline-block;
+  max-width: 115px;
+  vertical-align: middle;
+}
+#profile .headshot div {
+  border: 2px solid #CEE5F2;
+  border-radius: 100%;
+  /* Params:
+  	$imgWidth: width of image on the sprite file
+  	$imgHeight: height of image on the sprite file
+  	$spriteX: horizontal position of image on the sprite file 
+  	$spriteY: vertial position of image on the sprite file
+  	$spriteWidth: width of the sprite file (sass variable)
+  	$spriteHeight: height of the sprite file (sass variable)
+  	$path: path to sprite file.
+  */
+  display: block;
+  content: "";
+  background-image: url("img/sprite.png");
+  background-position-x: 100%;
+  background-position-y: 0;
+  background-size: 285.18519%;
+  padding-bottom: 100%;
+  width: 100%;
+  height: 0;
+}
+#profile .info {
+  width: 55%;
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#profile .info p {
+  margin: 0;
+}
+
 .content {
-  background: #FFF;
-  padding: 1em;
   margin-bottom: 1.5em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  color: #CEE5F2;
+}
+.content .title-banner,
+.content .archive-description {
+  text-align: center;
+  height: 4em;
+}
+.content .title-banner .entry-title,
+.content .title-banner .archive-title,
+.content .archive-description .entry-title,
+.content .archive-description .archive-title {
+  font-family: "Sitekick", sans-serif;
+  display: inline-block;
+  color: #CEE5F2;
+  font-weight: normal;
+  margin: .25em 0;
+}
+.content .title-banner .archive-title,
+.content .archive-description .archive-title {
+  text-transform: capitalize;
+}
+@media screen and (min-width: 600px) {
+  .content .title-banner,
+  .content .archive-description {
+    text-align: left;
+  }
+}
+.content .wrap {
+  background: #FFF;
+  color: #0B3954;
+  padding: 1em;
   border-color: #4ECDC4;
   border-style: solid;
   border-width: 2px;
+  min-height: 500px;
 }
 @media screen and (min-width: 600px) {
-  .content {
-    min-height: 400px;
+  .content .wrap {
     border-width: 4px;
   }
 }

@@ -6,16 +6,14 @@
 	margin: 0 auto;
 	
 	a {
-		@include sprite-responsive-calcs(250, 100, 0, 0, 'img/sprite.svg');
-	
-
-	.no-svg &{
 		@include sprite-responsive-calcs(250, 100, 0, 0, 'img/sprite.png');
-	}
 	}
 
 	@include screen-immobile {
-		max-width: 300px;
+		max-width: 250px;
+	}
+	@include screen-large {
+		margin: 0 0;
 	}
 	}
 

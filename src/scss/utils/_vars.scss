@@ -1,6 +1,14 @@
 /* Fonts */ 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600');
 
+@font-face {
+	font-family: 'Sitekick';
+	src: url('assets/fonts/UniformRegular.woff2');
+	src: url('assets/fonts/UniformRegular.woff') format('woff'),
+		 url('assets/fonts/UniformRegular.otf') format('otf');
+};
+
+$brand : 'Sitekick', sans-serif;
 $open : 'Open Sans', sans-serif;
 
 
@@ -22,6 +30,6 @@ $screen-small : 600px;		//1 col
 $boxMargin : 1.5em;
 
 //Sprite size
-$spriteWidth : 250;
-$spriteHeight : 100;
+$spriteWidth : 385;
+$spriteHeight : 135;
 

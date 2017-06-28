@@ -1,5 +1,43 @@
 .widget {
-	color: $lightBlue;
+	color: $baseWhite;
+	
+	.widget-title {
+		font-family: $brand;
+		font-weight: normal;
+		font-size: 1.5em;
+	}
+
+	a {
+		color: $baseWhite;
+	}
+	
+	h3 {
+		font-size: 1em;
+	}
+	
+	p {
+		font-size: .875em;
+	}
+	
+	ul {
+		padding-left: .75em;
+		margin-bottom: 1em;
+		font-size: .875em;
+		
+	&.inline {
+		overflow: hidden;
+		list-style-position: inside;
+		li {
+		 float: left;
+		 margin-right: 5px;
+		 
+		
+		&:first-child{
+		 //list-style: none;
+		}
+		}
+	}
+	}
 
 .sidebar &{
 	
@@ -8,7 +46,43 @@
 	.widget-title{
 		margin-top: 0;
 	}
-}	
+&.widget_tag_cloud {
+	margin-bottom: 0;
+}
+&.widget_search {
+	
+	.search-form {
+		background: $baseWhite;
+	}
+	
+	input[id^=searchform] {
+		padding: .25em;
+		font-size: 1em;
+		border: 0;
+		width: 70%;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	input[type=submit] {
+		width: calc(30% - 5px);
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: 5px;
+		background: $brightBlue;
+		border: 0;
+		color: $baseWhite;
+		padding: 0;
+		font-size: 1em;
+		cursor: pointer;
+	}
+}
+
+}
+
+.sidebar-primary & {
+	color: $lightBlue;
+}
+	
 }
 	
 .widget-wrap {
@@ -21,5 +95,32 @@
 	.sidebar-secondary & {
 	 	background: $aqua;
 	 	padding: 1em;
+	}
+}
+
+#profile {
+	overflow: hidden;
+	margin: 2em 0 1em;
+	
+	.headshot {
+		width: 40%;
+		display: inline-block;
+		max-width: 115px;
+		vertical-align: middle;
+		
+		div{
+			border: 2px solid $lightBlue;
+			border-radius: 100%;
+			@include sprite-responsive-calcs(135, 135, 250, 0, 'img/sprite.png');
+		}
+	}
+	
+	.info {
+		width: 55%;
+		margin-left: 5px;
+		display: inline-block;
+		vertical-align: middle;	
+		
+		p { margin: 0;}
 	}
 }
