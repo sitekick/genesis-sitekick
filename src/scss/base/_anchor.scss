@@ -1,0 +1,34 @@
+.button {
+	background: $aqua;
+	padding: .25em .5em;
+	border-radius: 4px;
+	text-decoration: none;
+	font-style: normal;
+	white-space: nowrap;
+	
+&.btn-med {
+	font-size: 1.35em;
+}
+&.btn-lrg {
+	font-size: 1.75em;
+}
+}
+
+a {
+
+.entry-content & {
+	color: $brightBlue;
+
+&:visited{
+	color: $darkBlue;
+	
+}
+&:hover{
+	color: $aqua;
+}
+}
+	
+.site-footer & {
+	color: $aqua;
+}
+}

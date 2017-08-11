@@ -1,5 +1,6 @@
 .widget {
-	color: $baseWhite;
+	//color: $baseWhite;
+	font-family: $open;
 	
 	.widget-title {
 		font-family: $brand;
@@ -27,14 +28,10 @@
 	&.inline {
 		overflow: hidden;
 		list-style-position: inside;
-		li {
-		 float: left;
-		 margin-right: 5px;
-		 
 		
-		&:first-child{
-		 //list-style: none;
-		}
+		li {
+			float: left;
+			margin-right: 5px;
 		}
 	}
 	}
@@ -47,7 +44,9 @@
 		margin-top: 0;
 	}
 &.widget_tag_cloud {
-	margin-bottom: 0;
+
+@include screen-full {margin-bottom: 0;}
+@include screen-large {margin-bottom: 0;}
 }
 &.widget_search {
 	
@@ -79,48 +78,83 @@
 
 }
 
-.sidebar-primary & {
-	color: $lightBlue;
+
+.footer-widget-area & {
+	
+	.textwidget {
+		color: $lightBlue;
+		font-style: italic;
+		margin-bottom: 1em;
+	}
 }
 	
 }
 	
 .widget-wrap {
+	color: $baseWhite;
 		
 	.sidebar-primary & {
 	 	padding: 1em;
-	 	background: $brightBlue;
+	 	background: $aqua;
 	}
 	
 	.sidebar-secondary & {
-	 	background: $aqua;
+	 	background: $brightBlue;
 	 	padding: 1em;
 	}
+	
+	.widget-quote & {
+		background: $superDarkBlue;
+		color: $lightBlue;
+	}
+	.widget-profile & {
+		color: $lightBlue;
+	}
 }
-
-#profile {
-	overflow: hidden;
-	margin: 2em 0 1em;
+.widget-profile {
+	
+	.textwidget{
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: space-between;
+		align-items: center;
+	
+	@include screen-full{flex-flow: column nowrap;}
+	@include screen-large{flex-flow: row wrap;}
+	@include screen-medium{flex-flow: row wrap;}
+	}
+	
+	
+	section {
+		margin: 1em 0 .5em;
+		flex: 0 1 48.5%;
+		
+	&.profile{
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		
+	}
+	}
 	
 	.headshot {
-		width: 40%;
-		display: inline-block;
-		max-width: 115px;
-		vertical-align: middle;
+		flex: 1;
+		max-width: 135px;
 		
 		div{
 			border: 2px solid $lightBlue;
-			border-radius: 100%;
-			@include sprite-responsive-calcs(135, 135, 250, 0, 'img/sprite.png');
+			background-repeat: no-repeat;
+			background-color: white;
+			box-sizing: border-box;
+			border-radius: 50%;
+			@include sprite-responsive-calcs(131, 131, 250, 0, 'img/sprite.png');
 		}
 	}
 	
 	.info {
-		width: 55%;
-		margin-left: 5px;
-		display: inline-block;
-		vertical-align: middle;	
-		
+		flex: 2;
+		margin-left: 10px;
 		p { margin: 0;}
 	}
+	
 }

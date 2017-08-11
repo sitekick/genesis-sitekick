@@ -1,5 +1,24 @@
-.site-footer {
+.footer-widgets {
+
+	.genesis-sidebar-title {	
+		font-family: $brand;
+		font-weight: 300;
+		font-size: 1.75em;
+		color: $lightBlue;
+		background: $darkBlue;
+		margin-top: 0;
+		padding-bottom: .5em;
+		
+	@include screen-small{ padding-left: 1.25%; text-align: center; }
+	@include screen-medium{ padding-left: 2.5%; text-align: left;}
+	@include screen-large{ padding-left: 5%;}
+	@include screen-full{ padding-left: calc(33% - 24px); }
+	}
 	
+}
+
+.site-footer {
+	padding: 2em 0;
 	
 	p {
 		color: $lightBlue;

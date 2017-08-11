@@ -1,0 +1,112 @@
+.entry-header {
+	margin-bottom: 3em;
+	
+	img {
+		position: absolute; 
+		animation: move 2s ease forwards; //afterMove 1ms linear forwards 2s;
+	}
+	
+	.featured-image-class {
+		margin: -1em;
+		position: relative;
+		overflow: hidden;
+		height: 250px;
+	}
+	
+	@keyframes move{
+		
+		from {
+			opacity: .25;
+			transform: scale(1.5) translate(0,0);
+		}
+		to {
+			opacity: .75;
+			transform: scale(.9) translate(-15%,-25%);
+		}
+	}
+	
+	@keyframes afterMove{
+		
+		from {
+			opacity: 1;
+		}
+		
+		to {
+			opacity: .5;
+			//max-width: 100%;
+			background-size: cover;
+			min-height: 250px;
+			
+		}
+	}
+}
+
+
+.entry-content {
+	padding: 1em;
+	line-height: 1.75em; 
+	
+	p {
+		margin: .5em 0 1.75em;
+		line-height: 2em;
+	}
+	
+	ul {
+		list-style: square; 
+	}
+	
+	ul, ol {
+		margin: .75em 0 1.75em;
+		line-height: 1.6em; 
+	
+		li {
+			margin-bottom: .75em;
+			
+			ul {
+				list-style: disc;
+				color: red;
+			}
+		}
+	}
+	
+	h2 {
+		margin: 2em 0 .75em;
+		font-family: $open;
+		color: $superDarkBlue;
+		font-size: 1.875em;
+		font-weight: 400; 
+	}
+	
+	h3 {
+		margin: 1.5em 0 .5em;
+		color: $aqua;
+		font-family: $open;
+		font-size: 1.3em;
+		font-weight: 600;
+	}
+	
+	
+	h4{
+		margin: 1em 0 .35em;
+		font-weight: 600;
+		font-size: 1.15em;
+	}
+	
+	strong {
+		font-weight: 600;
+	}
+	
+	blockquote {
+		background: $lightBlue;
+		padding: .25em 1em;
+		margin: 1em 0 3em;
+		border-radius: 5px;
+		color: $darkBlue;
+		
+		h4 {
+			color: $brightBlue;
+		}
+	
+	}
+	
+}

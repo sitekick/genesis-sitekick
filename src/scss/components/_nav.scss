@@ -244,7 +244,7 @@
 		// Sub Menu
 		.sub-menu {
 			background: inherit;
-			position: absolute;
+			position: absolute;z-index: 10000;
 			display: block;
 			width: 125%;
 			margin: 0 0;
