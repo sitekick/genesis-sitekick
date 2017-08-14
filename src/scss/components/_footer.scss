@@ -23,4 +23,44 @@
 	p {
 		color: $lightBlue;
 	}
+	
+&.site-footer-landing{
+	font-family: $open;
+	font-size: 1.25em;
+	padding: 0;
+	
+	.sitekick-logo-footer{
+		max-width: 175px;
+		margin: 0 auto;
+	
+		div {
+			@include sprite-responsive-calcs(250, 100, 0, 0, 'img/sprite.png');
+		}
+	}
+	
+	.landing-footer-column{
+		text-align: center;
+		margin-bottom: 1em;
+		
+	&:nth-child(1){
+		color: $lightBlue;
+		font-style: italic;
+	}
+	&:nth-child(3){
+		color: $baseWhite;
+	}
+	}
+@include screen-immobile{
+	
+	.landing-footer-column{
+		
+	&:nth-child(1){
+		text-align: left;
+	}
+	&:nth-child(3){
+		text-align: right;
+	}
+	}
+}
+}
 }

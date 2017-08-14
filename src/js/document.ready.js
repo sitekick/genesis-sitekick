@@ -26,4 +26,10 @@
 				});
 	}
 	
+	$('#landing-page-one-cta').on({
+		click : function(e){
+			$(this).parent('div').toggleClass('clicked');
+		}
+	})
+	
 })(jQuery);

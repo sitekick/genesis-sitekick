@@ -10,6 +10,10 @@ body {
 	padding-top: 0;
 	flex-direction: column;
 }
+
+.landing-page &{
+	margin-top: $boxMargin;
+}
 }
 
 .site-inner, 
@@ -27,7 +31,8 @@ body {
 
 .site-inner, 
 .site-header .wrap,
-.footer-widgets .wrap {	
+.footer-widgets .wrap,
+.site-footer .wrap, {	
 @include screen-immobile {
 	display: flex;
 	align-items: stretch;
@@ -89,11 +94,17 @@ margin-top: 8em;
 
 @include screen-immobile {
 	flex-direction: column;
-	margin-top: inherit;
+	margin-top: 0;
 }
 @include screen-full {
 	flex-direction: row-reverse;
 }
+
+
+.landing-page & {
+	margin-top: 0;
+}
+
 }
 
 .content-sidebar-wrap {
@@ -101,7 +112,6 @@ margin-top: 8em;
 	.sidebar-primary {
 		margin-top: $boxMargin;
 	}
-
 
 @include screen-immobile{
 	display: flex;
@@ -161,7 +171,18 @@ margin-top: 8em;
 		margin-top: 4em;
 		}
 }
+.landing-page &{
+	display: block;
+	flex: none;
+	width: 100%;
+	
+	.content{
+		margin-right: 0;
+		margin-left: 0;
+		flex: none;
+	}
 }
+}//.content-sidebar-wrap
 
 .sidebar-secondary {
 	
@@ -250,7 +271,18 @@ margin-top: 8em;
 
 .site-footer {
 
+&:not(.site-footer-landing) {
 @include screen-immobile{
 	@include spanFullWidth;
+}	
+}
+
+&.site-footer-landing{
+
+@include screen-immobile{	
+	.landing-footer-column {
+		flex: 1;
+	}
+}
 }	
 }

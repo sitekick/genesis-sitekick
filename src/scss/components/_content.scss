@@ -39,8 +39,10 @@
 	}
 	}
 
-
-@include screen-immobile{
+&.content-landing {
 	
+	.wrap {
+		padding: 0;
+	}
 }
 }

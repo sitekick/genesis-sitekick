@@ -1,3 +1,113 @@
+.entry {
+
+
+	ul {
+		list-style: square; 
+		padding-left: 1em;
+	
+	&.custom-icon{
+		list-style: none inside;
+		
+		li::before { color: $aqua;margin-right: 10px; }
+	
+	&.icon-checkmarks { li::before{ content: '\2713';font-size: 1.5em; } }
+	&.icon-triangles { li::before{ content: '\25B6';font-size: .9em; } }
+	}// .custom-icon
+	}// ul
+	
+	ul, ol {
+		margin: .75em 0 1.75em;
+		line-height: 1.6em; 
+	
+		li {
+			margin-bottom: .75em;
+			
+			ul {
+				list-style: disc;
+				color: red;
+			}
+		}
+	}// ul, ol
+
+	.well {
+		background-color: $aqua;
+		padding: 1em;
+		color: #FFF;
+		font-size: 1.25em;
+	
+	&.well-rounded{
+		border-radius: 5px;
+	}
+	}
+	
+	button,
+	.btn {
+		padding: .5em 1em;
+		background-color: transparent;
+		background: linear-gradient(to top, $orange, $orangeLight), $orange;
+		color: $baseWhite;
+		border: 2px solid $orange;
+		font-size: 1.25em;
+		cursor: pointer;
+		letter-spacing: 1px;
+		
+	&.btn-large {
+		font-size: 1.5em;
+	}
+	&.btn-rounded {
+		border-radius: 5px;
+	}
+	&.btn-caps {
+		text-transform: uppercase;
+	}
+	&.btn-ucase {
+		text-transform: capitalize;
+	}
+	&.btn-text-shadow {
+		text-shadow: 1px 1px 2px rgba(0,0,0, .5);
+	}
+	&:hover{
+		background: $orange;
+	}
+	}
+	
+	
+	.flex-content {
+		display: flex;
+		flex-flow: column nowrap;
+	
+ 
+		.column {
+			margin-bottom: 1em;
+			flex: 1;
+			
+			&.thirds-two{
+				flex: 2;
+				padding-left: 1em;
+			}
+	}
+ 
+ @include screen-immobile{
+	 flex-flow: row nowrap;
+ }
+ &.valign-center{
+	 align-items: center;
+ }
+ &.valign-top{
+	 align-items: flex-start;
+ }
+ &.valign-bottom{
+	 align-items: flex-end;
+ }
+ }
+ 
+.content-landing &{
+	font-family: serif;
+}
+
+}//.entry
+
+
 .entry-header {
 	margin-bottom: 3em;
 	
@@ -25,21 +135,100 @@
 		}
 	}
 	
-	@keyframes afterMove{
+	
+.content-landing & {
+	background-color: $lightBlueShade;
+	padding: 1em;
+	text-align: center;
+	margin-bottom: 0;
+	
+	.entry-title{
+		margin: 0 0 20px 0;
+		line-height: 1.25;
+		color: $darkBlue;
+		text-shadow: 1px 1px 2px rgba(0,0,0, .5);
+	}
+	
+	.entry-teaser {
 		
-		from {
-			opacity: 1;
+		margin: 1em auto 4em;
+		
+		h2 {
+			margin: 0 0 .5em;
+			line-height: 1.25;
+			color: $brightBlue;
+			font-style: italic;
 		}
 		
-		to {
-			opacity: .5;
-			//max-width: 100%;
-			background-size: cover;
-			min-height: 250px;
+		p {
+			text-align: justify;
+			line-height: 1.5;
+			margin: 0;
+		}
+		
+	
+	@include screen-immobile{
+		width: 75%;
+	}
+	}
+	
+	.entry-action {
+		background: $baseWhite;
+		margin: -1em;
+		padding-bottom: 4em;
+		//border: 1px solid red;
+		
+		.magnet-image{
+			max-width: 200px;
+			margin: 0 auto;
+			box-shadow: 0 0 5px 2px rgba(8,42,61, .75);
+			transform: translateY(-4em) scale(.75);
+			transition: transform 500ms ease;
 			
+			div {
+				@include sprite-responsive-calcs(200, 250, 0, 135, 'img/sprite.png');
+			}
 		}
+	
+		.magnet-form{
+			margin: 0 auto 1em;
+			background: $aqua;
+			max-height: 0;
+			transition: max-height 500ms ease; 
+			overflow: hidden;
+			color: $baseWhite;
+			padding: 0 1em;
+			
+			.column {
+				padding-top: 1em;
+				text-align: left;
+			
+				p {
+					font-family: sans-serif;
+					font-size: .9em;
+					line-height: 1.35;
+				}
+			
+			}
+		}
+		
+		
+	
+	&.clicked {
+		
+		.magnet-image {
+			transform: translateY(-1em) scale(1);
+		}
+		
+		.magnet-form{
+			max-height: 400px;
+		}
+		
+		
+	}	
 	}
 }
+}//.entry-header
 
 
 .entry-content {
@@ -51,23 +240,7 @@
 		line-height: 2em;
 	}
 	
-	ul {
-		list-style: square; 
-	}
 	
-	ul, ol {
-		margin: .75em 0 1.75em;
-		line-height: 1.6em; 
-	
-		li {
-			margin-bottom: .75em;
-			
-			ul {
-				list-style: disc;
-				color: red;
-			}
-		}
-	}
 	
 	h2 {
 		margin: 2em 0 .75em;
@@ -84,7 +257,6 @@
 		font-size: 1.3em;
 		font-weight: 600;
 	}
-	
 	
 	h4{
 		margin: 1em 0 .35em;
@@ -108,5 +280,55 @@
 		}
 	
 	}
+
+.content-landing &{
 	
+	h2 {
+		margin: 0 0 .5em;
+		line-height: 1.25;
+		font-size: 1.75em;
+		color: $brightBlue;
+		font-family: sans-serif;
+		font-style: italic;
+		font-weight: bold;
+		text-align: center;
+	}
+		
+	p {
+		text-align: justify;
+		line-height: 1.5;
+		margin: 0;
+	}
+@include screen-immobile{
+	padding: 1em 2em;
+}	
+}	
+}//.entry-content
+
+
+.entry-footer {
+	
+.content-landing &{
+	margin: 1em;
+	padding: 1em;
+	background-color: $lightBlueShade;
+	font-family: sans-serif;
+
+	.teaser {
+		
+		.column {
+			margin-bottom: 1em;
+		
+		&.profile{
+			text-align: center;
+		}
+		&.quote{
+			line-height: 1.35em;
+			color: $brightBlue;
+			font-style: italic;
+		}
+		}
+	}
+
+}
 }

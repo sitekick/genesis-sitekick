@@ -55,3 +55,4 @@ function sitekick_genesis_do_header() {
 	}
 
 }
+
