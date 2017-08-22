@@ -26,7 +26,6 @@ function genesis_sample_add_body_class( $classes ) {
 remove_action ( 'genesis_before_header', 'genesis_skip_links', 5 );
 
 
-
 // Dequeue Skip Links Script.
 add_action( 'wp_enqueue_scripts', 'genesis_sample_dequeue_skip_links' );
 function genesis_sample_dequeue_skip_links() {
@@ -71,24 +70,13 @@ add_action('genesis_footer', 'sitekick_footer_landing');
 
 //add entry footer
 add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_open', 5 );
-/**
- * Echo the opening structural markup for the entry footer.
- *
- * Context: Posts (single and archives) and 'research-papers' CPT pages (single and archives).
- *
- * @author Sridhar Katakam
- * @link   http://sridharkatakam.com/
- */
+
 function sitekick_entry_footer_markup_open() {
 	printf( '<footer %s>', genesis_attr( 'entry-footer' ) );
 }
 
 add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_close', 15 );
-/**
- * Echo the closing structural markup for the entry footer.
- *
- * Context: Posts (single and archives) and 'research-papers' CPT pages (single and archives).
- */
+
 function sitekick_entry_footer_markup_close() {
 	echo '</footer>';
 }
@@ -99,31 +87,45 @@ add_action( 'genesis_entry_header', 'sitekick_landing_header_fields', 12 );
 
 function sitekick_landing_header_fields() {
   
-    $subHeader = get_field('sub_headline');
-	$teaserText = get_field('teaser_text');
+   $subHeader = get_field('sub_headline');
+   $teaserText = get_field('teaser_text');
    
-   $op = '<div class="entry-teaser">';
+   $op = '<a name="action"></a>';
+   $op .= '<div class="entry-teaser">';
    $op .= '<h2>' . $subHeader . '</h2>';
    $op .= wpautop($teaserText);
    $op .= '</div>';
    
    print $op;
 }
-add_action( 'genesis_entry_header', 'sitekick_landing_header_action_fields', 13 );
+add_action( 'genesis_entry_content', 'sitekick_landing_content_action_fields', 9 );
 
-function sitekick_landing_header_action_fields(){
-	$buttonText = get_field('download_button_text');
+function sitekick_landing_content_action_fields(){
 	
-	//r($buttonText);
+	$buttonText = get_field('download_button_text');
+	$formHeader = get_field('cform_header');
+	$shortCode = get_field('cform_shortcode');
+	$formFooter = get_field('cform_footer');
+	
 	$op = '<div class="entry-action">';
-	$op .= '<div class="magnet-image"><div></div></div>';
+	$op .= '<div id="landing-page-image" class="magnet-image"><div></div></div>';
+	$op .= '<div id="landing-page-form-close" class="close-btn"></div>';
 	$op .= '<div class="magnet-form flex-content">';
-	$op .= '<div class="column"><p>Provide your name and email address to receive this free resource:</p></div>';
-	$op .= '<div class="column" style="margin: 0 1em;">{form}</div>';
-	$op .= '<div class="column"><p><strong>NOTE:</strong> Your contact information will not be shared with any third party. As an added benefit, you will receive Sitekick’s monthly newsletter containing additional resources for improving your website.</p></div>';
+	$op .= '<div class="column"><h3>' . $formHeader . '</h3></div>';
+	$op .= '<div class="column">' . do_shortcode($shortCode) . '</div>';
+	$op .= '<div class="column"><p>' . $formFooter . '</p></div>';
 	$op .= '</div>';
-	$op .= '<button id="landing-page-one-cta" class="magnet-button btn btn-download btn-rounded btn-ucase btn-text-shadow">' . $buttonText . '</button>';
+	$op .= '<button id="landing-page-cta" class="btn btn-download btn-rounded btn-ucase btn-shadow">' . $buttonText . '</button>';
 	$op .= '</div>';
+	
+	print $op;
+}
+add_action( 'genesis_entry_content', 'sitekick_landing_content_benefits_fields', 10 );
+
+function sitekick_landing_content_benefits_fields(){
+	
+	$op = get_field('benefits_text');
+	$op .= '<a id="landing-page-cta2" href="#action" class="btn btn-download btn-rounded btn-ucase btn-shadow">' . get_field('download_button_text') . '</a>';
 	
 	print $op;
 }
@@ -131,6 +133,7 @@ function sitekick_landing_header_action_fields(){
 add_action( 'genesis_entry_footer', 'sitekick_landing_footer_fields', 9 );
 
 function sitekick_landing_footer_fields() {
+   
    print get_field('entry_footer');
 }
 

@@ -1,31 +1,33 @@
 .footer-widgets {
-
+		
 	.genesis-sidebar-title {	
-		font-family: $brand;
 		font-weight: 300;
 		font-size: 1.75em;
-		color: $lightBlue;
-		background: $darkBlue;
-		margin-top: 0;
+		margin: 0;
+		padding-top: .5em;
 		padding-bottom: .5em;
+		padding-left: 0;
+		text-align: center;
 		
-	@include screen-small{ padding-left: 1.25%; text-align: center; }
-	@include screen-medium{ padding-left: 2.5%; text-align: left;}
-	@include screen-large{ padding-left: 5%;}
-	@include screen-full{ padding-left: calc(33% - 24px); }
+	
+	@include screen-medium{ padding-left: 1rem; text-align: left;}
+	@include screen-large{ padding-left: 6rem; text-align: left;}
+	@include screen-full{ padding-left: 5rem; text-align: left;}
 	}
 	
 }
 
 .site-footer {
-	padding: 2em 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding: 0 0;
 	
 	p {
-		color: $lightBlue;
+		color: $brandBlueLight;
 	}
 	
 &.site-footer-landing{
-	font-family: $open;
+	font-family: $sans;
 	font-size: 1.25em;
 	padding: 0;
 	
@@ -40,14 +42,16 @@
 	
 	.landing-footer-column{
 		text-align: center;
+		font-family: sans-serif;
 		margin-bottom: 1em;
 		
 	&:nth-child(1){
-		color: $lightBlue;
+		color: $brandBlueLight;
 		font-style: italic;
 	}
 	&:nth-child(3){
 		color: $baseWhite;
+		font-size: 1.75rem;
 	}
 	}
 @include screen-immobile{

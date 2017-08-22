@@ -1,5 +1,7 @@
 /* Fonts */ 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600|Lora:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Lora:400,400i,700,700i');
+//Open+Sans:300,400,400i,600
+
 @font-face {
 	font-family: Sitekick;
 	src: url('assets/fonts/UniformRegular.woff2');
@@ -8,19 +10,29 @@
 };
 
 $brand : 'Sitekick', sans-serif;
-$open : 'Open Sans', sans-serif;
-$lora : 'Lora', serif;
+$sans : 'Lato', sans-serif;
+$serif : 'Lora', serif;
 
 /* Colors */
-$superDarkBlue : #082A3D;	//rgb(8,42,61)
-$darkBlue : #0B3954;
-$lightBlue : #CEE5F2;
-$lightBlueShade : #E6F2F8;
-$brightBlue : #2589BD;		//rgb(37,137,189)
-$aqua : #4ECDC4;			//rgb(78,205,196)
-$baseWhite : #FFF;
+					
+$darkNeutral : 		#4A4A4A;			//#082A3D;
+$darkBlue : 		#0B3954;
+$lightNeutral : 	#BFC3BA;
+$lightNeutralText : #F3F4F2;
+$lightNeutralShade :#E6F2F8;
+$brandBlue : 		#2589BD;
+$brandBlueLight : 	#CEE5F2;			
+$brightAccent : 	#2589BD;				//#4ECDC4;			
+$brightAccentText : #C1D37F;		//light color for text on top of brightAccent
+$darkAccent : 		#245E5A;
+$baseWhite : 		#FFF;
+
 $orange : #F18F01;
+$orangeText : #FEF9E8;
 $orangeLight : #F9C202;
+$orangeDark : #422701;
+$red : #FF3A20;
+
 // Viewport sizes 
 $screen-full : 1440px;		//3 
 $screen-large : 1024px;  	//2 col
@@ -31,6 +43,6 @@ $screen-small : 600px;		//1 col
 $boxMargin : 1.5em;
 
 //Sprite size
-$spriteWidth : 385;
-$spriteHeight : 385;
+$spriteWidth : 585;
+$spriteHeight : 1200;
 

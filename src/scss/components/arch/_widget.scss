@@ -116,8 +116,8 @@
 			
 			input[type=search] {
 				padding: .25em .25em .25em .1em;
-				//font-size: 18px;
-				//font-size: 1.125rem;
+				font-size: 18px;
+				font-size: 1.125rem;
 				border: 0;
 				display: inline-block;
 				vertical-align: middle;
@@ -136,7 +136,7 @@
 				background: $brandBlue;
 				border: 0;
 				color: $baseWhite;
-				padding: .25em;
+				padding: .55em;
 				font-size: 14px;
 				font-size: .875rem;
 				cursor: pointer;
@@ -147,37 +147,27 @@
 
 	}//.widget-wrap
 
-@include screen-immobile {
+@include screen-full {
 	
 	.widget-wrap {
-		//overflow: hidden;
-		display: inline-block;
+		overflow: hidden;
+		display: block;
 		
 		.search-form {
-			//float: right;
+			float: right;
 			background-color: $darkNeutral;
-// 			background-color: orange;			
-			
+			border-width: 0;
 			
 			input[type=search] {
-				padding: .35em .25em .35em .1em;	
-				background-color: inherit;
-				padding-left: 30px;
-				background-image: url($magnify);
-				background-repeat: no-repeat;
-				background-position: top left;
-				background-size: 35px 70px;
-				max-width: 95px;
-				transition-property: max-width;
-				transition-duration: 500ms;
-				
+				padding: .5em .25em .5em .1em;	
+			
 			&::placeholder {
 				color: $brandBlueLight;
+				text-align: center;
 			}
 			}
-			
 			input[type=submit] { 
-				display: none;
+				display: none; 
 			}
 		
 		&.focus {
@@ -185,9 +175,6 @@
 			cursor: text;
 			
 			input[type=search] {
-			max-width: 175px;
-			padding-left: 0;
-			background-image: none;
 			
 			&::placeholder {
 				color: $darkNeutral;

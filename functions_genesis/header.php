@@ -22,9 +22,9 @@ function sitekick_genesis_do_header() {
 			//mobile menu toggle
 			//create empty anchor for logo sprite
 			genesis_markup( array(
-				'open'   => '<button %s>',
-				'close'   => '</button>',
-				'content' => '☰',
+				'open'   => '<div %s>',
+				'close'   => '</div>',
+				'content' => '<div></div>',
 				'context' => 'menu-toggle',
 			) );	
 				

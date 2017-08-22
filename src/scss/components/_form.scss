@@ -1,0 +1,75 @@
+form {
+	
+	label {
+		color: $baseWhite;
+		color: rgba(255, 255, 255, .75);
+	}
+	
+	/* ====== TYPES 		*/
+	/* ------ Input			*/
+	
+	input[type=text],
+	input[type=email] {
+		padding: .5em;
+		border: 0;
+		color: $darkBlue;
+	
+	&::placeholder {
+		color: $brandBlue;
+		opacity: 1;
+	}
+	}//input
+	
+	/* ------ Submit			*/
+	input[type=submit] {
+		
+	}
+	/* ====== Contact Form 7 		*/
+	
+	.wpcf7-form-control-wrap{
+					
+		input {
+			margin-top: .5em;
+			margin-bottom: 0;
+			
+		
+		&.wpcf7-not-valid{
+			margin-bottom: 0;
+		}
+		}
+			
+		.wpcf7-not-valid-tip{
+			font-size: .9rem;
+		}
+	}
+				
+	.wpcf7-form-submit {
+		
+		input {
+			margin-top: 1em;
+			margin-bottom: 1em;
+		}
+	}
+	
+	div.wpcf7-response-output {
+		margin: 0;
+		padding: .5em;
+		font-style: italic;
+	
+	&.wpcf7-validation-errors,
+	&.wpcf7-mail-sent-ok {
+		border: none;
+	}
+	}
+
+
+.placeholder &{
+	
+	label {
+		display: none;
+	}
+}
+
+
+	
+}//form

@@ -1,5 +1,4 @@
 body {
-	background: $darkBlue;
 	margin: 0;
 }
 
@@ -7,29 +6,35 @@ body {
 	
 @include screen-immobile {
 	display: flex;
-	padding-top: 0;
+	padding-top: 2em;
 	flex-direction: column;
 }
 
 .landing-page &{
+	
+@include screen-immobile {
 	margin-top: $boxMargin;
 }
 }
+}
 
-.site-inner, 
+.site-inner,
+.title-banner,
 .site-header,
 .footer-widgets,
 .site-footer {
- 	margin: 1em auto;
-
-@include screen-small{ width: 97.5%; }
-@include screen-medium{ width: 95%; }
-@include screen-large{ width: 92.5%; }
-@include screen-full{ width: 90%;}
+ 	margin-top: 1em;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	margin-bottom: 0;
+ 	width: 100%;
+ 	
+@include screen-medium{ width: calc(100% - 2em); margin-bottom: 1em;}
+@include screen-large{ width: calc(100% - 12em); margin-bottom: 6em;}
+@include screen-full{ width: calc(100% - 20em); margin-bottom: 10em;}
 }
 
 
-.site-inner, 
 .site-header .wrap,
 .footer-widgets .wrap,
 .site-footer .wrap, {	
@@ -44,20 +49,20 @@ body {
 .site-header {
 	margin-top: 0;
 	margin-bottom: $boxMargin;
-	position: fixed;
+	position: fixed; z-index: 1000;
 	top: 0;
-	background: $darkBlue;
 	
 	.wrap {
 		margin: 1em 0;
 	
 	@include screen-immobile{
-		margin: 1em auto ;
+		margin: 1em auto;
 		align-items: flex-end;
+		justify-content: space-between;
 		
-		.title-area { flex: 1 0; }
+		.title-area { flex: 1; }
 		
-		.widget-area  { margin-left: $boxMargin;}
+		.widget-area  { flex: 3; }
 	}
 	
 	@include screen-medium {
@@ -67,16 +72,7 @@ body {
 		
 		.widget-area  {
 			margin-top: $boxMargin;
-			flex: 2;
 			}
-	}
-	
-	@include screen-large{
-		.widget-area  {flex: 2;}
-	}
-	
-	@include screen-full{
-		.widget-area  { flex: 3;}
 	}
 	}// .wrap
 
@@ -89,88 +85,43 @@ body {
 
 }
 
-.site-inner{
-margin-top: 8em;
-
+.title-banner{
+	margin: 8.5em auto 0;	
+	
 @include screen-immobile {
-	flex-direction: column;
-	margin-top: 0;
-}
-@include screen-full {
-	flex-direction: row-reverse;
+	margin: 0 auto;
+	}
 }
 
-
-.landing-page & {
-	margin-top: 0;
-}
-
-}
 
 .content-sidebar-wrap {
 	
-	.sidebar-primary {
-		margin-top: $boxMargin;
-	}
+	.sidebar-primary { margin: 1px;}
 
 @include screen-immobile{
 	display: flex;
 	justify-content: space-between;
+
+	.content { flex: 2;}
+	
+	.sidebar-primary { flex: 1 0; }
+
 }
 
 @include screen-medium {
 	flex-direction: column;
 	justify-content: space-around;
+
+	.content { margin-right: 0; }
 	
 	.sidebar-primary { 
 		display: flex;
 		flex-flow: row wrap;
 		align-items: stretch;
-		
-		.widget {
-			flex: 1 1 50%;
-		
-			.widget-wrap { margin-right: $boxMargin; }
-		
-		&:nth-of-type(even){ 
-			.widget-wrap { margin-right: 0;}	
-		}
-		&:last-of-type {
-			.widget-wrap {margin-right: 0;}
-		}
-		
-		}
+		margin-top: 0;
 	}
 }
 
-@include screen-large {
-	flex-direction: row;
-	
-	.content {
-		flex: 2;
-		margin-right: $boxMargin;
-	}
-	
-	.sidebar-primary { 
-		flex: 1 0; 
-		margin-top: 4em;
-		}
-}
-@include screen-full {
-	flex: 3;
-	flex-direction: row;
-	
-	.content {
-		flex: 0 1 66.66666%;
-		margin-left: $boxMargin;
-		margin-right: $boxMargin;
-	}
-	
-	.sidebar-primary { 
-		flex: 0 0 33.33333%; 
-		margin-top: 4em;
-		}
-}
 .landing-page &{
 	display: block;
 	flex: none;
@@ -184,79 +135,41 @@ margin-top: 8em;
 }
 }//.content-sidebar-wrap
 
-.sidebar-secondary {
-	
-@include screen-immobile{ flex: 1 0; }
-@include screen-large { 
-	display: flex;
-	flex-wrap: wrap;
-	
-	.widget {
-	
-	&:nth-of-type(even){
-		flex: 0 1 33.33333%;
-	}
-	&:nth-of-type(odd){
-		flex: 1 1 66.66666%;
-	
-		.widget-wrap {
-			margin-right: $boxMargin;
-		}
-	}
-	&:last-of-type {
-		
-		.widget-wrap {
-			margin-right: 0;
-		}
-	}
-	}
-}
-@include screen-full { margin-top: 4em;}
-@include screen-large { margin-top: $boxMargin;}
-@include screen-medium { /* margin-top: $boxMargin; */}
-}
 
 .footer-widgets {
+	margin-bottom: 0;
 
-	.widget{
-		text-align: center;	
-			//.widget-wrap { margin-left: 0;}
-		}
+	.widget{ text-align: center;}
 
 @include screen-immobile{
 	@include spanFullWidth;
 	
 	.footer-widget-area {
 			
-		.widget{
-			text-align: left;
-		}	
+		.widget{ text-align: left; }	
 	}
 	
 	.footer-widgets-1  {
-			flex: 3; 
-			display: flex;
-			align-content: flex-start;
-			margin-right: $boxMargin;
+		flex: 3; 
+		display: flex;
+		align-content: flex-start;
+		margin-right: $boxMargin;
 			
-			.widget{
-				flex: 1 1;
-				
-				.widget-wrap { margin-left: $boxMargin;}
+		.widget{
+			flex: 1 1;
 			
-			&:first-child{
-				.widget-wrap {margin-left: 0;}
-			}
-			}
+			.widget-wrap { margin-left: $boxMargin;}
+		
+		&:first-child{ .widget-wrap {margin-left: 0;}
+		}
+		}
 	}
 		
 	.footer-widgets-2 { flex: 1 0; }
 }
 @include screen-medium{
 	
-	.wrap { 
-		flex-direction: column; 
-		}
+	.wrap { flex-direction: column; }
 	
 	.footer-widgets-1  { 
 		flex: 1; 
@@ -280,9 +193,8 @@ margin-top: 8em;
 &.site-footer-landing{
 
 @include screen-immobile{	
-	.landing-footer-column {
-		flex: 1;
-	}
+	
+	.landing-footer-column { flex: 1;}
 }
 }	
 }

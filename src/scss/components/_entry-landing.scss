@@ -1,0 +1,297 @@
+.entry {
+.content-landing &{
+	font-family: Georgia, serif;
+	
+	/* ====== Landing Page Subsections		*/
+	/* ------ Entry Header		*/
+	
+	.entry-header {
+		background-color: $lightNeutralShade;
+		padding: 1em;
+		text-align: center;
+		margin-bottom: 0;
+		
+		.entry-title{
+			margin: 0 0 20px 0;
+			font-family: sans-serif;
+			font-size: 3rem;
+			line-height: 1.25;
+			color: $darkBlue;
+			text-shadow: 1px 1px 2px rgba(0,0,0, .5);
+		}
+		
+		.entry-teaser {
+			margin: 1em auto 4em;
+			
+			h2 {
+				font-family: sans-serif;
+				font-style: italic;
+				font-weight: 600;
+				margin: 0 0 .5em;
+				line-height: 1.25;
+				color: $brandBlue;
+			}
+			
+			p {
+				font-family: sans-serif;
+				text-align: justify;
+				line-height: 1.5;
+				margin: 0;
+			}
+		
+		@include screen-immobile{ width: 75%; }
+		}//.entry-teaser
+	
+	}//.entry-header
+	
+	/* ------ Entry Content		*/
+	
+	.entry-content {
+		padding: 1em;
+	
+		h2 {
+			//margin: 0 0 .5em;
+			line-height: 1.25;
+			font-size: 1.75em;
+			color: $brandBlue;
+			font-family: sans-serif;
+			font-style: italic;
+			font-weight: bold;
+			text-align: center;
+		}
+			
+
+		.benefits {
+			
+			.well {
+				
+				p {
+					font-family: sans-serif;
+					margin:0;
+					line-height: 1.5;
+					color: $brightAccentText;
+					text-shadow: 1px 1px 1px $darkAccent;
+				}
+			}
+						
+			ul {
+				margin-top: 0;
+			}
+		}
+		.entry-action {
+			background: $baseWhite;
+			margin: -1em;
+			padding-bottom: 4em;
+			
+			.magnet-image{
+				max-width: 200px;
+				margin: 0 auto;
+				box-shadow: 0 0 5px 2px rgba(8,42,61, .75);
+				transform: translateY(-4em) scale(.75);
+				transition: transform 500ms ease;
+				cursor: pointer;
+				
+				div {
+					@include sprite-responsive-calcs(200, 250, 0, 135, 'img/sprite.png');
+				}
+			}
+		
+			.close-btn {
+				background: $brightAccent;
+				color: $baseWhite;
+				padding: .25em .5em 0 0;
+				text-align: right;
+				display: none;
+			}
+			
+			
+			.magnet-form{
+				font-family: sans-serif;
+				margin: 0 auto 1em;
+				background: $brightAccent;
+				max-height: 0;
+				transition-property: max-height; 
+				transition-duration: 0;
+				overflow: hidden;
+				color: $baseWhite;
+				padding: 0 1em;
+				
+				
+				.column {
+					text-align: left;
+					
+					h3 {
+						margin-top: 0;
+						font-family: Georgia, serif;
+						color: $darkBlue;
+						line-height: 1.35;
+						font-weight: 400;
+					}
+					p {
+						color: $brightAccentText;
+						font-size: .9375rem;
+						line-height: 1.125;
+					}
+				
+				
+				@include screen-immobile{
+				
+				&:nth-child(1) {
+					padding-right: 2em;
+				}
+				&:nth-child(3) {
+					padding-left: 2em;
+					align-self: flex-end;
+				}
+				}
+				}//.column
+				
+
+				.wpcf7-form {
+					
+					.wpcf7-form-control-wrap {
+						display: block;
+						
+						input {
+							width: calc(100% - 2.5em - 4px);
+							border: 2px solid $brightAccent;
+							background: linear-gradient(270deg, $lightNeutralShade 2em , $baseWhite 2em);
+							padding-right: 2em;
+						&.wpcf7-not-valid{
+							border-color: $darkAccent;
+							background: url($inlineExclamation) 99% 50% no-repeat,
+							linear-gradient(270deg, $lightNeutralShade 2em , $baseWhite 2em);
+						}
+						}//input
+					
+					&.lead-first-name{
+							
+						input {
+						
+						@include screen-immobile{
+							margin-top: 0;
+						}
+						}
+					}
+					}
+					
+					
+					.wpcf7-form-submit {
+						text-align: center;
+		
+						input { 
+							display: inline-block;
+							box-shadow: 0px 0px 8px $darkAccent;
+							}
+					}
+					
+					.wpcf7-not-valid-tip{
+						background: $darkBlue;
+						text-align: center;
+						display: block;
+						color: $lightNeutralShade;
+					}
+					
+					div.wpcf7-response-output {
+						background-position: 2% 50%;
+						background-repeat: no-repeat;
+						padding: .25em 0 0 2.5em;
+						color: $darkBlue;
+					&.wpcf7-validation-errors{
+						background-image: url($inlineExclamation);
+					}
+					&.wpcf7-mail-sent-ok{
+						background-image: url($inlineCheckmark);
+					}
+					
+					}
+					
+				&.sent {
+					.wpcf7-form-control-wrap,
+					.wpcf7-form-submit { display: none;}
+				}
+				
+				
+				}//.wpcf7-form
+				
+			}//.magnet-form
+				
+		&.clicked {
+			
+			.magnet-image {
+				transform: translateY(-1em) scale(1);
+			}
+			
+			.close-btn { display: block;}
+			
+			.magnet-form{
+				max-height: 600px;
+				transition-duration: 500ms;
+			
+			@include screen-immobile{
+				max-height: 400px;
+			}
+			}
+			
+			.btn-download {
+				display: none;
+			}
+		}	
+		}//.entry-action
+	
+			.btn-download {
+				display: inline-block;
+				font-family: sans-serif;
+				margin-left: 50%;
+				transform: translateX(-50%);
+			}
+	
+		
+	
+	@include screen-immobile{
+		padding: 1em 2em;
+	}		
+	}//.entry-content
+
+	/* ------ Entry Footer		*/
+	
+	.entry-footer {
+	margin: 1em;
+	padding: 1em;
+	background-color: $lightNeutralShade;
+	font-family: sans-serif;
+	
+	.testimonial {
+		
+		.column {
+			margin-bottom: 1em;
+		
+		&.profile{
+			text-align: center;
+			color: $darkBlue;
+			
+			.stars {
+				margin-bottom: 1em;
+			}
+			
+			h4,
+			p {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+		}
+		&.quote{
+			line-height: 1.35em;
+			color: $brandBlue;
+			font-family: Georgia, serif;
+			font-style: italic;
+		}
+		@include screen-immobile {
+			margin-bottom: 0;
+		}
+		}
+				
+	}//.testimonial
+}
+}
+}//.entry

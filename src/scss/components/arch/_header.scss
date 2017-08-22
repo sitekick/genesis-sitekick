@@ -70,6 +70,11 @@
 		text-align: center;
 		margin-top: 1em;
 		margin-bottom: 1em;
+	
+	@include screen-large {
+		margin-top: 0;
+		text-align: right;
+	}
 	}
 		
 	}//.widget
@@ -78,23 +83,23 @@
 	transition-duration: 500ms;
 	transition-timing-function: ease-in;
 }
-
 @include screen-immobile {
+	max-height: none;
+	overflow: visible;
+	transition-property: none;
+}
+@include screen-full {
 	max-height: none;
 	transition-property: none;
 	overflow: visible;
 	align-items: flex-end;
 	flex-flow: row-reverse nowrap;
-	justify-content: space-between;
 	
 	.widget {
 		
-	&.widget_nav_menu{ 
-		flex: 3 1 90%;	
-		}
+	&.widget_nav_menu{ flex: 3;	}
 	
 	&.widget_search {
-		flex: 1 1 10%;
 		margin-top: 0;
 		margin-bottom: 0;
 		white-space: nowrap;

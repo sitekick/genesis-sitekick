@@ -6,41 +6,34 @@
 	font-weight: 400;
 	list-style: none;
 	display: flex;
-/* 	max-height: 0 */;
-	//overflow: hidden;
-// 	transition-property: max-height;
-// 	transition-duration: 200ms;
-// 	transition-timing-function: linear;
+	max-height: 0;
+	overflow: hidden;
+	transition-property: max-height;
+	transition-duration: 200ms;
+	transition-timing-function: linear;
 
 	/* =========== Mobile Nav ============== */
 	@include screen-small {
 
 	justify-content: space-around;
-	flex-flow: column nowrap;
+	flex-direction: column;
 	
 	
 	> li {
 		flex: 1 1 auto;
+		border: 2px solid $darkNeutral;
 		border-radius: 6px;
-		margin: .75em 0 0;
+		margin: 1em 0 0;
 		max-height: 44px;
 		transition: max-height 500ms;
-		background-color: $brandBlueLight;
 		
 		> a {
 			display: block;
 			padding: .5em 0;
-			color: $brandBlue;
+			color: $brandBlueLight;
 			text-decoration: none;
 			text-align: center;
 		}
-	
-
-	&:hover {
-		background: $brandBlue;
-		
-		> a { color: $baseWhite; }
-	}//> .li:hover
 	
 	&.menu-item-has-children {
 		position: relative;
@@ -60,59 +53,81 @@
 				font-size: 1.5em;
 			}
 			
+		
+	&:hover {
+		
+		> a { color: $baseWhite; }
+		
+	&.current-menu-item,
+	&.current-menu-ancestor  {
+		//background: $brightAccent;
+		
+		
+	}
+	}// .menu-item-has-children:hover
 	&.active {
 		max-height: 1000px;
-		background: $brandBlue;
-		
-		> a { color: $brandBlueLight; }
+		background: $brandBlueLight;
 		
 		> .sub-menu { display: flex; }
 		
 		.close-btn { display: block; }
-	
-	&:hover { > a { color: $baseWhite; } }
-	
-	}// .menu-item-has-children.active
+	}
 	}// .menu-item-has-children
 	
+	&:hover:not(.current-menu-item) {
+		background: $darkNeutral;
+		border-color: $brandBlueLight;
+	}//> .li:hover
 	} // > li
 	
 	// Sub Menu
 	.sub-menu {
-		position:relative;
 		display: none;
 		flex-flow: row wrap;
+		justify-content: space-between;
 		align-items: center;
 		list-style: none;
 		overflow: hidden;
-		margin: 1em 0 0 5px;
+		margin: 0 auto 2.5%;
 		padding: 0;
+		width: 95%;
 		transition-property: none;
 		
 		li {
 			flex: 1 1 auto;
+			margin: 5px 5px 0 0;
 			
 			a {
 				display: block;
 				border-radius: 3px;
-				background: $brandBlueLight;
-				font-size: 17px;
-				font-size: 1.0625rem;
-				color: $brandBlue;
+				background: $baseWhite;
+				font-size: 16px;
+				font-size: 1rem;
+				color: $brightAccent;
 				text-align: center;
-				margin-right: 5px;
-				margin-bottom: 5px;
-				padding: .5em 0;
+				padding: .5em .5em .5em .5em;
 				text-decoration: none;
 			
-			&:hover{ color: $baseWhite;}
+			&:hover {
+				//color: $baseWhite;
+				//text-decoration: underline;
+			}
 			}
 		&.current_page_item {
 			position: relative;
 			
 			a {
-				background: $baseWhite;
-			&:hover{ color: $brandBlue; }
+				text-indent: 10px;
+				font-weight: 400;
+				&:before{
+					position: absolute;
+					font-size: 26px;
+					line-height: 32px;
+					content: '»';
+					top: 0;
+					left: 0;
+				}
 			}	
 		}
 		}
@@ -124,7 +139,7 @@
 	@include screen-immobile {
 		margin: 0;
 		justify-content: space-around;
-		flex-flow: row nowrap;
+		flex-direction: row;
 		max-height: none;
 		overflow: visible;
 		
@@ -135,10 +150,7 @@
 			border: 0;
 			border-radius: 0;
 			max-height: none;
-			transition-property: background-color;
-			transition-duration: 250ms;
-			transition-timing-function: ease;
-			background-color: $darkNeutral;
+			
 			
 			> a {
 				display: block;
@@ -151,73 +163,86 @@
 				color: $darkNeutral;
 			}
 			}
-		
-		&:hover {
-			background-color: $brandBlueLight;
-			
-			> a  { color: $darkNeutral; }
-		}// > .li:hover
 		//Top Level: Active
 		&.current-menu-item,
 		&.current-menu-ancestor {
 			background: $brandBlue;
 			
-			> a  { color: $baseWhite; } 
+			a {
+				color: $baseWhite;
+			}
 		
 		&:hover {
-			> a  { color: $baseWhite; } 
-		}
+			background-color: $brandBlueLight; 
 		}
 		
+		}
 		//Top Level: Has Submenu
 		&.menu-item-has-children {
 			position: relative;
 			overflow: visible;
 			
-			.close-btn { display: none !important; }
-				
 		&:hover {
+			background: $brandBlueLight; 
 			
+			> a{
+				//color: $darkNeutral;
+			}
+		
 			> .sub-menu {
 				transition-duration: 500ms;
+				transition-delay: 100ms;
 				transition-timing-function: ease-in;
 				max-height: 1000px;
 			}
 	
+		&.current-menu-item,
+		&.current-menu-ancestor  {
+			background-color: $brandBlue;
+			
+			a {
+				
+			}
+		}
 		}// .menu-item-has-children:hover
 		}// .menu-item-has-children
+		&.current-menu-ancestor {
+			//background: $brightAccent;
+		}
+		//&:hover:not(.current-menu-item) {
+		&:hover {
+			//background: $brandBlueLight;
+		}//> .li:hover
 		}// > .li
 		
 		// Sub Menu
 		.sub-menu {
 			background: $brandBlueLight;
-			position: absolute; z-index: 10000;
+			position: absolute;z-index: 10000;
 			display: block;
 			width: 125%;
-			font-size: 17px;
 			font-size: 1.0625rem;
 			font-weight: 300;
-			margin: 0;
+			margin: 0 0;
+			list-style: none;
 			padding: 0;
 			max-height: 0;
 			overflow: hidden;
 			transition-property: max-height;
-			border-top: 1px solid $darkNeutral;
-			
+			transition-duration: 0;
+	
 			li {
 				display: block;
 				flex: none;
 				border-radius: 0;
 				margin: 0 0;
-			
+				
 				a {
 					display: block;
 					background: inherit;
 					border-radius: 0;
 					color: $darkNeutral;
 					text-align: left;
-					margin-right: 0;
-					margin-bottom: 0;
 					padding: .5em .5em .5em 1em;
 					background: inherit;
 					text-decoration: none;
@@ -232,7 +257,6 @@
 				
 				a {
 					text-indent: 10px;
-					font-weight: 400;
 					
 					&:before{
 						position: absolute;
@@ -245,16 +269,27 @@
 				}	
 			}
 			
-			&:last-child { a { padding-bottom: .75em; } }
+			&:last-child {
+				
+				a { padding-bottom: 1em; }
+			}
 			}
 		}// .sub-menu	
 	}// immobile	
-	@include screen-large { .sub-menu { width: 150%; } }
-	@include screen-medium { .sub-menu { width: 175%; } }
+	@include screen-large {
+		
+		.sub-menu {width: 150%;}
+	}
+	@include screen-medium {
+		
+		.sub-menu {width: 175%;}
+	}
 
 &.active {
-// 	max-height: 1000px;
-// 	transition-duration: 500ms;
-// 	transition-timing-function: ease-in;
+	max-height: 1000px;
+	transition-duration: 500ms;
+	transition-timing-function: ease-in;
 }
+
+
 }//#menu-main-menu

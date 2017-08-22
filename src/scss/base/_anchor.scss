@@ -1,5 +1,6 @@
+.btn,
 .button {
-	background: $aqua;
+	background: $brightAccent;
 	padding: .25em .5em;
 	border-radius: 4px;
 	text-decoration: none;
@@ -14,21 +15,30 @@
 }
 }
 
-a {
 
-.entry-content & {
-	color: $brightBlue;
+a:not(.btn):not(.ui-tabs-anchor) {
 
-&:visited{
-	color: $darkBlue;
-	
+
+
+.sidebar-primary & {
+	color: $baseWhite;
 }
-&:hover{
-	color: $aqua;
-}
+
+
+// single page content inline links
+.page .entry-content &, 
+.post .entry-content & {
+	color: $brandBlue;
+
+&.read-more {
+	white-space: nowrap;
+}		
+
+// &:visited{ color: $darkBlue; }
+&:hover{ color: $brightAccent; }
 }
 	
 .site-footer & {
-	color: $aqua;
+	color: $brightAccent;
 }
 }

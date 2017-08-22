@@ -1,0 +1,46 @@
+body {
+	background: $darkNeutral;
+}
+
+.site-header {
+	background: $darkNeutral;
+
+}
+
+
+.title-banner {
+	font-family: $brand;
+	color: $baseWhite;
+}
+
+.content-sidebar-wrap{
+	background: $baseWhite;
+
+	
+	
+	.sidebar-primary {
+		background: $lightNeutral;	
+		
+		.widget {
+			color: $lightNeutralText;
+			
+			.widget-title{
+				color: $darkNeutral;
+			}
+		}
+	}
+
+}
+
+.footer-widgets {
+	background: $brandBlue;
+	
+	.genesis-sidebar-title {
+		font-family: $brand;
+		color: $brandBlueLight;
+	}
+}
+
+.site-footer {
+	background: $brandBlue;
+}

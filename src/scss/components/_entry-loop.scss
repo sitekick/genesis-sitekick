@@ -1,0 +1,66 @@
+.entry {
+.blog &,
+.archive &{
+	//border: 1px solid red;
+	display: flex;
+	margin-bottom: 2em;
+	
+	.entry-header {
+		flex: 1;
+		margin-bottom: 0;
+		
+		.entry-image {
+			//background: $lightNeutralShade;
+		
+		&.web-design{
+			.responsive-sprite { @include sprite-responsive-calcs(200, 200, 385, 200, 'img/sprite.png');}
+		}	
+		&.ppc{
+			.responsive-sprite { @include sprite-responsive-calcs(200, 200, 385, 400, 'img/sprite.png');}
+		}	
+		&.seo{
+			.responsive-sprite { @include sprite-responsive-calcs(200, 200, 385, 400, 'img/sprite.png');}
+		}
+		&.usability{
+			.responsive-sprite { @include sprite-responsive-calcs(200, 200, 385, 600, 'img/sprite.png');}
+		}
+		&.content-strategy{
+			.responsive-sprite { @include sprite-responsive-calcs(200, 200, 385, 1000, 'img/sprite.png');}
+		}
+		&.analytics{
+			.responsive-sprite { @include sprite-responsive-calcs(200, 200, 385, 0, 'img/sprite.png');}
+		}
+		}
+	}
+	
+	.entry-content {
+		flex: 2;
+		color: $darkBlue;
+		
+		.entry-title{
+			font-size: 1.25rem;
+			margin: 0 0 .5em;
+			font-weight: 600;
+		}
+		
+		p {
+			line-height: 1.35;
+		}
+	
+	
+	@include screen-immobile{
+		flex: 3;
+	}	
+	}
+
+&:nth-child(even){
+	border-color: green;
+	
+	.entry-content {
+		order: -1;	
+	}
+}
+
+}
+}
+

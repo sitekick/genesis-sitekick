@@ -1,0 +1,291 @@
+body {
+	background: $darkBlue;
+	margin: 0;
+}
+
+.site-container {
+	
+@include screen-immobile {
+	display: flex;
+	padding-top: 2em;
+	flex-direction: column;
+}
+
+.landing-page &{
+	
+@include screen-immobile {
+	margin-top: $boxMargin;
+}
+}
+}
+
+.site-inner, 
+.site-header,
+.footer-widgets,
+.site-footer {
+ 	margin: 1em auto;
+
+@include screen-small{ width: 100%; }
+@include screen-medium{ width: 95%; }
+@include screen-large{ width: 87.5%; }
+@include screen-full{ width: 85%;}
+}
+
+
+.site-inner, 
+.site-header .wrap,
+.footer-widgets .wrap,
+.site-footer .wrap, {	
+@include screen-immobile {
+	display: flex;
+	align-items: stretch;
+	justify-content: space-between;
+	flex-direction: row;
+}
+}
+
+.site-header {
+	margin-top: 0;
+	margin-bottom: $boxMargin;
+	position: fixed;
+	top: 0;
+	background: $darkBlue;
+	
+	.wrap {
+		margin: 1em 0;
+	
+	@include screen-immobile{
+		margin: 1em auto ;
+		align-items: flex-end;
+		
+		.title-area { flex: 1 0; }
+		
+		.widget-area  { margin-left: $boxMargin;}
+	}
+	
+	@include screen-medium {
+		align-items: initial;		
+		justify-content: initial;
+		flex-direction: column;
+		
+		.widget-area  {
+			margin-top: $boxMargin;
+			flex: 2;
+			}
+	}
+	
+	@include screen-large{
+		.widget-area  {flex: 2;}
+	}
+	
+	@include screen-full{
+		.widget-area  { flex: 3;}
+	}
+	}// .wrap
+
+@include screen-immobile{
+	position: static;
+	background: none;
+}
+
+@include screen-small{ width: 100%; }
+
+}
+
+.site-inner{
+margin-top: 8em;
+
+@include screen-immobile {
+	flex-direction: column;
+	margin-top: 0;
+}
+@include screen-full {
+	flex-direction: row-reverse;
+}
+
+
+.landing-page & {
+	margin-top: 0;
+}
+
+}
+
+.content-sidebar-wrap {
+	
+	.sidebar-primary {
+		margin-top: $boxMargin;
+	}
+
+@include screen-immobile{
+	display: flex;
+	justify-content: space-between;
+}
+
+@include screen-medium {
+	flex-direction: column;
+	justify-content: space-around;
+	
+	.sidebar-primary { 
+		display: flex;
+		flex-flow: row wrap;
+		align-items: stretch;
+		
+		.widget {
+			flex: 1 1 50%;
+		
+			.widget-wrap { margin-right: $boxMargin; }
+		
+		&:nth-of-type(even){ 
+			.widget-wrap { margin-right: 0;}	
+		}
+		&:last-of-type {
+			.widget-wrap {margin-right: 0;}
+		}
+		
+		}
+	}
+}
+
+@include screen-large {
+	flex-direction: row;
+	
+	.content {
+		flex: 2;
+		margin-right: $boxMargin;
+	}
+	
+	.sidebar-primary { 
+		flex: 1 0; 
+		margin-top: 4em;
+		}
+}
+@include screen-full {
+	flex: 3;
+	flex-direction: row;
+	
+	.content {
+		flex: 0 1 66.66666%;
+		margin-left: $boxMargin;
+		margin-right: $boxMargin;
+	}
+	
+	.sidebar-primary { 
+		flex: 0 0 33.33333%; 
+		margin-top: 4em;
+		}
+}
+.landing-page &{
+	display: block;
+	flex: none;
+	width: 100%;
+	
+	.content{
+		margin-right: 0;
+		margin-left: 0;
+		flex: none;
+	}
+}
+}//.content-sidebar-wrap
+
+.sidebar-secondary {
+	
+@include screen-immobile{ flex: 1 0; }
+@include screen-large { 
+	display: flex;
+	flex-wrap: wrap;
+	
+	.widget {
+	
+	&:nth-of-type(even){
+		flex: 0 1 33.33333%;
+	}
+	&:nth-of-type(odd){
+		flex: 1 1 66.66666%;
+	
+		.widget-wrap {
+			margin-right: $boxMargin;
+		}
+	}
+	&:last-of-type {
+		
+		.widget-wrap {
+			margin-right: 0;
+		}
+	}
+	}
+}
+@include screen-full { margin-top: 4em;}
+@include screen-large { margin-top: $boxMargin;}
+@include screen-medium { /* margin-top: $boxMargin; */}
+}
+
+.footer-widgets {
+
+	.widget{
+		text-align: center;	
+			//.widget-wrap { margin-left: 0;}
+		}
+
+@include screen-immobile{
+	@include spanFullWidth;
+	
+	.footer-widget-area {
+			
+		.widget{
+			text-align: left;
+		}	
+	}
+	
+	.footer-widgets-1  {
+			flex: 3; 
+			display: flex;
+			align-content: flex-start;
+			margin-right: $boxMargin;
+			
+			.widget{
+				flex: 1 1;
+				
+				.widget-wrap { margin-left: $boxMargin;}
+			
+			&:first-child{
+				.widget-wrap {margin-left: 0;}
+			}
+			}
+	}
+		
+	.footer-widgets-2 { flex: 1 0; }
+}
+@include screen-medium{
+	
+	.wrap { 
+		flex-direction: column; 
+		}
+	
+	.footer-widgets-1  { 
+		flex: 1; 
+		flex-direction: column; 
+		
+		.widget{
+			.widget-wrap { margin-left: 0;}
+		}
+		}
+}
+}
+
+.site-footer {
+
+&:not(.site-footer-landing) {
+@include screen-immobile{
+	@include spanFullWidth;
+}	
+}
+
+&.site-footer-landing{
+
+@include screen-immobile{	
+	.landing-footer-column {
+		flex: 1;
+	}
+}
+}	
+}

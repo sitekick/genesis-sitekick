@@ -54,15 +54,17 @@
 
 
 @mixin spanFullWidth {
-	margin: 0 auto;
+	margin-right: auto;
+	margin-left: auto;
 	width: 100%;
-	background: $superDarkBlue;
 	
 	.wrap {
 		margin: 0 auto;
-		width: 80%;
+		width: 100%;
 	
-	@include screen-large{ width: 90%; }
-	@include screen-medium { width: 95%; }
+	@include screen-medium{ width: calc(100% - 2em); }
+	@include screen-large{ width: calc(100% - 12em); }
+	@include screen-full{ width: calc(100% - 20em); }
 	}	
 }
+
