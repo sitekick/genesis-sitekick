@@ -60,22 +60,18 @@
 			$(this).addClass('focus');
 		},
 		focusout : function() {
+
 			var searchfield = $(this).find('input[type=search]');
-			
+			//retain focus state while search field has entered value
 			if( ! searchfield.attr('value') ) {
 				$(this).removeClass('focus');
 			}
 			
-			//console.log( $(this).find('input[type=search]').attr('value') )
+			
 		}
 	});
 	
-	$('.search-form input[type=search]').on({
-		load : function(e) {
-			console.log(e.target.value)
-			//$(this).parent('form').addClass('value');
-		}
-	});
+	
 	
 	
 })(jQuery);

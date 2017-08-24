@@ -1,6 +1,7 @@
 //@import "utils/box-guides";
 @import "utils/vars";
 @import "utils/mixins";
+@import "utils/base64";
 
 @import "base/prefix";
 @import "base/normalize";
@@ -9,7 +10,6 @@
 @import "base/font";
 @import "base/anchor";
 
-@import "components/base64";
 @import "components/header";
 @import "components/nav";
 @import "components/title-banner";

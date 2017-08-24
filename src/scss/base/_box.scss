@@ -102,9 +102,9 @@ body {
 	display: flex;
 	justify-content: space-between;
 
-	.content { flex: 2;}
+	.content { flex: 2; overflow: hidden;}
 	
-	.sidebar-primary { flex: 1 0; }
+	.sidebar-primary { flex: 1; }
 
 }
 

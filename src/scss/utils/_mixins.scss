@@ -1,5 +1,5 @@
 @mixin screen-small {
-  @media screen and (max-width: #{$screen-medium}) {
+  @media screen and (max-width: #{$screen-small}) {
     @content;
   }
 }
@@ -40,17 +40,30 @@
 		$path: path to sprite file.
 	*/
 	
+	
 	display: block;
 	content: "";
 	background-image: url('#{$path}');
 	background-position-x: if(  $spriteWidth != $imgWidth, ( $spriteX / ($spriteWidth - $imgWidth) ) * 100%, 0  );
 	background-position-y: if(  $spriteHeight != $imgHeight, ( $spriteY / ($spriteHeight - $imgHeight) ) * 100%, 0  );
-	background-size:  $spriteWidth / $imgWidth * 100%;
-	padding-bottom:  $imgHeight / $imgWidth  * 100%;
+	background-size:  $spriteWidth / $imgWidth * 101%;
+	padding-bottom:  $imgHeight / $imgWidth  * 101%;
 	width: 100%;
 	height: 0;
 }
 
+@mixin sprite-responsive-svg($imgWidth, $imgHeight, $spriteX, $spriteY, $path){
+	
+	display: block;
+	content: "";
+	background-image: url('#{$path}');
+	background-position-x: if(  $svgWidth != $imgWidth, ( $spriteX / ($svgWidth - $imgWidth) ) * 100%, 0  );
+	background-position-y: if(  $svgHeight != $imgHeight, ( $spriteY / ($svgHeight - $imgHeight) ) * 100%, 0  );
+	background-size:  $svgWidth / $imgWidth * 101%;
+	padding-bottom:  $imgHeight / $imgWidth  * 101%;
+	width: 100%;
+	height: 0;
+}
 
 
 @mixin spanFullWidth {

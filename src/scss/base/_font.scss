@@ -14,19 +14,54 @@ h2 {
 h3 {
 	font-size: 1.5em;
 	margin: .25em 0 .5em;
+
+.sidebar & {
+	font-family: $brand;
+	font-weight: normal;
+}
+}
+
+h4 {
+	font-size: 1.125em;
 }
 
 p {
 	font-size: 1.0625em;
 	margin: 0 0 1.5em;
+
+.widget & {
+	font-size: .9375rem;
+}
 }
 
 ul,
 ol {
 	font-size: 1.0625rem;
 	margin: 0 0 1.5em;
+
+.widget & {
+	font-size: .9375rem;
+}
 }
 
-input {
+
+#menu-main-menu,
+input[type=text],
+input[type=search] {
 	font-size: 1.125em;
+	font-family: $sans;
+	font-weight: 400;
+}
+
+.entry-categories {
+	font-family: $sans;
+	font-size: .9375rem;	
+}
+.widget {
+	font-family: $sans;	
+	
+	.tagcloud,
+	.textwidget {
+		font-size: .9375em;
+	}	
 }

@@ -2,19 +2,16 @@
 	position: relative;
 
 	.sitekick-logo {
-	max-width: 200px;
-	margin: 0 auto;
+		max-width: 200px;
+		margin: 0 auto;
 	
 	a {
 		@include sprite-responsive-calcs(250, 100, 0, 0, 'img/sprite.png');
 	}
 
-	@include screen-immobile {
-		max-width: 250px;
-	}
-	@include screen-large {
-		margin: 0 0;
-	}
+	@include screen-immobile { max-width: 250px;}
+	@include screen-large { margin-right: 1em; }
+	
 	}
 
 	.menu-toggle {
@@ -90,11 +87,11 @@
 	.widget {
 		
 	&.widget_nav_menu{ 
-		flex: 3 1 90%;	
+		flex: 3 1 85%;	
 		}
 	
 	&.widget_search {
-		flex: 1 1 10%;
+		flex: 1 1 15%;
 		margin-top: 0;
 		margin-bottom: 0;
 		white-space: nowrap;
@@ -103,4 +100,3 @@
 	}
 }
 }//.header-widget-area
-

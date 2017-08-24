@@ -19,8 +19,9 @@
 add_filter( 'genesis_attr_entry', 'sitekick_entry_tabs' );
 
 function sitekick_entry_tabs($attributes) {
-   //$attributes['class'] = $attributes['class'] . ' ' . 'entry-tabs';
-   $attributes['id'] = 'entry-tabs';
+  
+  $attributes['id'] = 'entry-tabs';
+  
   return $attributes;
 }
 
@@ -84,21 +85,52 @@ function sitekick_tabs_key_concepts(){
 }
 
 add_action( 'genesis_entry_content', 'sitekick_tabs_tips_of_the_trade', 10 );
-
+add_filter('excerpt_length', 'sitekick_excerpt_length', 5);
 function sitekick_tabs_tips_of_the_trade(){
 	
-	//$tipsTrade = get_field('tips_of_the_trade');
+	$tipsTradeId = get_field('tips_of_the_trade');
+	
+	$args = array (
+		'numberposts'	=> 3,
+		'cat' => $tipsTradeId
+	);
+	
+	$tipsTrade = new WP_Query( $args );
 	
 	$op = '<div id="tips-trade" class="tab-content">';
-	$op .= 'tba';
+	$op .= '<a name="tips-trade"></a>';
+	if ( $tipsTrade->have_posts() ) {
+		
+		while ( $tipsTrade->have_posts() ) {
+			$tipsTrade->the_post();
+			
+			$op .= sprintf('
+			<article class="type-tip"><header class="entry-header"><div class="entry-image"><a class="img-link" href="%s">%s</a></div></header><div class="entry-content" itemprop="text"><h2 class="entry-title" itemprop="headline">%s</h2><p>%s <a class="read-more" href="%s">Read more</a></p></div></article>',
+			get_permalink(),
+			get_the_post_thumbnail(get_the_ID(),'thumbnail'),
+			get_the_title(),
+			get_the_excerpt(),
+			get_permalink()
+			);
+			
+		}
+		
+		// Restore original Post Data
+		wp_reset_postdata();
+	
+	} else {
+		$op .= '<p>no posts found</p>';
+	}
 	$op .= '</div>';
 	
 	print $op;
+
+	
 }
 
 //Entry Footer
 
-add_action( 'genesis_entry_footer', 'sitekick_tabs_footer', 12 );
+add_action( 'genesis_entry_footer', 'sitekick_tabs_footer');
 
 function sitekick_tabs_footer(){
 	

@@ -73,6 +73,15 @@
 		}
 	}	
 	
+	img {
+		display: block;
+		
+	&.responsive {
+		max-width: 100%;
+		height: auto;
+	}
+	}
+	
 	/* ------ Interface		*/
 	
 	button,
@@ -113,6 +122,7 @@
 		content: '\00D7'; //x symbol
 	}
 	}//.close-btn
+	
 
 	/* ------ 	Components		------ */
 	
@@ -166,27 +176,44 @@
 			width: 96px;
 		}
 		}
+	
+	.entry-meta {
+		border-bottom: 1px solid $brandBlueLight;
+		line-height: 1.25;
+		
+		.entry-categories {
+			
+			a {
+				//padding: .25em;
+				//background-color: $brandBlueLight;
+	
+				text-decoration: none;
+				text-transform: capitalize;
+				color: $brandBlueLight;
 
+			&::before {
+				content: 'See more ';
+			}
+			&::after {
+				content: ' tips';
+			}
+			&:hover {
+				color: $baseWhite;
+				background-color: $brandBlue;
+			}
+			}
+		}
+	}
 	
 	/* ====== Subsections		*/
 	/* ------ Entry Header		*/
 	
 	.entry-header {
-		//margin-bottom: 3em;
-	
-/*
-	img {
-		position: absolute; 
-		animation: move 2s ease forwards; //afterMove 1ms linear forwards 2s;
-	}
-	
-	.featured-image-class {
-		margin: -1em;
-		position: relative;
-		overflow: hidden;
-		height: 250px;
-	}
-*/
+
+		.featured-image {
+			margin: -2em -2em 0 -2em;
+			overflow: hidden;
+		}
 	
 	@keyframes move{
 		
@@ -209,7 +236,12 @@
 		
 		h2 {
 			margin: 2em 0 .75em;	
+		
+		&:first-of-type{
+			margin-top: 0;
 		}
+		}
+		
 		h3 {
 			margin: 1.5em 0 .5em;
 		}
