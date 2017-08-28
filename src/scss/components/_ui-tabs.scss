@@ -1,5 +1,8 @@
 .ui-tabs { 
 	
+	.ui-tabs-panel { 
+		//padding: 1em; 
+		}
 	
 @include screen-immobile {	
 	position: relative; 
@@ -7,7 +10,7 @@
 	zoom: 1; 
 	
 	.ui-tabs-nav { 
-		margin: 0; 
+		margin: -2em -2em 2em -2em; 
 		padding: 0; 
 		overflow: hidden;
 		background: $brandBlueLight;
@@ -52,7 +55,9 @@
 	
 	}
 	
-	.ui-tabs-panel { padding: 2em; }
+	.ui-tabs-panel { 
+		//padding: 2em; 
+		}
 }//.screen-immobile	
 } 
 

@@ -76,7 +76,7 @@
 			background-color: white;
 			box-sizing: border-box;
 			border-radius: 50%;
-			@include sprite-responsive-calcs(131, 131, 250, 0, 'img/sprite.png');
+			@include sprite-responsive-calcs(131, 131, 250, 0, 'assets/img/sprite.png');
 		}
 	}
 	

@@ -61,12 +61,11 @@
 	}
 	
 	blockquote {
-		background: $lightNeutralShade;
-// 		background: transparent;
+		background: $brandBlueLight;
 		padding: .25em 1em;
 		margin: 1em 0 3em;
 		border-radius: 5px;
-		color: $darkBlue;
+		color: $darkNeutral;
 		
 		h4 {
 			color: $brandBlue;
@@ -123,7 +122,69 @@
 	}
 	}//.close-btn
 	
-
+	/* ------   Form   */
+	
+	.wpcf7-form {
+		
+		
+		.wpcf7-form-control-wrap {
+			
+			input {
+// 				border: 2px solid $brightAccent;
+			
+			&.wpcf7-not-valid{
+// 				border-color: $darkAccent;
+			}
+			}//input
+		
+		}
+	@include screen-immobile {
+		max-width: 500px;
+	}
+	}
+		
+	/*  Named anchors */
+	
+	a[name]  {
+	@include screen-small {
+	&::before{
+		  content:'';
+		  display:block;
+		  height: 7em;
+		  margin-top: -5em;
+		}	
+	}
+	}
+	
+	/*  anchors */
+	
+	.section-controls {
+		font-family: $sans;
+		font-weight: 300;
+		list-style: none;
+		padding: 0;
+		margin: 1em 0;
+		overflow: hidden;
+		
+		color: $brandBlue;
+		
+		li {
+		display: block;
+		float: left;
+		margin-right: 10px;
+		margin-bottom: 0;
+			a {
+		 	text-decoration: none;
+		 	&:hover {
+			 	text-decoration: underline;
+		 	}
+			}
+		&.prev { &::before { content: '\25c4'; } }	
+		&.next { &::before { content: '\25ba'; } }
+		&.top { &::before { content: '\25b2'; } }
+		}
+	}
+	
 	/* ------ 	Components		------ */
 	
 	.flex-content {
@@ -180,16 +241,14 @@
 	.entry-meta {
 		border-bottom: 1px solid $brandBlueLight;
 		line-height: 1.25;
-		
+		color: $brandBlueLight;
 		.entry-categories {
 			
 			a {
-				//padding: .25em;
-				//background-color: $brandBlueLight;
-	
+				padding: 0 .1em;
 				text-decoration: none;
 				text-transform: capitalize;
-				color: $brandBlueLight;
+				color: $brandBlue;
 
 			&::before {
 				content: 'See more ';
@@ -232,7 +291,7 @@
 
 	/* ------ Entry Content		*/
 	.entry-content {
-		//padding: 1em;
+
 		
 		h2 {
 			margin: 2em 0 .75em;	
@@ -254,16 +313,21 @@
 	/* ------ Entry Footer		*/
 &#entry-tabs {
 	
-	.entry-header {
-		margin-bottom: 0;
-	}
-	
-	.entry-content {
-		padding: 0;
-	}
-	
-	.entry-footer {
+	> .entry-footer {
 		padding: 1em;
+		margin-top: 1em;
+		background-color: $brandBlue;
+		color: $brandBlueLight;
+		border-radius: 5px;
+		
+		h1, h2, h3  {
+			color: $baseWhite;
+			margin: 0 0 .5em;
+		}
+		
+		a {
+			color: $baseWhite;
+		}
 	}
 }
 

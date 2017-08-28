@@ -1,10 +1,26 @@
 module.exports = {
+	delete: {
+		dest: './assets/'
+	},
+	images: {
+		src:  [
+			'./src/img/*',
+			'./src/img/**/*',
+			'!./src/img/arch',
+			'!./src/img/arch/**/*'
+			],
+		dest: './assets/img'
+	},
+	font: {
+		src:  [
+			'./src/font/*',
+			'./src/font/**/*',
+			],
+		dest: './assets/font'
+	},
 	sass: {
 		src:  './src/scss/**/*.scss',
-		dest: { 
-			dev : './',
-			prod : './build/prod/assets/css'
-		},
+		dest: './',
 		options: {
 			dev : {
 				style: 'expanded'
@@ -27,6 +43,10 @@ module.exports = {
 			'Android 4'
 		],
 		cascade: true
+	},
+	scripts : {
+		dest : './assets/js',
+		src : './src/js/*.js'
 	}
 }
 

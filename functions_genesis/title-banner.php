@@ -69,10 +69,12 @@ function sitekick_do_post_title() {
 /*======= ARCHIVES ==========*/
 /*------- Remove ------*/
 
+
 remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
 remove_filter( 'genesis_attr_taxonomy-archive-description', 'genesis_attributes_taxonomy_archive_description' );
 
-add_action('genesis_after_header', 'genesis_do_taxonomy_title_description', 15);
+add_action('genesis_after_header', 'sitekick_do_taxonomy_title_description', 15);
+
 add_filter('genesis_attr_taxonomy-archive-description','sitekick_attributes_taxonomy_archive_description');
 
 /*------- Replace ------*/
@@ -84,3 +86,43 @@ function sitekick_attributes_taxonomy_archive_description( $attributes ) {
 
 }
 
+
+
+function sitekick_do_taxonomy_title_description() {
+
+	global $wp_query;
+
+	if ( ! is_category() && ! is_tag() && ! is_tax() ) {
+		return;
+	}
+
+	$term = is_tax() ? get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ) : $wp_query->get_queried_object();
+
+	if ( ! $term ) {
+		return;
+	}
+
+	$heading = get_term_meta( $term->term_id, 'headline', true );
+	if ( empty( $heading ) && genesis_a11y( 'headings' ) ) {
+		$heading = $term->name;
+	}
+
+/*
+	$intro_text = get_term_meta( $term->term_id, 'intro_text', true );
+	$intro_text = apply_filters( 'genesis_term_intro_text_output', $intro_text ? $intro_text : '' );
+*/
+
+	/**
+	 * Archive headings output hook.
+	 *
+	 * Allows you to reorganize output of the archive headings.
+	 *
+	 * @since 2.5.0
+	 *
+	 * @param string $heading    Archive heading.
+	 * @param string $intro_text Archive intro text.
+	 * @param string $context    Context.
+	 */
+	do_action( 'genesis_archive_title_descriptions', $heading, '', 'taxonomy-archive-description' );
+
+}

@@ -9,18 +9,16 @@ gulp.task('serve', function () {
 		ui : false
 	});
 	
-	//var path = './build' + config.server.build.dev;
-	
 	bs.watch('./style.css').on('change', bs.reload);
-	
-	
+	bs.watch('./assets/js/scripts.js').on('change', bs.reload);
+	bs.watch('./assets/img/**/*.{gif,png,svg,jpg}').on('change', bs.reload);
 });
 
 
-gulp.task('serve-P', function () {
+gulp.task('serve-publish', function () {
     
     bs.init({
-		proxy: config.server.url + config.server.build.prod,
+		proxy: 'sitekick.imac',
 		ui : false
 	});
 

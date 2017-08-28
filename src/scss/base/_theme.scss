@@ -7,10 +7,11 @@ body {
 
 }
 
-
 .title-banner {
-	font-family: $brand;
-	color: $baseWhite;
+	
+	.entry-title {
+		color: $baseWhite;
+	}
 }
 
 .content-sidebar-wrap{

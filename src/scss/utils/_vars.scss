@@ -4,9 +4,9 @@
 
 @font-face {
 	font-family: Sitekick;
-	src: url('assets/fonts/UniformRegular.woff2');
-	src: url('assets/fonts/UniformRegular.woff') format('woff'),
-		 url('assets/fonts/UniformRegular.otf') format('otf');
+	src: url('assets/font/UniformRegular.woff2');
+	src: url('assets/font/UniformRegular.woff') format('woff'),
+		 url('assets/font/UniformRegular.otf') format('otf');
 };
 
 $brand : 'Sitekick', sans-serif;
@@ -16,15 +16,11 @@ $serif : 'Lora', serif;
 /* Colors */
 					
 $darkNeutral : 		#4A4A4A;			//#082A3D;
-$darkBlue : 		#0B3954;
 $lightNeutral : 	#BFC3BA;
 $lightNeutralText : #F3F4F2;
-$lightNeutralShade :#E6F2F8;
 $brandBlue : 		#2589BD;
 $brandBlueLight : 	#CEE5F2;			
-$brightAccent : 	#2589BD;				//#4ECDC4;			
-$brightAccentText : #C1D37F;		//light color for text on top of brightAccent
-$darkAccent : 		#245E5A;
+$brightAccent : 	#F18F01;						
 $baseWhite : 		#FFF;
 
 $orange : #F18F01;

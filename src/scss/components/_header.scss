@@ -6,7 +6,7 @@
 		margin: 0 auto;
 	
 	a {
-		@include sprite-responsive-calcs(250, 100, 0, 0, 'img/sprite.png');
+		@include sprite-responsive-calcs(250, 100, 0, 0, 'assets/img/sprite.png');
 	}
 
 	@include screen-immobile { max-width: 250px;}
@@ -28,7 +28,7 @@
 	
 		div {
 			background-color: $brandBlueLight;
-			@include sprite-responsive-calcs(50, 50, 250, 135, 'img/sprite.png');
+			@include sprite-responsive-calcs(50, 50, 250, 135, 'assets/img/sprite.png');
 		}
 	
 		
@@ -38,7 +38,7 @@
 		
 		div {
 			background-color: $brandBlue;
-			@include sprite-responsive-calcs(50, 50, 250, 185, 'img/sprite.png');
+			@include sprite-responsive-calcs(50, 50, 250, 185, 'assets/img/sprite.png');
 		}
 	}
 	

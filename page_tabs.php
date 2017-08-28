@@ -25,26 +25,16 @@ function sitekick_entry_tabs($attributes) {
   return $attributes;
 }
 
-//add entry footer
-add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_open', 5 );
 
-function sitekick_entry_footer_markup_open() {
-	printf( '<footer %s>', genesis_attr( 'entry-footer' ) );
-}
-
-add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_close', 15 );
-
-function sitekick_entry_footer_markup_close() {
-	echo '</footer>';
-}
 
 
 //Custom fields
-add_action( 'genesis_entry_content', 'sitekick_tabs_menu', 5 );
+add_action( 'genesis_entry_header', 'sitekick_tabs_menu', 12 );
 
 function sitekick_tabs_menu(){
 	
 	$op = '<ul class="tabs-menu">';
+	$op .= '<a name="top"></a>';
 	$op .= '<li><a href="#intro">Introduction</a></li>';
 	$op .= '<li><a href="#key-concepts">Key Concepts</a></li>';
 	$op .= '<li><a href="#tips-trade">Tips of the Trade</a></li>';
@@ -64,6 +54,10 @@ function sitekick_tabs_introduction(){
 	$op = '<div id="intro" class="tab-content">';
 	$op .= '<a name="intro"></a>';
 	$op .= $introduction;
+	$op .= '<ul class="section-controls">';
+	$op .= '<li class="top"><a href="#top">Back to Top</a></li>';
+	$op .= '<li class="next activate-tab"><a href="#key-concepts" data-tab-index="1">Key Concepts</a></li>';
+	$op .= '</ul>';
 	$op .= '</div>';
 	
 	print $op;
@@ -79,6 +73,11 @@ function sitekick_tabs_key_concepts(){
 	$op = '<div id="key-concepts" class="tab-content">';
 	$op .= '<a name="key-concepts"></a>';
 	$op .= $keyConcepts;
+	$op .= '<ul class="section-controls">';
+	$op .= '<li class="prev activate-tab"><a href="#intro" data-tab-index="0">Introduction</a></li>';
+	$op .= '<li class="top"><a href="#top">Back to Top</a></li>';
+	$op .= '<li class="next activate-tab"><a href="#tips-trade" data-tab-index="2">Tips of the Trade</a></li>';
+	$op .= '</ul>';
 	$op .= '</div>';
 	
 	print $op;
@@ -86,6 +85,7 @@ function sitekick_tabs_key_concepts(){
 
 add_action( 'genesis_entry_content', 'sitekick_tabs_tips_of_the_trade', 10 );
 add_filter('excerpt_length', 'sitekick_excerpt_length', 5);
+
 function sitekick_tabs_tips_of_the_trade(){
 	
 	$tipsTradeId = get_field('tips_of_the_trade');
@@ -99,18 +99,20 @@ function sitekick_tabs_tips_of_the_trade(){
 	
 	$op = '<div id="tips-trade" class="tab-content">';
 	$op .= '<a name="tips-trade"></a>';
+	$op .= '<h2>Tips of the Trade</h2>';
 	if ( $tipsTrade->have_posts() ) {
 		
 		while ( $tipsTrade->have_posts() ) {
 			$tipsTrade->the_post();
 			
 			$op .= sprintf('
-			<article class="type-tip"><header class="entry-header"><div class="entry-image"><a class="img-link" href="%s">%s</a></div></header><div class="entry-content" itemprop="text"><h2 class="entry-title" itemprop="headline">%s</h2><p>%s <a class="read-more" href="%s">Read more</a></p></div></article>',
+			<article class="type-tip"><header class="entry-header"><div class="entry-image"><a class="img-link" href="%s">%s</a></div></header><div class="entry-content" itemprop="text"><h2 class="entry-title" itemprop="headline">%s</h2><p>%s <a class="read-more" href="%s">Read more</a></p></div><footer class="entry-footer"><p class="entry-meta">%s</p></footer></article>',
 			get_permalink(),
 			get_the_post_thumbnail(get_the_ID(),'thumbnail'),
 			get_the_title(),
 			get_the_excerpt(),
-			get_permalink()
+			get_permalink(),
+			get_the_date()
 			);
 			
 		}
@@ -121,7 +123,10 @@ function sitekick_tabs_tips_of_the_trade(){
 	} else {
 		$op .= '<p>no posts found</p>';
 	}
-	$op .= '</div>';
+	$op .= '<ul class="section-controls">';
+	$op .= '<li class="prev activate-tab"><a href="#key-concepts" data-tab-index="1">Key Concepts</a></li>';
+	$op .= '<li class="top"><a href="#top">Back to Top</a></li>';
+	$op .= '</ul></div>';
 	
 	print $op;
 
@@ -129,20 +134,31 @@ function sitekick_tabs_tips_of_the_trade(){
 }
 
 //Entry Footer
-
+//add entry footer
+//add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_open', 8 );
 add_action( 'genesis_entry_footer', 'sitekick_tabs_footer');
+//add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_close', 15 );
+
+
+function sitekick_entry_footer_markup_open() {
+	printf( '<footer %s>', genesis_attr( 'entry-footer' ) );
+}
+
+
+
+function sitekick_entry_footer_markup_close() {
+	echo '</footer>';
+}
+
+
 
 function sitekick_tabs_footer(){
+	printf( '<footer %s>%s</footer>', 
+	genesis_attr( 'entry-footer' ),
+	get_field('footer')
+	);
 	
-/*
-	$footer = get_field('footer');
 	
-	$op = '<div id="tips-trade" class="tab-content">';
-	$op .= $footer
-	$op .= '</div>';
-*/
-	
-	print get_field('footer');
 }
 
 

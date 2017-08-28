@@ -10,9 +10,8 @@ form {
 	
 	input[type=text],
 	input[type=email] {
-		padding: .5em;
-		border: 0;
-		color: $darkBlue;
+		padding: .5em 2em .5em .5em;
+		color: $darkNeutral;
 	
 	&::placeholder {
 		color: $brandBlue;
@@ -24,24 +23,53 @@ form {
 	input[type=submit] {
 		
 	}
+	
+	textarea {
+		padding: .5em 2em .5em .5em;
+	
+	&::placeholder {
+		color: $brandBlue;
+		opacity: 1;
+	}
+	}
+	
+	
 	/* ====== Contact Form 7 		*/
 	
 	.wpcf7-form-control-wrap{
+		display: block;
 					
 		input {
+			border: 2px solid $brandBlue;
+			background: linear-gradient(270deg, $brandBlueLight 2em , $baseWhite 2em);
+			width: calc(100% - 2.5em - 4px);
 			margin-top: .5em;
 			margin-bottom: 0;
-			
 		
 		&.wpcf7-not-valid{
 			margin-bottom: 0;
+			background: url($inlineExclamation) 99% 50% no-repeat,
+		linear-gradient(270deg, $brandBlueLight 2em , $baseWhite 2em);
+			border-color: $brightAccent;
 		}
 		}
-			
+		
+		textarea {
+			border: 2px solid $brandBlue;
+			background: linear-gradient(270deg, $brandBlueLight 2em , $baseWhite 2em);
+			margin-top: .5em;
+			width: calc(100% - 2.5em - 4px);
+		&.wpcf7-not-valid{
+			background: url($inlineExclamation) 99% 50% no-repeat,
+		linear-gradient(270deg, $brandBlueLight 2em , $baseWhite 2em);
+			border-color: $brightAccent;
+		}
+		}
+		
 		.wpcf7-not-valid-tip{
 			font-size: .9rem;
 		}
-	}
+	}//.wpcf7-form-control-wrap
 				
 	.wpcf7-form-submit {
 		
@@ -51,11 +79,31 @@ form {
 		}
 	}
 	
+	span.wpcf7-not-valid-tip{
+		background: $brightAccent;
+		text-align: center;
+		display: block;
+		color: $baseWhite;
+	}
+	
+	div.wpcf7-response-output {
+		
+	&.wpcf7-validation-errors{
+		background-image: url($inlineExclamation);
+	}
+	&.wpcf7-mail-sent-ok{
+		background-image: url($inlineCheckmark);
+	}
+	}
+	
 	div.wpcf7-response-output {
 		margin: 0;
-		padding: .5em;
+		padding: .25em 0 0 2.5em;
 		font-style: italic;
-	
+		background-position: 2% 50%;
+		background-repeat: no-repeat;
+		color: $darkNeutral;
+		
 	&.wpcf7-validation-errors,
 	&.wpcf7-mail-sent-ok {
 		border: none;

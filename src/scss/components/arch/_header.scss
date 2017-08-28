@@ -6,7 +6,7 @@
 	margin: 0 auto;
 	
 	a {
-		@include sprite-responsive-calcs(250, 100, 0, 0, 'img/sprite.png');
+		@include sprite-responsive-calcs(250, 100, 0, 0, 'assets/img/sprite.png');
 	}
 
 	@include screen-immobile {

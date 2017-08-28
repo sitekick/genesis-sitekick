@@ -1,15 +1,14 @@
 .content-sidebar-wrap {
-	border-color: $brightAccent;
+	border-color: $brandBlue;
 	border-style: solid;
 	border-width: 2px;
-	min-height: 800px;
 	
 	.content {
 		color: $darkNeutral;
 		margin: 1px;
 		margin-right: 0;
-		padding: 2em;
-		 
+		padding: 1em;
+		min-height: 600px;
 
 		.archive-description {
 			text-align: center;
@@ -34,14 +33,22 @@
 		}
 		}
 	
-
-
+		.archive-pagination {
+			text-align: center;
+			
+			  ul {
+				  list-style: none;
+				  
+				  li {
+					  display: inline-block;
+				  }
+			  }
+		}
 	
-.page-template-page_tabs &{
-	padding: 0;
-	
-}
-}//.content
+	@include screen-immobile {
+		padding: 2em;
+	}
+	}//.content
 
 @include screen-immobile{
 	border-width: 4px;

@@ -12,19 +12,26 @@ article.type-tip,
 		flex: 1;
 		
 		.entry-image {
-			max-width: 200px;
+			max-width: 150px;
 			
-			.quote { 
+			.svgSprite { 
+				
+				transform: translateX(-500px); 
+				
+				.quote { 
 				fill : $brandBlueLight;
 				transition: fill 500ms ease;
 				}
+			}
 		
-		&.web-design{ .svgSprite { transform: translate(-500px, 0); }	}
-		&.usability { .svgSprite { transform: translate(-500px, -500px); } }
-		&.seo { .svgSprite { transform: translate(-500px, -1000px); } }
-		&.analytics { .svgSprite { transform: translate(-500px, -1500px); } }
-		&.ppc { .svgSprite { transform: translate(-500px, -2000px); } }	
-		&.content-strategy { .svgSprite { transform: translate(-500px, -2500px); } }
+/*
+		&.web-design{ .svgSprite { transform: translateX(-500px); }	}
+		&.usability { .svgSprite { transform: translateX(-500px); } }
+		&.seo { .svgSprite { transform: translateX(-500px); } }
+		&.analytics { .svgSprite { transform: translateX(-500px); } }
+		&.ppc { .svgSprite { transform: translateX(-500px); } }	
+		&.content-strategy { .svgSprite { transform: translateX(-500px); } }
+*/
 		}//.entry-image
 	
 	
@@ -41,15 +48,21 @@ article.type-tip,
 			font-size: 1.25rem;
 			margin: 0 0 .5em;
 			font-weight: 600;
+			text-align: right;
 		}
 		
 		p {
 			line-height: 1.35;
 			margin-bottom: .75em;
+			text-align: justify;
 		}
 		
-	@include screen-immobile {flex: 4;}
+	@include screen-immobile {
+		flex: 4;
+		
+			.entry-title{ text-align: left;}
 	}
+	}//.entry-content
 	
 	.entry-footer {
 		flex: 1 1 100%;
@@ -63,16 +76,26 @@ article.type-tip,
 	
 &:nth-child(even){
 	align-items: flex-end;
+	
+	.entry-content {
+		.entry-title{ text-align: left;}
+	}
+	
+	
 	.entry-header {
 	
 		.entry-image {
-	
-		&.web-design{ .svgSprite { transform: translate(0, 0); }	}
-		&.usability { .svgSprite { transform: translate(0, -500px); } }
-		&.seo { .svgSprite { transform: translate(0, -1000px); } }
-		&.analytics { .svgSprite { transform: translate(0, -1500px); } }
-		&.ppc { .svgSprite { transform: translate(0, -2000px); } }	
-		&.content-strategy { .svgSprite { transform: translate(0, -2500px); } }
+				
+				.svgSprite { transform: translateX(0); }
+		
+/*
+		&.web-design{ .svgSprite { transform: translateX(0); }	}
+		&.usability { .svgSprite { transform: translateX(0); } }
+		&.seo { .svgSprite { transform: translate(0); } }
+		&.analytics { .svgSprite { transform: translate(0); } }
+		&.ppc { .svgSprite { transform: translate(0); } }	
+		&.content-strategy { .svgSprite { transform: translate(0); } }
+*/
 
 		}
 	
@@ -100,9 +123,7 @@ article.type-tip,
 
 	.entry-header {
 		.entry-image {
-			.quote { 
-				fill : $brandBlue;
-				}
+			.svgSprite { .quote { fill : $brandBlue; } }
 		}	
 	}
 }

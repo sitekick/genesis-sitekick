@@ -41,6 +41,10 @@ add_theme_support( 'genesis-after-entry-widget-area' );
 // Add support for 4-column footer widgets.
 add_theme_support( 'genesis-footer-widgets', 2 );
 
+// Add excerpts to pages
+add_post_type_support( 'page', 'excerpt' );
+
+
 foreach (glob(__DIR__ . '/functions_genesis/*.php') as $filename){
     require_once( $filename );
 }

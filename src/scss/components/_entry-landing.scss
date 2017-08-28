@@ -6,7 +6,7 @@
 	/* ------ Entry Header		*/
 	
 	.entry-header {
-		background-color: $lightNeutralShade;
+		background-color: $brandBlueLight;
 		padding: 1em;
 		text-align: center;
 		margin-bottom: 0;
@@ -16,7 +16,7 @@
 			font-family: sans-serif;
 			font-size: 3rem;
 			line-height: 1.25;
-			color: $darkBlue;
+			color: $darkNeutral;
 			text-shadow: 1px 1px 2px rgba(0,0,0, .5);
 		}
 		
@@ -69,8 +69,8 @@
 					font-family: sans-serif;
 					margin:0;
 					line-height: 1.5;
-					color: $brightAccentText;
-					text-shadow: 1px 1px 1px $darkAccent;
+					color: $brandBlueLight;
+					text-shadow: 1px 1px 1px $darkNeutral;
 				}
 			}
 						
@@ -92,7 +92,7 @@
 				cursor: pointer;
 				
 				div {
-					@include sprite-responsive-calcs(200, 250, 0, 135, 'img/sprite.png');
+					@include sprite-responsive-calcs(200, 250, 0, 135, 'assets/img/sprite.png');
 				}
 			}
 		
@@ -106,7 +106,6 @@
 			
 			
 			.magnet-form{
-				font-family: sans-serif;
 				margin: 0 auto 1em;
 				background: $brightAccent;
 				max-height: 0;
@@ -123,12 +122,12 @@
 					h3 {
 						margin-top: 0;
 						font-family: Georgia, serif;
-						color: $darkBlue;
+						color: $darkNeutral;
 						line-height: 1.35;
 						font-weight: 400;
 					}
 					p {
-						color: $brightAccentText;
+						color: $brandBlueLight;
 						font-size: .9375rem;
 						line-height: 1.125;
 					}
@@ -150,20 +149,7 @@
 				.wpcf7-form {
 					
 					.wpcf7-form-control-wrap {
-						display: block;
 						
-						input {
-							width: calc(100% - 2.5em - 4px);
-							border: 2px solid $brightAccent;
-							background: linear-gradient(270deg, $lightNeutralShade 2em , $baseWhite 2em);
-							padding-right: 2em;
-						&.wpcf7-not-valid{
-							border-color: $darkAccent;
-							background: url($inlineExclamation) 99% 50% no-repeat,
-							linear-gradient(270deg, $lightNeutralShade 2em , $baseWhite 2em);
-						}
-						}//input
-					
 					&.lead-first-name{
 							
 						input {
@@ -173,7 +159,7 @@
 						}
 						}
 					}
-					}
+					}//.wpcf7-form-control-wrap
 					
 					
 					.wpcf7-form-submit {
@@ -181,29 +167,8 @@
 		
 						input { 
 							display: inline-block;
-							box-shadow: 0px 0px 8px $darkAccent;
+							box-shadow: 0px 0px 8px $darkNeutral;
 							}
-					}
-					
-					.wpcf7-not-valid-tip{
-						background: $darkBlue;
-						text-align: center;
-						display: block;
-						color: $lightNeutralShade;
-					}
-					
-					div.wpcf7-response-output {
-						background-position: 2% 50%;
-						background-repeat: no-repeat;
-						padding: .25em 0 0 2.5em;
-						color: $darkBlue;
-					&.wpcf7-validation-errors{
-						background-image: url($inlineExclamation);
-					}
-					&.wpcf7-mail-sent-ok{
-						background-image: url($inlineCheckmark);
-					}
-					
 					}
 					
 				&.sent {
@@ -258,7 +223,7 @@
 	.entry-footer {
 	margin: 1em;
 	padding: 1em;
-	background-color: $lightNeutralShade;
+	background-color: $brandBlueLight;
 	font-family: sans-serif;
 	
 	.testimonial {
@@ -268,7 +233,7 @@
 		
 		&.profile{
 			text-align: center;
-			color: $darkBlue;
+			color: $darkNeutral;
 			
 			.stars {
 				margin-bottom: 1em;
