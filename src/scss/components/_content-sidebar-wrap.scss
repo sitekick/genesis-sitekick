@@ -25,24 +25,40 @@
 		
 			.archive-title {
 				text-transform: capitalize;
+				color: blue !important;
 			}
 		
 		@include screen-immobile {
 			text-align: left;
-			height: 4em;
+			//height: 4em;
 		}
 		}
 	
 		.archive-pagination {
 			text-align: center;
 			
-			  ul {
-				  list-style: none;
-				  
-				  li {
-					  display: inline-block;
-				  }
+			a {
+				color: $brandBlue;
+				padding: .25em;
+				text-decoration: none;
+				background: $brandBlueLight;
+				border: 1px solid $brandBlue;
+				border-radius: 3px;
+				
+			&:hover{
+				background: $brandBlue;
+				color: $baseWhite;
+			}
+			
+			}
+			  
+			ul {
+			  list-style: none;
+			  
+			  li {
+				  display: inline-block;
 			  }
+			}
 		}
 	
 	@include screen-immobile {

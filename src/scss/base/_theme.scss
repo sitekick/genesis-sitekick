@@ -9,7 +9,8 @@ body {
 
 .title-banner {
 	
-	.entry-title {
+	.entry-title,
+	.archive-title {
 		color: $baseWhite;
 	}
 }
@@ -20,10 +21,10 @@ body {
 	
 	
 	.sidebar-primary {
-		background: $lightNeutral;	
+		background: $medNeutral;	
 		
 		.widget {
-			color: $lightNeutralText;
+			color: $lightNeutral;
 			
 			.widget-title{
 				color: $darkNeutral;

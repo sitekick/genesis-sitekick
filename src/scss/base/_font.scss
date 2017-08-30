@@ -4,11 +4,16 @@ body {
 }
 
 h1 {
-	font-size: 2.25em;
+	font-size: 1.75em;
 
-&.entry-title {
+&.entry-title,
+&.archive-title {
 	font-family: $brand;
-	font-weight: 400;	
+	font-weight: 400;
+
+.home & {
+	font-style: italic;
+}
 }
 }
 
@@ -37,6 +42,9 @@ p {
 .widget & {
 	font-size: .9375rem;
 }
+&.entry-meta {
+	font-size: 1rem;
+}
 }
 
 ul,
@@ -49,15 +57,34 @@ ol {
 }
 }
 
+.btn,
+button {
+	font-size: 1.25em;
+	
+&.btn-med {
+	font-size: 1.5em;
+}
+&.btn-lrg {
+	font-size: 1.75em;
+}
+}
 
 #menu-main-menu,
 input[type=text],
-input[type=search],
 input[type=email],
 textarea {
+	font-weight: 400;
 	font-size: 1.125em;
 	font-family: $sans;
-	font-weight: 400;
+}
+
+#menu-main-menu {
+	font-weight: 300;
+	
+	.sub-menu {
+		font-size: 17px;
+		font-size: 1.0625rem;
+	}
 }
 
 .wpcf7-form {
@@ -67,17 +94,56 @@ textarea {
 }
 }
 
+.entry-footer {
+	font-family: $sans;
+	font-weight: 300;
+	font-size: 1rem;
+}
 
 .entry-meta {
 	font-family: $sans;
 	font-weight: 300;
-	font-size: 1rem;	
 }
+
 .widget {
 	font-family: $sans;	
 	
 	.tagcloud,
 	.textwidget {
 		//font-size: 1em;
-	}	
+	}
+	
+&.widget_search {
+	font-weight: 300;
+	
+	input {
+	font-size: 1.125em;
+	font-family: inherit;
+	font-weight: inherit;
+	
+	&[type=submit] {
+		font-size: 14px;
+		font-size: .875rem;
+	}
+	
+	}
+}
+}
+
+.archive-pagination {
+	font-family: $sans;
+	font-weight: 300;	
+}
+
+
+.service-plans {
+	font-family: $sans;
+	
+	p {
+		font-size: 1.25em;
+		
+		span {
+			font-size: .75em;
+		}
+	}
 }

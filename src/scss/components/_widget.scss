@@ -1,5 +1,8 @@
 .widget {
 	
+	a {
+		color: $baseWhite;
+	}
 	
 	ul {
 		padding-left: .75em;
@@ -128,8 +131,10 @@
 				border: 0;
 				color: $baseWhite;
 				padding: .5em .25em;
+/*
 				font-size: 14px;
 				font-size: .875rem;
+*/
 				cursor: pointer;
 			}
 		&.focus {

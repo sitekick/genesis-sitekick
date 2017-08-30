@@ -1,3 +1,4 @@
+/*
 .btn,
 .button {
 	background: $brightAccent;
@@ -14,6 +15,7 @@
 	font-size: 1.75em;
 }
 }
+*/
 
 
 a:not(.btn):not(.ui-tabs-anchor) {
@@ -21,24 +23,24 @@ a:not(.btn):not(.ui-tabs-anchor) {
 
 
 .sidebar-primary & {
-	color: $baseWhite;
+// 	color: $baseWhite;
 }
 
 
 // single page content inline links
 .page .entry-content &, 
 .post .entry-content & {
-	color: $brandBlue;
+// 	color: $brandBlue;
 
 &.read-more {
-	white-space: nowrap;
+// 	white-space: nowrap;
 }		
 
 // &:visited{ color: $darkBlue; }
-&:hover{ color: $brightAccent; }
+// &:hover{ color: $brightAccent; }
 }
 	
 .site-footer & {
-	color: $brightAccent;
+// 	color: $brightAccent;
 }
 }

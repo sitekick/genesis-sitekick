@@ -90,8 +90,6 @@
 				display: block;
 				border-radius: 3px;
 				background: $brandBlueLight;
-				font-size: 17px;
-				font-size: 1.0625rem;
 				color: $brandBlue;
 				text-align: center;
 				margin-right: 5px;
@@ -140,7 +138,7 @@
 			
 			> a {
 				display: block;
-			    padding: .6875rem .25em;
+			    padding: .6875rem .3em;
 				color: $brandBlueLight;
 				text-decoration: none;
 				text-align: center;
@@ -171,6 +169,8 @@
 		&.menu-item-has-children {
 			position: relative;
 			overflow: visible;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
 			
 			.close-btn { display: none !important; }
 				
@@ -192,9 +192,6 @@
 			position: absolute; z-index: 1000;
 			display: block;
 			width: 125%;
-			font-size: 17px;
-			font-size: 1.0625rem;
-			font-weight: 300;
 			margin: 0;
 			padding: 0;
 			max-height: 0;

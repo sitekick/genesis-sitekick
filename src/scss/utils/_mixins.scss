@@ -81,3 +81,17 @@
 	}	
 }
 
+@mixin triangle($dir:'') {
+	
+	@if $dir == 'left' {
+		&::before { content: '\25c4'; }
+	}
+	@else if $dir == 'right' {
+		&::before { content: '\25ba'; } 
+	} 
+	@else {
+		&::before { content: '\25b2'; } 
+	}
+		
+}
+

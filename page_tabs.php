@@ -106,13 +106,13 @@ function sitekick_tabs_tips_of_the_trade(){
 			$tipsTrade->the_post();
 			
 			$op .= sprintf('
-			<article class="type-tip"><header class="entry-header"><div class="entry-image"><a class="img-link" href="%s">%s</a></div></header><div class="entry-content" itemprop="text"><h2 class="entry-title" itemprop="headline">%s</h2><p>%s <a class="read-more" href="%s">Read more</a></p></div><footer class="entry-footer"><p class="entry-meta">%s</p></footer></article>',
+			<article class="type-tip"><header class="entry-header"><div class="entry-image"><a class="img-link" href="%s">%s</a></div></header><div class="entry-content" itemprop="text"><h2 class="entry-title" itemprop="headline">%s</h2><p>%s <footer class="entry-content-footer"><p class="entry-meta">%s | %s</p></footer></p></div></article>',
 			get_permalink(),
 			get_the_post_thumbnail(get_the_ID(),'thumbnail'),
 			get_the_title(),
 			get_the_excerpt(),
-			get_permalink(),
-			get_the_date()
+			do_shortcode('[post_readmore]'),
+			do_shortcode('[post_date]')
 			);
 			
 		}
@@ -140,15 +140,19 @@ add_action( 'genesis_entry_footer', 'sitekick_tabs_footer');
 //add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_close', 15 );
 
 
+/*
 function sitekick_entry_footer_markup_open() {
 	printf( '<footer %s>', genesis_attr( 'entry-footer' ) );
 }
+*/
 
 
 
+/*
 function sitekick_entry_footer_markup_close() {
 	echo '</footer>';
 }
+*/
 
 
 

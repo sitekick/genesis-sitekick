@@ -82,40 +82,55 @@
 	}
 	
 	/* ------ Interface		*/
-	
-	button,
-	.btn {
+	.btn,
+	button {
+		background: $brandBlue;
+		color: $brandBlueLight;
 		padding: .5em 1em;
+		border-radius: 4px;
+		border-width: 2px;
+		border-style: solid;
+		border-color: $brandBlueLight;
+		text-decoration: none;
+		font-style: normal;
+		white-space: nowrap;
+		text-align: center;
+		cursor: pointer;
+		line-height: 1;
+		
+	&.btn-download {
 		background: $orange;
 		background: 
 		linear-gradient(to bottom, rgba(255,255,255, 0) 0%, rgba(255,255,255, .2) 50%, rgba(255,255,255, 0) 50%),
 		linear-gradient(to top, $orange, $orangeLight), $orange;
 		transition: border-color 250ms linear, color 250ms linear;
-		line-height: 1;
 		color: $orangeText;
 		border: 2px solid $orange;
-		font-size: 1.25em;
-		cursor: pointer;
 		letter-spacing: 1px;
-		text-align: center;
 		text-shadow: 1px 1px 2px $orangeDark;
-		
-	&.btn-large { font-size: 1.5em; }
-	&.btn-rounded { border-radius: 5px;}
-	&.btn-caps { text-transform: uppercase; }
-	&.btn-ucase { text-transform: capitalize; }
-	&.btn-shadow { box-shadow: 0px 1px 2px #333; }
+	
 	&:hover{
 		border-color: $orangeLight;
 		color: $baseWhite;
 	}
+	}//.btn-download
+	&.btn-rounded { border-radius: 5px;}
+	&.btn-caps { text-transform: uppercase; }
+	&.btn-ucase { text-transform: capitalize; }
+	&.btn-shadow { box-shadow: 0px 1px 2px #333; }
+	
+	&:hover{
+		background: $brightAccent;
+		border-color: $medNeutral;
+		color: $baseWhite;
+	}
 	}// button, .btn
+	
 	
 	.close-btn{
 		font-size: 1.75em;
 		text-align: left;
 		
-			
 	&::before {
 		cursor: pointer;
 		content: '\00D7'; //x symbol
@@ -126,18 +141,6 @@
 	
 	.wpcf7-form {
 		
-		
-		.wpcf7-form-control-wrap {
-			
-			input {
-// 				border: 2px solid $brightAccent;
-			
-			&.wpcf7-not-valid{
-// 				border-color: $darkAccent;
-			}
-			}//input
-		
-		}
 	@include screen-immobile {
 		max-width: 500px;
 	}
@@ -165,7 +168,6 @@
 		padding: 0;
 		margin: 1em 0;
 		overflow: hidden;
-		
 		color: $brandBlue;
 		
 		li {
@@ -173,15 +175,18 @@
 		float: left;
 		margin-right: 10px;
 		margin-bottom: 0;
+			
 			a {
 		 	text-decoration: none;
+		 	
 		 	&:hover {
 			 	text-decoration: underline;
 		 	}
 			}
-		&.prev { &::before { content: '\25c4'; } }	
-		&.next { &::before { content: '\25ba'; } }
-		&.top { &::before { content: '\25b2'; } }
+		
+		&.prev { @include triangle('left'); }
+		&.next { @include triangle('right'); }
+		&.top { @include triangle(); }
 		}
 	}
 	
@@ -195,21 +200,16 @@
 			margin-bottom: 1em;
 			flex: 1;
 			
-			&.thirds-two{
-				flex: 2;
-				padding-left: 1em;
-			}
+		&.thirds-two{
+			flex: 2;
+			padding-left: 1em;
+		}
 		}
  
-	&.valign-center{
-		align-items: center;
-	}
-	&.valign-top{
-		align-items: flex-start;
-	}
-	&.valign-bottom{
-		align-items: flex-end;
-	}
+	&.valign-center{ align-items: center; }
+	&.valign-top{ align-items: flex-start; }
+	&.valign-bottom{ align-items: flex-end; }
+	
 	@include screen-immobile{
 		flex-flow: row nowrap;
 	}
@@ -236,34 +236,9 @@
 		& .stars-4 &{
 			width: 96px;
 		}
-		}
-	
-	.entry-meta {
-		border-bottom: 1px solid $brandBlueLight;
-		line-height: 1.25;
-		color: $brandBlueLight;
-		.entry-categories {
-			
-			a {
-				padding: 0 .1em;
-				text-decoration: none;
-				text-transform: capitalize;
-				color: $brandBlue;
-
-			&::before {
-				content: 'See more ';
-			}
-			&::after {
-				content: ' tips';
-			}
-			&:hover {
-				color: $baseWhite;
-				background-color: $brandBlue;
-			}
-			}
-		}
 	}
 	
+		
 	/* ====== Subsections		*/
 	/* ------ Entry Header		*/
 	
@@ -292,6 +267,10 @@
 	/* ------ Entry Content		*/
 	.entry-content {
 
+		a {
+			color: $brandBlue;
+		&:hover{ color: $brightAccent; }
+		}
 		
 		h2 {
 			margin: 2em 0 .75em;	
@@ -308,12 +287,39 @@
 			margin: 1em 0 .35em;
 		}
 		
+		.entry-meta {
+			color: $medNeutral;
+			
+			.entry-readmore,
+			.entry-categories {
+				color: $medNeutral;
+			}
+			
+			.entry-categories {
+			 
+				a {
+				&::after {
+					content: ' Tips';
+				}
+				}	
+			}
+			
+			a {
+				text-decoration: underline;
+				text-transform: capitalize;
+				color: $medNeutral;
+			
+			&:hover {
+				color: $darkNeutral;
+			}
+			}
+		}
+
 	}
 
 	/* ------ Entry Footer		*/
-&#entry-tabs {
 	
-	> .entry-footer {
+	.entry-footer {
 		padding: 1em;
 		margin-top: 1em;
 		background-color: $brandBlue;
@@ -329,6 +335,4 @@
 			color: $baseWhite;
 		}
 	}
-}
-
 }//.entry

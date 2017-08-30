@@ -1,0 +1,51 @@
+.service-plans {
+	display: flex;
+	flex-flow: column nowrap;
+	margin-bottom: 4em;
+	margin-left: 5%;
+	margin-right: 5%;
+	justify-content: space-between;
+	
+	.plan {
+		flex: 1 1 50%;
+		background-color: $brandBlueLight;
+		border: 1px solid $brandBlue;
+		padding: 1em;
+		margin-bottom: 2em;
+		
+		h3 {
+			text-align: center;
+		}
+		
+		p {
+			text-align: center;
+			
+			span {
+				display: block;
+			}
+		
+		&::before {
+			content: '$';
+		}
+		}
+		
+		ul {
+			padding: 0 0 0 .5em;
+			
+			li {
+				margin-bottom: .25em;
+			}
+		}
+	}
+	
+@include screen-immobile {
+	flex-flow: row nowrap;
+	margin-left: 20%;
+	margin-right: 20%;
+	
+	.plan {
+		margin-bottom: 0;
+		margin-right: 2px;
+	}
+}	
+}
