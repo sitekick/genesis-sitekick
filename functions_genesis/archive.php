@@ -32,19 +32,11 @@ function sitekick_do_named_anchor() {
    
 }
 
-
-/*
-function get_read_more_link() {
-   return '... <a class="read-more" href="' . get_permalink() . '">Read More</a>';
-}
-*/
-
 add_action ( 'genesis_before_entry', 'sitekick_archive_entry_header' );
 
 function genesis_sitekick_post_title() {
 	 print '<h2 class="entry-title" itemprop="headline">' . get_the_title() . '</h2> ';
 }
-
 
 function sitekick_entry_content_footer_markup_open() {
 	printf( '<footer %s>', genesis_attr( 'entry-content-footer' ) );
@@ -73,12 +65,26 @@ function sitekick_archive_entry_content() {
 		add_action( 'genesis_entry_content', 'sitekick_entry_content_footer_markup_close', 15 );
 		
 		}
-	
-
 }
 
-
 add_action ( 'genesis_before_entry', 'sitekick_archive_entry_content' );
+
+// Change posts per page in the design category
+add_action( 'pre_get_posts', 'sitekick_service_posts_per_page' );
+
+function sitekick_service_posts_per_page( $query ) {
+	if( $query->is_main_query() && is_post_type_archive( 'services' ) && ! is_admin() ) {
+		$query->set( 'posts_per_page', -1 );
+	}
+}
+
+add_filter('genesis_cpt_archive_intro_text_output', 'sitekick_filter_intro_text');
+
+
+function sitekick_filter_intro_text($intro_text) {
+	return $intro_text .= sitekick_service_panels();
+}
+
 
 function sitekick_before_loop() {
 	
@@ -88,7 +94,7 @@ function sitekick_before_loop() {
 	}
 	
 	if ( is_post_type_archive('services') ) {
-		add_action( 'genesis_loop', 'sitekick_service_panels', 8 );
+		//add_action( 'genesis_loop', 'sitekick_service_panels', 5 );
 	}
 }
 
@@ -100,65 +106,45 @@ function sitekick_service_panels() {
 	  'meta_key' => '_service_marketmaster_key',
 	  'orderby' => array (
 	  	'meta_value' => 'ASC',
-	  	'title'   => 'ASC'
+	  	'menu_order'   => 'ASC'
 	  ),
 	  'post_status'  => 'publish',
 	);
 	
 	$services = new WP_Query( $args );
-	 		 	
-	$webservices = 	array(); 	
-	$nonwebservices = array();
+	 	
+	$webservices = 	'<ul class="services">';
 		
 		while ( $services->have_posts() ) : $services->the_post();
 				$values = get_post_meta( get_the_ID() );
-				if(!$values['_service_marketmaster_key'][0]) {
-					array_push($webservices, get_the_title());
-				} else {
-					array_push($nonwebservices, get_the_title());
-				}
-				 
+				$class = ($values['_service_marketmaster_key'][0]) ? 'marketmaster' : 'webmaster';
+				$title = get_the_title();
+				$slug = str_replace(' ', '-', strtolower( $title ));
+				$webservices .= sprintf('<li class="%s"><a href="#%s">%s</a></li>', $class, $slug, $title);
+				
 		endwhile;	
-	
-	$marketservices = array_merge($webservices,$nonwebservices);
+	$webservices .= '</ul>';
 	
 	$op = '<div class="service-plans">';
-	$op .= '<div class="plan">';
+	$op .= '<div class="plan webmaster">';
 	$op .= '<h3>WebMaster</h3>';
 	$op .= '<p>' . SITEKICK_WEBMASTER_PRICE .'/mo. <span>billed annually</span></p>';
-	$op .= listMarkup($webservices);
+	$op .= $webservices;
 	$op .= '</div>';
-	$op .= '<div class="plan">';
+	$op .= '<div class="plan marketmaster">';
 	$op .= '<h3>MarketMaster</h3>';
 	$op .= '<p>' . SITEKICK_MARKETMASTER_PRICE .'/mo. <span>billed annually</span></p>';
-	$op .= listMarkup($marketservices);
+	$op .= $webservices;
 	$op .= '</div></div>';
-	
-	
-	if( !empty($op) ) {
-		print $op;	
-		}
-	
 	
 	wp_reset_postdata();
 	
-		
+	if( !empty($op) ) {
+		return $op;	
+		}
 }
 
-function listMarkup($array) {
-		
-		$ul = '<ul>';
-		
-		foreach($array as $item) {
-			$ul .= '<li><a href="#' . str_replace(' ', '-', strtolower($item)) . '">' . $item . '</a></li>';
-		}
-		$ul .= '</ul>';
-		
-		return $ul;
-		
 	
-}	
-
 function sitekick_custom_home_loop() {
  
     global $paged; // current paginated page
@@ -237,7 +223,7 @@ function sitekick_entry_meta_footer($post_meta) {
 		return '[post_readmore] [post_categories before=" | " after=""]';
 		break;
 		case is_post_type_archive('services') :
-		return '[post_readmore]';
+		return '[post_to_top]';
 		break;
 		default :
 		return '[post_readmore] [post_date before=" | "]';

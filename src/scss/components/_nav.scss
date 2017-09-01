@@ -25,6 +25,9 @@
 		}
 	
 
+	&:focus {
+		outline: 0;
+	}
 	&:hover {
 		background: $brandBlue;
 		
@@ -126,7 +129,7 @@
 		
 		//Top Level
 		> li {
-			flex: 1;
+			flex: 1 1 auto;
 			display: block;
 			border-radius: 0;
 			max-height: none;
@@ -149,19 +152,19 @@
 			}
 		
 		&:hover {
-			background-color: $brandBlue;
+			background-color: $brandBlueLight;
 			
-			> a  { color: $brandBlueLight; }
+			> a  { color: $darkNeutral; }
 		}// > .li:hover
 		//Top Level: Active
 		&.current-menu-item,
 		&.current-menu-ancestor {
-			background: $brandBlueLight;
+			background: $brandBlue;
 			
-			> a  { color: $darkNeutral; } 
+			> a  { color: $baseWhite; } 
 		
 		&:hover {
-			> a  { color: $brandBlue; } 
+			> a  { color: $brandBlueLight; } 
 		}
 		}
 		

@@ -22,7 +22,8 @@ gulp.task('build', function() {
   
   runSequence(
 	'delete',
-  	['sass-publish','scripts-publish','images'],
+  	['sass-publish','scripts-publish'],
+  	['fonts','images'],
   	'serve-publish'
   	);
   });

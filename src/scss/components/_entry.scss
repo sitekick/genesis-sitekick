@@ -4,29 +4,24 @@
 	/* ------ Headers 			*/
 	
 	h2 {
-		font-family: $sans;
 		color: $darkNeutral;
-		font-size: 1.875em;
-		font-weight: 400; 
 	}
 	
 	h3 {
 		color: $brightAccent;
-		font-family: $sans;
-		font-size: 1.3em;
-		font-weight: 600;
 	}
 	
-	h4{
-		font-weight: 600;
-		font-size: 1.15em;
-	}
 	
 	/* ------ Content Elements	*/
 	
 	p {
-		margin: .5em 0 1.75em;
-		line-height: 2em;
+		//margin: .5em 0 1.5625em;
+// 		line-height: 1.5625em;
+	
+	@include screen-immobile {
+		//margin: .5em 0 1.6em;
+		//line-height: 1.6em;
+	}
 	}
 
 	ul {
@@ -44,15 +39,11 @@
 	}// ul
 	
 	ul, ol {
-		margin: .75em 0 1.75em;
-		line-height: 1.6em; 
+		margin-left: 1em;
 	
 		li {
-			margin-bottom: .75em;
 			
-			ul {
-				list-style: disc;
-			}
+			ul { list-style: disc; }
 		}
 	}// ul, ol
 
@@ -67,9 +58,9 @@
 		border-radius: 5px;
 		color: $darkNeutral;
 		
-		h4 {
-			color: $brandBlue;
-		}
+		h4 { color: $brandBlue; }
+		
+		ul, ol { margin-left: 0;}
 	}	
 	
 	img {
@@ -273,18 +264,10 @@
 		}
 		
 		h2 {
-			margin: 2em 0 .75em;	
 		
 		&:first-of-type{
 			margin-top: 0;
 		}
-		}
-		
-		h3 {
-			margin: 1.5em 0 .5em;
-		}
-		h4{
-			margin: 1em 0 .35em;
 		}
 		
 		.entry-meta {

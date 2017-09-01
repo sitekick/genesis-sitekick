@@ -103,8 +103,6 @@ function sitekick_do_archive_title() {
 		
 		$archive_settings = get_option( 'genesis-cpt-archive-settings-services' );
 		
-		
-		
 		$heading = trim($archive_settings['headline']) ? $archive_settings['headline'] : $wp_query->get_queried_object()->name;
 	
 	} else {
@@ -114,6 +112,7 @@ function sitekick_do_archive_title() {
 	genesis_markup( array(
 		'open'    => '<div %s>',
 		'context' => 'title-banner',
+		'content' => '<a name="top"></a>'
 	) );
 			
 	genesis_markup( array(

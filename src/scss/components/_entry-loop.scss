@@ -102,4 +102,29 @@ article.type-tip,
 	}
 }
 
+.page-template-page_tabs & {
+	
+	.entry-header {
+		.tabs-menu { 
+			
+			li { 
+				margin-bottom: .75em;} 
+			
+				a {
+				 	color: $brandBlue;
+				}
+			}
+	}
+	
+	.entry-content{
+		min-height: 400px;
+	}
+@include screen-immobile{
+	.entry-header {
+		.tabs-menu { li { margin-bottom: 0;} }
+	}
+}
+
+}
+
 }//.entry

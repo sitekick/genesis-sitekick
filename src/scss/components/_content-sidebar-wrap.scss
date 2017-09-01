@@ -13,6 +13,9 @@
 		.archive-description {
 			text-align: center;
 			height: auto;
+			background: $brandBlueLight;
+			margin: -1em -1em 1em -1em;
+			padding: 1em;
 			
 			.entry-title,
 			.archive-title {
@@ -30,7 +33,7 @@
 		
 		@include screen-immobile {
 			text-align: left;
-			//height: 4em;
+			margin: -2em -2em 2em -2em;
 		}
 		}
 	

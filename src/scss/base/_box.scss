@@ -65,9 +65,9 @@ body {
 		align-items: flex-end;
 		justify-content: space-between;
 		
-		.title-area { flex: 1; }
+		.title-area { flex: 1 0 auto; }
 		
-		.widget-area  { flex: 3; }
+		.widget-area  { flex: 2 1 auto; }
 	}
 	
 	@include screen-medium {

@@ -116,6 +116,7 @@ var resizeQuery = (function () {
 							var tabindex = $(this).attr('data-tab-index');
 							$('#entry-tabs').tabs("option", "active", tabindex);
 						});	
+				
 					}
 				},
 				'(max-width: 600px)' : function(){

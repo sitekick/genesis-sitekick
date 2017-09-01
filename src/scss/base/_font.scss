@@ -18,25 +18,58 @@ h1 {
 }
 
 h2 {
+	font-size: 1.625em;
+	font-family: $sans;
+
+@include screen-immobile{
 	font-size: 1.75em;
+}
 }
 
 h3 {
-	font-size: 1.5em;
+	font-family: $sans;
+}
+
+h3, h4 {
+	font-size: 1.25em;
 	margin: .25em 0 .5em;
 
 .sidebar & {
 	font-family: $brand;
 	font-weight: normal;
 }
+@include screen-immobile{
+	font-size: 1.375em;
+}
 }
 
-h4 {
-	font-size: 1.125em;
+h5 {
+	font-family: $sans;
+	font-size: 1em;
+	line-height: 1.5em;
+	margin: 0 0 .75em;
+
+@include screen-immobile {
+	font-size: 1.0625rem;
+	margin: 0 0 .79411em;
+	line-height: 1.58823em;
 }
+}
+
+h6 {
+	font-size: .9375rem;
+	margin: 0 0 .79411em;
+
+@include screen-immobile {
+	font-size: 1rem;
+	margin: 0 0 .79411em;
+}	
+}
+
 
 p {
-	font-size: 1.0625em;
+	font-size: 1em;
+	line-height: 1.5em;
 	margin: 0 0 1.5em;
 
 .widget & {
@@ -45,15 +78,29 @@ p {
 &.entry-meta {
 	font-size: 1rem;
 }
+
+@include screen-immobile {
+	font-size: 1.0625rem;
+	margin: 0 0 1.58823em;
+	line-height: 1.58823em;
+}
 }
 
 ul,
 ol {
-	font-size: 1.0625rem;
+	font-size: 1em;
+	line-height: 1.5em;
 	margin: 0 0 1.5em;
-
+&.tabs-menu {
+	font-family: $sans;
+}
 .widget & {
 	font-size: .9375rem;
+}
+@include screen-immobile {
+	font-size: 1.0625rem;
+	margin: 0 0 1.58823em;
+	line-height: 1.58823em;
 }
 }
 
@@ -108,24 +155,34 @@ textarea {
 .widget {
 	font-family: $sans;	
 	
-	.tagcloud,
-	.textwidget {
-		//font-size: 1em;
-	}
-	
 &.widget_search {
 	font-weight: 300;
+	font-family: $sans;
+	font-size: 1.125em;
 	
 	input {
-	font-size: 1.125em;
-	font-family: inherit;
-	font-weight: inherit;
+		font-family: inherit;
+		font-weight: inherit;
+		font-size: inherit;
 	
 	&[type=submit] {
 		font-size: 14px;
 		font-size: .875rem;
 	}
+	}
+}
+&.quotes-widget {
 	
+		
+	q {
+		//font-family: $brand;
+		font-style: italic;
+		font-size: 1.125em;
+	}
+	
+	.quote-footer {
+		font-family: $sans;
+		font-weight: 300;
 	}
 }
 }

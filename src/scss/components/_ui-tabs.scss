@@ -1,8 +1,8 @@
 .ui-tabs { 
-	
+
 	.ui-tabs-panel { 
-		//padding: 1em; 
-		}
+		&:focus { outline: 0;} 
+	}
 	
 @include screen-immobile {	
 	position: relative; 
@@ -14,7 +14,6 @@
 		padding: 0; 
 		overflow: hidden;
 		background: $brandBlueLight;
-		font-family: $sans;
 				
 		li { 
 			list-style: none; 
@@ -43,6 +42,7 @@
 			background:  $baseWhite;
 			
 			a { color: $brightAccent; }
+		
 		}
 		
 		&.ui-tabs-active,
@@ -56,7 +56,9 @@
 	}
 	
 	.ui-tabs-panel { 
-		//padding: 2em; 
+		
+		
+		 
 		}
 }//.screen-immobile	
 } 

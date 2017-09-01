@@ -44,7 +44,8 @@
 	
 	section {
 		margin: 1em 0 .5em;
-		flex: 0 1 48.5%;
+		//flex: 0 1 48.5%;
+		flex: 0 1 auto;
 		
 	&.profile{
 		display: flex;
@@ -99,18 +100,18 @@
 		display: inline-block;
 		
 		.search-form {
-			background-color: $darkNeutral;
+			background: $darkNeutral;
 			padding: .1875rem;
 			cursor: pointer;
 			white-space: nowrap;
 			border-left: 1px solid $darkNeutral;
 			
 			input[type=search] {
-				padding: .5rem 5px .5rem 0;
+				padding: .6875rem 5px .6875rem 0;
 				border: 0;
 				display: inline-block;
 				vertical-align: middle;
-				background-color: inherit;
+				background: inherit;
 				color: $brandBlue;
 				cursor: inherit;
 				max-width: 75px;
@@ -118,23 +119,23 @@
 				transition-property: all;
 				transition-duration: 250ms;
 				
+				
 			&::placeholder {
 				color: $brandBlueLight;
 				opacity: 1;
+			}
+			&:focus {
+				outline: 0;
 			}
 			}
 		
 			input[type=submit] {
 				display: none;
 				vertical-align: middle;
-				background: $brandBlue;
+				background-color: $brandBlue;
 				border: 0;
 				color: $baseWhite;
 				padding: .5em .25em;
-/*
-				font-size: 14px;
-				font-size: .875rem;
-*/
 				cursor: pointer;
 			}
 		&.focus {
@@ -142,43 +143,58 @@
 			cursor: text;
 			
 			input[type=search] {
-				max-width: 350px;
+				max-width: 200px;
 				text-indent: 0;
 				background-image: none;
 				text-align:left;
 			
-			&::placeholder {
-				color: $darkNeutral;
-			}
+			&::placeholder { color: $darkNeutral; }
 			}
 			
-			input[type=submit] {
-				display: inline-block;
-			}
+			input[type=submit] { display: inline-block; }
+		
 		}
-		}
-
-	}//.widget-wrap
-
-@include screen-immobile {
+		}//.search-form
 	
-	.widget-wrap {
+	@include screen-immobile {
 		display: block;
-		
-		.search-form {
-						
-		&.focus {
-		
-			input[type=search] { max-width: 175px; }
-			
-		
-		}
-		}
-
+		max-width: 250px;
+		text-align: center;
+	}
 	}//.widget-wrap
-}//	screen-full	
+	
 }//.widget_search
+&.quotes-widget {
+	
+	.quote {
+		background: $lightNeutral;
+		padding: 1em;
+		border-radius: 5px;
 
+		.quote-body {
+			color: $darkNeutral;
+		}
+		
+		.quote-footer {
+		 	color: $medNeutral;
+		 
+		 h5 {
+			 margin: .75em 0 0;
+		 }
+		 
+		 h6 {
+			 margin: 0;
+			 font-weight: 300;
+		 }
+	 }
+		
+	
+	}
+	
+	
+	
+	
+}
 
 .footer-widget-area & {
 	color: $baseWhite;

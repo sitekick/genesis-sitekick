@@ -1,17 +1,6 @@
 <?php
 	
-/*=============CUSTOM POST TYPE - PRODUCTS===============*/
-
-
-function sitekick_cpt_scripts() {
-	
-	if ( 'products' == get_post_type() ) {
-		wp_enqueue_script( 'slider-product', get_stylesheet_directory_uri()  . '/js/slider-product-init.js', array('carousel-base'), FALSE, FALSE);
-	}
-
-}
-
-//add_action( 'wp_enqueue_scripts', 'sitekick_cpt_scripts' );
+/*=============CUSTOM POST TYPE - SERVICES===============*/
 
 add_action('init', 'services_register');
  
@@ -146,91 +135,21 @@ add_action( 'save_post', 'service_marketmaster_save_meta_box_data' );
 
 
 
+/*=============CUSTOM POST TYPE - QUOTES===============*/
 
-/*
-function floclear_get_product_status() {
-	
-	$values = get_post_meta( get_the_ID() );
-	
-	$new = $values['_product_new_key'][0];
-	$retired = $values['_product_retired_key'][0];
-	
-	if( !empty($retired) ){
-		$span = '<div class="entry-status retired">Retired</div>';
-		print $span;
-		return;
-	}
-	
-	if( !empty($new) ){
-		$span = '<div class="entry-status new">New</div>';
-		print $span;
-	}
-	
-}
-*/
-
-/*
-function get_promotion() {
-	
-	
-	$pid =  get_the_ID();
-	
-	$news = new WP_Query( array(
-				  'post_type' => 'post',
-				  'category_name' => 'promotions',
-				  'meta_query' => array(
-				  					array(
-				  						'key'     => 'Promote',
-				  						'value'   => $pid,
-				  						'compare' => '=',
-				  						),
-				  						),
-				  'posts_per_page' => 1, 
-				  'orderby' => 'date',
-				  'order'   => 'DESC',
-				  'post_status'  => 'publish',
-				  ) );
-	 		 
-		
-		while ( $news->have_posts() ) : $news->the_post();
-									
-				$op  = '<h2>Current Promotion on this Product:</h2>';
-				$op .= '<div class="promotion">';
-				$op .= '<a href="'. get_permalink() . '" title="Click to view promotion">';
-				$op .= the_title('<h3>', '</h3>', false);
-				$op .= '</a></div>';
-				
-		
-		endwhile;	
-				
-		if( !empty($op) ) {
-			print $op;	
-			}
-		
-		
-		wp_reset_postdata();
-			
-		
-			
-}
-*/
-
-
-/*=============CUSTOM POST TYPE - TESTIMONIALS===============*/
-
-//add_action('init', 'testimonials_register');
+add_action('init', 'quotes_register');
  
-function testimonials_register() {
+function quotes_register() {
  
 	$labels = array(
-		'name' => _x('Testimonials', 'post type general name'),
-		'singular_name' => _x('Testimonial', 'post type singular name'),
+		'name' => _x('Quotes', 'post type general name'),
+		'singular_name' => _x('Quote', 'post type singular name'),
 		'add_new' => _x('Add New', 'portfolio item'),
-		'add_new_item' => __('Add New Testimonial'),
-		'edit_item' => __('Edit Testimonial'),
-		'new_item' => __('New Testimonial'),
-		'view_item' => __('View Testimonials'),
-		'search_items' => __('Search Testimonials'),
+		'add_new_item' => __('Add New Quote'),
+		'edit_item' => __('Edit Quote'),
+		'new_item' => __('New Quote'),
+		'view_item' => __('View Quotes'),
+		'search_items' => __('Search Quotes'),
 		'not_found' =>  __('Nothing found'),
 		'not_found_in_trash' => __('Nothing found in Trash'),
 		'parent_item_colon' => ''
@@ -238,20 +157,21 @@ function testimonials_register() {
  
 	$args = array(
 		'labels' => $labels,
-		'public' => true,
-		'has_archive' => true,
-		'publicly_queryable' => true,
+		'public' => false,
+		'has_archive' => false,
+		'publicly_queryable' => false,
 		'show_ui' => true,
 		'query_var' => true,
-		'rewrite' => true,
+		'rewrite' => false,
 		'capability_type' => 'post',
 		'hierarchical' => false,
+		'taxonomies'  => array( 'category' ),
 		'menu_position' => null,
 		'menu_icon' => 'dashicons-format-quote',
-		'supports' => array('title','editor','genesis-cpt-archives-settings')
+		'supports' => array('title','editor')
 	  ); 
  
-	register_post_type( 'testimonials' , $args );
+	register_post_type( 'quotes' , $args );
 }
 
 
@@ -260,36 +180,43 @@ function testimonials_register() {
 /**
  * Adds a box to the main column on the Testimonial edit screens for Company Field
  */
-function testimonials_add_meta_boxes() {
+function quotes_add_meta_boxes() {
 
-	$screens = array( 'testimonials');
+	$screens = array( 'quotes');
 
 	foreach ( $screens as $screen ) {
-		add_meta_box('testimonial_company',__( 'Company', 'floclear_textdomain' ),'company_meta_box_callback',$screen);
+		add_meta_box('quotes_source',__( 'Source', 'genesis-sitekick_textdomain' ),'quote_source_meta_box_callback',$screen);
 	}
 }
-add_action( 'add_meta_boxes', 'testimonials_add_meta_boxes' );
+add_action( 'add_meta_boxes', 'quotes_add_meta_boxes' );
 
 /**
  * Prints the box content.
  * 
  * @param WP_Post $post The object for the current post/page.
  */
-function company_meta_box_callback( $post ) {
+function quote_source_meta_box_callback( $post ) {
 
 	// Add an nonce field so we can check for it later.
-	wp_nonce_field( 'testimonial_company_meta_box', 'testimonial_company_meta_box_nonce' );
-
+	wp_nonce_field( 'quote_source_name_meta_box', 'quote_source_name_meta_box_nonce' );
+	wp_nonce_field( 'quote_source_company_meta_box', 'quote_source_company_meta_box_nonce' );
+	wp_nonce_field( 'quote_source_link_meta_box', 'quote_source_link_meta_box_nonce' );
 	/*
 	 * Use get_post_meta() to retrieve an existing value
 	 * from the database and use the value for the form.
 	 */
-	$value = get_post_meta( $post->ID, '_testimonial_company_key', true );
-
-	echo '<label for="testimonial_company_field">';
-	_e( 'Company Name', 'floclear_textdomain' );
-	echo '</label> ';
-	echo '<input type="text" id="testimonial_company_name" name="testimonial_company_name" value="' . esc_attr( $value ) . '" size="40" />';
+	$name = get_post_meta( $post->ID, '_quote_source_name_key', true );
+	$co = get_post_meta( $post->ID, '_quote_source_company_key', true );
+	$link = get_post_meta( $post->ID, '_quote_source_link_key', true );
+	
+	$op = '<label for="quote_source_name">' . __( 'Name', 'genesis-sitekick_textdomain' ) . '</label>';
+	$op .= '<input type="text"  id="quote_source_name" name="quote_source_name" value="' . esc_attr( $name ) . '" size="40" />';
+	$op .= '<br><label for="quote_source_company">' . __( 'Company', 'genesis-sitekick_textdomain' ) . '</label>';
+	$op .= '<input type="text" id="quote_source_company" name="quote_source_company" value="' . esc_attr( $co ) . '" size="40" />';
+	$op .= '<br><label for="quote_source_link">' . __( 'Link', 'genesis-sitekick_textdomain' ) . '</label>';
+	$op .= '<input type="text" id="quote_source_link" name="quote_source_link" value="' . esc_attr( $link ) . '" size="40" />';
+	
+	print $op;
 }
 
 /**
@@ -297,7 +224,7 @@ function company_meta_box_callback( $post ) {
  *
  * @param int $post_id The ID of the post being saved.
  */
-function testimonial_company_save_meta_box_data( $post_id ) {
+function quote_source_name_save_meta_box_data( $post_id ) {
 
 	/*
 	 * We need to verify this came from our screen and with proper authorization,
@@ -305,12 +232,12 @@ function testimonial_company_save_meta_box_data( $post_id ) {
 	 */
 
 	// Check if our nonce is set.
-	if ( ! isset( $_POST['testimonial_company_meta_box_nonce'] ) ) {
+	if ( ! isset( $_POST['quote_source_name_meta_box_nonce'] ) ) {
 		return;
 	}
 
 	// Verify that the nonce is valid.
-	if ( ! wp_verify_nonce( $_POST['testimonial_company_meta_box_nonce'], 'testimonial_company_meta_box' ) ) {
+	if ( ! wp_verify_nonce( $_POST['quote_source_name_meta_box_nonce'], 'quote_source_name_meta_box' ) ) {
 		return;
 	}
 
@@ -320,7 +247,7 @@ function testimonial_company_save_meta_box_data( $post_id ) {
 	}
 
 	// Check the user's permissions.
-	if ( isset( $_POST['post_type'] ) && 'testimonials' == $_POST['post_type'] ) {
+	if ( isset( $_POST['post_type'] ) && 'quotes' == $_POST['post_type'] ) {
 
 		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
 			return;
@@ -336,56 +263,126 @@ function testimonial_company_save_meta_box_data( $post_id ) {
 	/* OK, its safe for us to save the data now. */
 	
 	// Make sure that it is set.
-	if ( ! isset( $_POST['testimonial_company_name'] ) ) {
+	if ( ! isset( $_POST['quote_source_name'] ) ) {
 		return;
 	}
 
 	// Sanitize user input.
-	$my_data = sanitize_text_field( $_POST['testimonial_company_name'] );
+	$my_data = sanitize_text_field( $_POST['quote_source_name'] );
 
 	// Update the meta field in the database.
-	update_post_meta( $post_id, '_testimonial_company_key', $my_data );
+	update_post_meta( $post_id, '_quote_source_name_key', $my_data );
 }
-add_action( 'save_post', 'testimonial_company_save_meta_box_data' );
+add_action( 'save_post', 'quote_source_name_save_meta_box_data' );
 
-/*============= DEALERS ================*/
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function quote_source_company_save_meta_box_data( $post_id ) {
 
-//add_action('init', 'dealers_register');
- 
-function dealers_register() {
- 
-	$labels = array(
-		'name' => _x('Dealers', 'post type general name'),
-		'singular_name' => _x('Dealer', 'post type singular name'),
-		'add_new' => _x('Add New', 'portfolio item'),
-		'add_new_item' => __('Add New Dealer'),
-		'edit_item' => __('Edit Dealer'),
-		'new_item' => __('New Dealer'),
-		'view_item' => __('View Dealer'),
-		'search_items' => __('Search Dealers'),
-		'not_found' =>  __('Nothing found'),
-		'not_found_in_trash' => __('Nothing found in Trash'),
-		'parent_item_colon' => ''
-	);
- 
-	$args = array(
-		'labels' => $labels,
-		'public' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true,
-		'query_var' => true,
-		'has_archive' => true,
-		'rewrite' => true,
-		'capability_type' => 'page',
-		'hierarchical' => false,
-		'menu_position' => null,
-		'menu_icon' => 'dashicons-admin-users',
-		'supports' => array('title','editor','thumbnail','genesis-cpt-archives-settings')
-	  ); 
- 
-	register_post_type( 'dealers' , $args );
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
+
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['quote_source_company_meta_box_nonce'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['quote_source_company_meta_box_nonce'], 'quote_source_company_meta_box' ) ) {
+		return;
+	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'quotes' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
+			return;
+		}
+
+	} else {
+
+		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
+			return;
+		}
+	}
+
+	/* OK, its safe for us to save the data now. */
+	
+	// Make sure that it is set.
+	if ( ! isset( $_POST['quote_source_company'] ) ) {
+		return;
+	}
+
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['quote_source_company'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, '_quote_source_company_key', $my_data );
 }
+add_action( 'save_post', 'quote_source_company_save_meta_box_data' );
 
-/* custom thumbnail size for dealer logos */ 
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function quote_source_link_save_meta_box_data( $post_id ) {
 
-//add_image_size( 'dealer-logos', 0, 80, false );
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
+
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['quote_source_link_meta_box_nonce'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['quote_source_link_meta_box_nonce'], 'quote_source_link_meta_box' ) ) {
+		return;
+	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'quotes' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
+			return;
+		}
+
+	} else {
+
+		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
+			return;
+		}
+	}
+
+	/* OK, its safe for us to save the data now. */
+	
+	// Make sure that it is set.
+	if ( ! isset( $_POST['quote_source_link'] ) ) {
+		return;
+	}
+
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['quote_source_link'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, '_quote_source_link_key', $my_data );
+}
+add_action( 'save_post', 'quote_source_link_save_meta_box_data' );

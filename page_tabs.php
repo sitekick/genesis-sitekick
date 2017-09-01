@@ -69,7 +69,6 @@ function sitekick_tabs_key_concepts(){
 	
 	$keyConcepts = get_field('key_concepts');
 	
-	
 	$op = '<div id="key-concepts" class="tab-content">';
 	$op .= '<a name="key-concepts"></a>';
 	$op .= $keyConcepts;
@@ -88,18 +87,38 @@ add_filter('excerpt_length', 'sitekick_excerpt_length', 5);
 
 function sitekick_tabs_tips_of_the_trade(){
 	
+	
+	
 	$tipsTradeId = get_field('tips_of_the_trade');
 	
+	
+	
 	$args = array (
-		'numberposts'	=> 3,
-		'cat' => $tipsTradeId
+		'posts_per_page'	=> 3,
+		'cat' => $tipsTradeId,
+		'post_status'  => 'publish',
+		'orderby' => 'post_date',
+		'order' => 'DESC',
 	);
 	
 	$tipsTrade = new WP_Query( $args );
 	
-	$op = '<div id="tips-trade" class="tab-content">';
-	$op .= '<a name="tips-trade"></a>';
-	$op .= '<h2>Tips of the Trade</h2>';
+	if( !$tipsTradeId || !$tipsTrade->have_posts() ){
+		$op = '<div id="tips-trade" class="tab-content disabled">';
+		$op .= '<a name="tips-trade"></a>';
+		$op .= '<h2>Tips of the Trade</h2>';
+		$op .= '<p>There are no tips at this time.</p>';
+		$op .= '</div>';
+		
+		print $op;
+		
+		return;
+	} else {
+		$op = '<div id="tips-trade" class="tab-content">';
+		$op .= '<a name="tips-trade"></a>';
+		$op .= '<h2>Tips of the Trade</h2>';
+	}
+	
 	if ( $tipsTrade->have_posts() ) {
 		
 		while ( $tipsTrade->have_posts() ) {
@@ -134,36 +153,14 @@ function sitekick_tabs_tips_of_the_trade(){
 }
 
 //Entry Footer
-//add entry footer
-//add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_open', 8 );
+
 add_action( 'genesis_entry_footer', 'sitekick_tabs_footer');
-//add_action( 'genesis_entry_footer', 'sitekick_entry_footer_markup_close', 15 );
-
-
-/*
-function sitekick_entry_footer_markup_open() {
-	printf( '<footer %s>', genesis_attr( 'entry-footer' ) );
-}
-*/
-
-
-
-/*
-function sitekick_entry_footer_markup_close() {
-	echo '</footer>';
-}
-*/
-
-
 
 function sitekick_tabs_footer(){
 	printf( '<footer %s>%s</footer>', 
 	genesis_attr( 'entry-footer' ),
 	get_field('footer')
 	);
-	
-	
 }
-
 
 genesis();
