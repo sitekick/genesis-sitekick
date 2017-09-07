@@ -11,18 +11,7 @@
 		color: $brightAccent;
 	}
 	
-	
 	/* ------ Content Elements	*/
-	
-	p {
-		//margin: .5em 0 1.5625em;
-// 		line-height: 1.5625em;
-	
-	@include screen-immobile {
-		//margin: .5em 0 1.6em;
-		//line-height: 1.6em;
-	}
-	}
 
 	ul {
 		list-style: square; 

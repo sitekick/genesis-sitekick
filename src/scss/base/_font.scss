@@ -72,9 +72,6 @@ p {
 	line-height: 1.5em;
 	margin: 0 0 1.5em;
 
-.widget & {
-	font-size: .9375rem;
-}
 &.entry-meta {
 	font-size: 1rem;
 }
@@ -149,11 +146,12 @@ textarea {
 
 .entry-meta {
 	font-family: $sans;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .widget {
 	font-family: $sans;	
+	
 	
 &.widget_search {
 	font-weight: 300;
@@ -173,9 +171,7 @@ textarea {
 }
 &.quotes-widget {
 	
-		
 	q {
-		//font-family: $brand;
 		font-style: italic;
 		font-size: 1.125em;
 	}
@@ -185,13 +181,31 @@ textarea {
 		font-weight: 300;
 	}
 }
+
+&.service-widget{
+	
+	.widget-title {
+		font-family: $brand;
+		font-weight: 400;
+		font-size: 1.75em;
+	}
 }
+.sidebar-primary & {
+	
+	p {
+		font-size: .9375rem;
+	}
+}
+}//.widget
 
 .archive-pagination {
 	font-family: $sans;
 	font-weight: 300;	
 }
 
+.site-footer {
+	font-family: $sans;
+}
 
 .service-plans {
 	font-family: $sans;

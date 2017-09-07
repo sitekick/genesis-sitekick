@@ -4,6 +4,7 @@
 add_filter('genesis_footer_creds_text', 'sitekick_footer_creds_filter');
 
 
+/*
 add_action( 'genesis_sidebar_title_output', function ( $heading, $id ) {
 	if ( 'Footer' == $id ) {
 		$heading = '<h2 class="genesis-sidebar-title">' . SITEKICK_TITLE_FOOTER . '</h2>';
@@ -11,6 +12,7 @@ add_action( 'genesis_sidebar_title_output', function ( $heading, $id ) {
 
 	return $heading;
 }, 10, 2 );
+*/
 
 
 function sitekick_footer_creds_filter( $creds ) {

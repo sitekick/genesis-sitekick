@@ -6,25 +6,27 @@
 
 
 @mixin screen-medium {
-  @media screen and (min-width: #{$screen-small}) and (max-width: #{$screen-large}) {
+  @media screen and (min-width: #{$screen-small + 1}) and (max-width: #{$screen-large}) {
     @content;
   }
 }
 
 @mixin screen-large {
-  @media screen and (min-width: #{$screen-large}) and (max-width: #{$screen-full}) {
+  @media screen and (min-width: #{$screen-large + 1}) and (max-width: #{$screen-full}) {
     @content;
   }
 }
 
+
+
 @mixin screen-full {
-  @media screen and (min-width: #{$screen-full}) {
+  @media screen and (min-width: #{$screen-full + 1}) {
     @content;
   }
 }
 
 @mixin screen-immobile {
-  @media screen and (min-width: #{$screen-small}) {
+  @media screen and (min-width: #{$screen-small + 1}) {
     @content;
   }
 }

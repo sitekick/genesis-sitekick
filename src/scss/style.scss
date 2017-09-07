@@ -20,6 +20,7 @@
 
 @import "utils/vars";
 @import "utils/mixins";
+@import "utils/normalize";
 @import "utils/base64";
 
 @import "base/normalize";
@@ -28,6 +29,7 @@
 @import "base/font";
 //@import "base/anchor";
 
+@import "components/background";
 @import "components/header";
 @import "components/nav";
 @import "components/title-banner";

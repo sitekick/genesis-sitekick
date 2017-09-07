@@ -63,22 +63,27 @@ function service_plans_meta_box_callback( $post ) {
 
 	// Add an nonce field so we can check for it later.
 	wp_nonce_field( 'service_marketmaster_meta_box', 'service_marketmaster_meta_box_nonce' );
-	
+	wp_nonce_field( 'service_promote_meta_box', 'service_promote_meta_box_nonce' );
+	wp_nonce_field( 'service_benefit_meta_box', 'service_benefit_meta_box_nonce' );
 	/*
 	 * Use get_post_meta() to retrieve an existing value
 	 * from the database and use the value for the form.
 	 */
+	$fields = get_post_meta( $post->ID) ;
 	
-	$values = get_post_meta( $post->ID);
+	$op = sprintf('<p><input type="checkbox" name="service_marketmaster_field" id="service_marketmaster_field" value="true" %s /><label for="service_marketmaster_field">%s</label></p><hr>',
+	!empty( $fields['_service_marketmaster_key'][0] ) ? 'checked' : '',
+	__( 'This is a Marketmaster service', 'genesis-sitekick_textdomain' ) 
+	);
+	$op .= sprintf('<p><input type="checkbox" name="service_promote_field" id="service_promote_field" value="true" %s /><label for="service_promote_field">%s</label></p><hr>',
+	!empty( $fields['_service_promote_key'][0] ) ? 'checked' : '',
+	__( 'Promote this service', 'genesis-sitekick_textdomain' ) 
+	);
+	$op .= sprintf('<p><label for="service_benefit_field">%s</label> <input type="text" name="service_benefit_field" size="35" id="service_benefit_field" value="%s" /></p><hr>',
+	 __( 'Benefit', 'genesis-sitekick_textdomain' ),
+	!empty( $fields['_service_benefit_key'] ) ? $fields['_service_benefit_key'][0] : '' );
 	
-	$checked_new = ( !empty($values['_service_marketmaster_key'][0]) ) ? 'checked' : '';
-	$op = '<p><input type="checkbox" name="service_marketmaster_field" id="service_marketmaster_field" value="true"  ' . $checked_new   .'/>';
-	$op .=   '<label for="service_marketmaster_field">' . __( 'This is a Marketmaster service', 'genesis-sitekick_textdomain' ) . '</label></p>';
-	$op .= '<hr>';
-	
-			
 	print $op;
-	
 }
 
 /**
@@ -133,7 +138,110 @@ function service_marketmaster_save_meta_box_data( $post_id ) {
 }
 add_action( 'save_post', 'service_marketmaster_save_meta_box_data' );
 
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function service_promote_save_meta_box_data( $post_id ) {
 
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
+
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['service_promote_meta_box_nonce'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['service_promote_meta_box_nonce'], 'service_promote_meta_box' ) ) {
+		return;
+	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'services' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
+			return;
+		}
+
+	} else {
+
+		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
+			return;
+		}
+	}
+
+	/* OK, its safe for us to save the data now. */
+	
+	
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['service_promote_field'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, '_service_promote_key', $my_data );
+}
+add_action( 'save_post', 'service_promote_save_meta_box_data' );
+
+
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function service_benefit_save_meta_box_data( $post_id ) {
+
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
+
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['service_benefit_meta_box_nonce'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['service_benefit_meta_box_nonce'], 'service_benefit_meta_box' ) ) {
+		return;
+	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'services' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
+			return;
+		}
+
+	} else {
+
+		if ( ! current_user_can( 'edit_pages', $post_id ) ) {
+			return;
+		}
+	}
+
+	/* OK, its safe for us to save the data now. */
+	
+	
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['service_benefit_field'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, '_service_benefit_key', $my_data );
+}
+add_action( 'save_post', 'service_benefit_save_meta_box_data' );
 
 /*=============CUSTOM POST TYPE - QUOTES===============*/
 

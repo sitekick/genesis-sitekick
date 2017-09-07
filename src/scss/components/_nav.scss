@@ -191,8 +191,8 @@
 		
 		// Sub Menu
 		.sub-menu {
-			background: $brandBlueLight;
-			position: absolute; z-index: 1000;
+			background: $baseWhite;
+			position: absolute; //z-index: 1000;
 			display: block;
 			width: 125%;
 			margin: 0;
@@ -202,18 +202,20 @@
 			transition-property: max-height;
 			white-space: normal;
 			border-top: 1px solid $darkNeutral;
-
+			
 			li {
 				display: block;
 				flex: none;
 				border-radius: 0;
 				margin: 0 0;
-			
+				border: 1px solid $lightNeutral;
+				border-top: 0;
+							
 				a {
 					display: block;
 					background: inherit;
 					border-radius: 0;
-					color: $darkNeutral;
+					color: $brandBlue;
 					text-align: left;
 					margin-right: 0;
 					margin-bottom: 0;
@@ -225,7 +227,8 @@
 					color: $baseWhite;
 					background: $brandBlue;
 				}
-				}
+				}//a
+				
 			&.current_page_item {
 				position: relative;
 			
@@ -250,7 +253,9 @@
 				}	
 			}
 			
-			&:last-child { a { padding-bottom: .75em; } }
+			&:last-child { 
+				border-bottom-color: $lightNeutral; 
+				a { padding-bottom: .75em; } }
 			}
 		}// .sub-menu	
 	}// immobile	

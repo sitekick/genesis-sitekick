@@ -196,12 +196,41 @@
 	
 }
 
-.footer-widget-area & {
+&.service-widget {
 	color: $baseWhite;
 	
-	.textwidget {
-		font-style: italic;
-		margin-bottom: 1em;
+	.widget-title {
+		color: $brandBlueLight;
+	}
+	
+	.widget-panels {
+		display: flex;
+		flex-flow: column nowrap;
+	
+		.panel {
+			//border: 1px solid red;
+			margin-bottom: 1em;
+			
+		&.copy{
+			order: -1;
+			flex: 2 1 auto;
+		}	
+		&.image {
+			flex: 1 1 auto;
+		}
+		}
+	
+	.btn {
+		background: $brandBlueLight;
+		padding: .25em .5em;
+		text-decoration: none;
+		color: $brandBlue;
+	}
+	
+	
+	@include screen-immobile{
+		flex-flow: row nowrap;
+	}
 	}
 }	
 }//. widget

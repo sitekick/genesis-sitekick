@@ -1,6 +1,8 @@
 body {
 	margin: 0;
 	padding-top: 8.5em;
+	overflow: hidden;
+    overflow-y: auto;
 	
 @include screen-immobile {
 	padding-top: 0;
@@ -28,15 +30,13 @@ body {
 .site-header,
 .footer-widgets,
 .site-footer {
- 	margin-top: 1em;
  	margin-left: auto;
  	margin-right: auto;
- 	margin-bottom: 0;
  	width: 100%;
  	
-@include screen-medium{ width: calc(100% - 2em); margin-bottom: 1em;}
-@include screen-large{ width: calc(100% - 12em); margin-bottom: 6em;}
-@include screen-full{ width: calc(100% - 20em); margin-bottom: 10em;}
+@include screen-medium{ width: calc(100% - 2em); }
+@include screen-large{ width: calc(100% - 12em); }
+@include screen-full{ width: calc(100% - 20em); }
 }
 
 
@@ -88,7 +88,7 @@ body {
 
 @include screen-small{ width: 100%; }
 
-}
+}//.site-header
 
 .title-banner{
 	margin: 0 auto 0;	
@@ -98,6 +98,13 @@ body {
 	}
 }
 
+.site-inner {
+ 	margin-top: 1em;	 
+ 		
+@include screen-medium{ margin-bottom: 1em; }
+@include screen-large{ margin-bottom: 6em; }
+@include screen-full{ margin-bottom: 10em; }
+}
 
 .content-sidebar-wrap {
 	
@@ -142,7 +149,7 @@ body {
 
 
 .footer-widgets {
-	margin-bottom: 0;
+	//margin-bottom: 0;
 
 	.widget{ text-align: center;}
 
@@ -188,7 +195,8 @@ body {
 }
 
 .site-footer {
-
+	//margin-top: 0;
+	
 &:not(.site-footer-landing) {
 @include screen-immobile{
 	@include spanFullWidth;
