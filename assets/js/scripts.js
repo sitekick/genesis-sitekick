@@ -1,6 +1,154 @@
 /*! modernizr 3.5.0 (Custom Build) | MIT *
  * https://modernizr.com/download/?-flexbox-placeholder-mq-setclasses !*/
 !function(e,n,t){function r(e,n){return typeof e===n}function o(){var e,n,t,o,s,i,l;for(var a in S)if(S.hasOwnProperty(a)){if(e=[],n=S[a],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(t=0;t<n.options.aliases.length;t++)e.push(n.options.aliases[t].toLowerCase());for(o=r(n.fn,"function")?n.fn():n.fn,s=0;s<e.length;s++)i=e[s],l=i.split("."),1===l.length?Modernizr[l[0]]=o:(!Modernizr[l[0]]||Modernizr[l[0]]instanceof Boolean||(Modernizr[l[0]]=new Boolean(Modernizr[l[0]])),Modernizr[l[0]][l[1]]=o),C.push((o?"":"no-")+l.join("-"))}}function s(e){var n=x.className,t=Modernizr._config.classPrefix||"";if(_&&(n=n.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+t+"no-js(\\s|$)");n=n.replace(r,"$1"+t+"js$2")}Modernizr._config.enableClasses&&(n+=" "+t+e.join(" "+t),_?x.className.baseVal=n:x.className=n)}function i(){return"function"!=typeof n.createElement?n.createElement(arguments[0]):_?n.createElementNS.call(n,"http://www.w3.org/2000/svg",arguments[0]):n.createElement.apply(n,arguments)}function l(){var e=n.body;return e||(e=i(_?"svg":"body"),e.fake=!0),e}function a(e,t,r,o){var s,a,u,f,c="modernizr",d=i("div"),p=l();if(parseInt(r,10))for(;r--;)u=i("div"),u.id=o?o[r]:c+(r+1),d.appendChild(u);return s=i("style"),s.type="text/css",s.id="s"+c,(p.fake?p:d).appendChild(s),p.appendChild(d),s.styleSheet?s.styleSheet.cssText=e:s.appendChild(n.createTextNode(e)),d.id=c,p.fake&&(p.style.background="",p.style.overflow="hidden",f=x.style.overflow,x.style.overflow="hidden",x.appendChild(p)),a=t(d,e),p.fake?(p.parentNode.removeChild(p),x.style.overflow=f,x.offsetHeight):d.parentNode.removeChild(d),!!a}function u(e,n){return!!~(""+e).indexOf(n)}function f(e){return e.replace(/([a-z])-([a-z])/g,function(e,n,t){return n+t.toUpperCase()}).replace(/^-/,"")}function c(e,n){return function(){return e.apply(n,arguments)}}function d(e,n,t){var o;for(var s in e)if(e[s]in n)return t===!1?e[s]:(o=n[e[s]],r(o,"function")?c(o,t||n):o);return!1}function p(e){return e.replace(/([A-Z])/g,function(e,n){return"-"+n.toLowerCase()}).replace(/^ms-/,"-ms-")}function m(n,t,r){var o;if("getComputedStyle"in e){o=getComputedStyle.call(e,n,t);var s=e.console;if(null!==o)r&&(o=o.getPropertyValue(r));else if(s){var i=s.error?"error":"log";s[i].call(s,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!t&&n.currentStyle&&n.currentStyle[r];return o}function h(n,r){var o=n.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(p(n[o]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var s=[];o--;)s.push("("+p(n[o])+":"+r+")");return s=s.join(" or "),a("@supports ("+s+") { #modernizr { position: absolute; } }",function(e){return"absolute"==m(e,null,"position")})}return t}function v(e,n,o,s){function l(){c&&(delete T.style,delete T.modElem)}if(s=r(s,"undefined")?!1:s,!r(o,"undefined")){var a=h(e,o);if(!r(a,"undefined"))return a}for(var c,d,p,m,v,y=["modernizr","tspan","samp"];!T.style&&y.length;)c=!0,T.modElem=i(y.shift()),T.style=T.modElem.style;for(p=e.length,d=0;p>d;d++)if(m=e[d],v=T.style[m],u(m,"-")&&(m=f(m)),T.style[m]!==t){if(s||r(o,"undefined"))return l(),"pfx"==n?m:!0;try{T.style[m]=o}catch(g){}if(T.style[m]!=v)return l(),"pfx"==n?m:!0}return l(),!1}function y(e,n,t,o,s){var i=e.charAt(0).toUpperCase()+e.slice(1),l=(e+" "+P.join(i+" ")+i).split(" ");return r(n,"string")||r(n,"undefined")?v(l,n,o,s):(l=(e+" "+E.join(i+" ")+i).split(" "),d(l,n,t))}function g(e,n,r){return y(e,t,t,n,r)}var C=[],S=[],w={_version:"3.5.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var t=this;setTimeout(function(){n(t[e])},0)},addTest:function(e,n,t){S.push({name:e,fn:n,options:t})},addAsyncTest:function(e){S.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=w,Modernizr=new Modernizr;var x=n.documentElement,_="svg"===x.nodeName.toLowerCase();Modernizr.addTest("placeholder","placeholder"in i("input")&&"placeholder"in i("textarea"));var b=function(){var n=e.matchMedia||e.msMatchMedia;return n?function(e){var t=n(e);return t&&t.matches||!1}:function(n){var t=!1;return a("@media "+n+" { #modernizr { position: absolute; } }",function(n){t="absolute"==(e.getComputedStyle?e.getComputedStyle(n,null):n.currentStyle).position}),t}}();w.mq=b;var z="Moz O ms Webkit",P=w._config.usePrefixes?z.split(" "):[];w._cssomPrefixes=P;var E=w._config.usePrefixes?z.toLowerCase().split(" "):[];w._domPrefixes=E;var N={elem:i("modernizr")};Modernizr._q.push(function(){delete N.elem});var T={style:N.elem.style};Modernizr._q.unshift(function(){delete T.style}),w.testAllProps=y,w.testAllProps=g,Modernizr.addTest("flexbox",g("flexBasis","1px",!0)),o(),s(C),delete w.addTest,delete w.addAsyncTest;for(var j=0;j<Modernizr._q.length;j++)Modernizr._q[j]();e.Modernizr=Modernizr}(window,document);
+//background
+	
+var backgroundImage = function() {
+	
+	var obj = document.getElementById('svgBg');
+	
+	var hexPath = [];
+	var hexPos;
+	var rows = 7;
+	var cols = 36;
+	var i = 0;
+	var maxlegs = 8;
+	
+	mapPath();
+	
+	function activateHex() {
+		var n = 0;
+		
+		var backgroundTime = setInterval( function() {
+			
+			var currentSelector = '.hex-' + hexPath[n];
+			
+			var svgDoc = obj.contentDocument;
+			var select = svgDoc.querySelector( currentSelector );
+			select.classList.add('select');
+			
+			n++;
+			if (n === hexPath.length ) clearInterval(backgroundTime);
+		
+		}, 500);
+		
+	}
+	
+	
+	function randHex() {
+		var row = Math.floor( Math.random() * rows ) + 1;
+		var col = Math.floor( Math.random() * cols ) + 1;
+	
+		return col + '-' + row;
+	}
+	
+	function mapPath() {
+		
+		var hexCoordinate;
+		
+		while ( i < maxlegs ) {	
+			
+			if( i > 0 ) {
+				hexCoordinate = directHex(hexPath[i-1]);
+			} else {
+				hexCoordinate = randHex();
+			}
+		
+			validateCoordinate(hexCoordinate);
+		}
+		
+		activateHex()
+		
+	}
+	
+	function validateCoordinate(coordinate) {
+		
+/*
+		tests:
+		1) Does not exist in path
+		2) Does not run off board
+*/
+		
+		if( isUnique() && inBounds() ) {
+			hexPath.push(coordinate);
+			return i++;
+		};
+		
+		function isUnique() {
+			return hexPath.indexOf( coordinate ) === -1 ? true : false;
+		}
+		
+		function inBounds() {
+			var position = getCoordinates(coordinate);
+			return position.col <= cols && position.col > 0 && position.row <= rows && position.row > 0;
+		}
+		
+	}
+	
+	function getCoordinates(hex){
+			
+			var delimeterPos = hex.indexOf('-');
+			
+			return {
+				col : Number( hex.substr(0, delimeterPos) ),
+				row : Number( hex.substr(delimeterPos + 1) )
+			}
+	}
+	
+	
+	function directHex(hex) {
+			
+			var position = getCoordinates(hex);
+			var odd = position.col % 2 > 0 ? true : false;
+			var newcol, newrow;
+			var direction = Math.floor(Math.random() * 6) + 1;
+			
+			switch (direction) {
+				 case 1: 
+				 //odd mode upper right: col + 1, row -1					 
+				 //even mode upper right: col + 1, row =
+				 newcol = position.col + 1;
+				 newrow = odd ? position.row - 1 : position.row;
+				 break;
+				 case 2: 
+				 //odd mode right: col + 2, row =
+				 //even mode right: col + 2, row =
+				 newcol = position.col + 2;
+				 newrow = position.row;
+				 break;
+				 case 3:
+				 //odd mode lower right: col + 1, row =
+				 //even mode lower right: col + 1, row +1
+				 newcol = position.col + 1;
+				 newrow = odd ? position.row : position.row + 1;
+				 break;
+				 case 4:
+				 //odd mode lower left right: col - 1, row =
+				 //even mode lower left right: col - 1, row +1
+				 newcol = position.col - 1;
+				 newrow = odd ? position.row : position.row + 1;
+				 break;
+				 case 5:
+				 //odd mode left : col - 2, row =
+				 //even mode left : col - 2, row =
+				 newcol = position.col - 2;
+				 newrow = position.row;
+				 break;
+				 case 6:
+				 //odd mode upper left : col - 1, row -1
+				 //even mode upper left : col - 1, row =
+				 newcol = position.col - 1;
+				 newrow = odd ? position.row - 1 : position.row;
+				 break;
+				 default:
+				 newcol = position.col;
+				 newrow = position.row;
+			}//switch
+				
+			return newcol + '-' + newrow;
+			
+		}
+}();
 var resizeQuery = (function () {
 	
 		/* Version 2
@@ -198,156 +346,7 @@ var resizeQuery = (function () {
 		}
 	});
 	
-	//background
-	
-	var backgroundImage = function() {
 		
-		var obj = document.getElementById('svgBg');
-		
-		var selected = [];
-		var current = '';
-		var rows = 7;
-		var cols = 36;
-		var i = 1;
-		var maxlegs = 10;
-		
-		var backgroundTime = setInterval( function() {
-			
-			var select;
-				
-			if( current === '') {
-				select = startHex();
-			} else {
-				select = directHex(current);
-			}	
-			
-			selected.push(select);
-			current = select;
-			currentSelector = '.hex-' + current;
-			//console.log(currentSelector);
-			var svgDoc = obj.contentDocument;
-			var select = svgDoc.querySelector( currentSelector );
-			select.classList.add('select');
-			
-			if (i >= maxlegs) {
-				clearInterval(backgroundTime);
-			} else {
-				i++;
-			}
-			
-		}, 500);
-		
-		function startHex() {
-				
-				var random = randHex(rows, cols);
-				
-				if ( selected.indexOf( random ) === -1 ) {
-					return random;
-				} else {
-					startHex();
-				}
-				
-		};
-			
-		function randHex(maxrows, maxcols) {
-			var row = Math.floor( Math.random() * maxrows ) + 1;
-			var col = Math.floor( Math.random() * maxcols ) + 1;
-		
-		return col.toString() + '-' + row.toString();
-		
-		}
-		
-		function directHex(hex) {
-				 
-				var delimeterPos = hex.indexOf('-');
-				var col = Number( hex.substr(0, delimeterPos) );
-				var row = Number( hex.substr(delimeterPos + 1) );
-				var odd = col % 2 > 0 ? true : false;
-				var direction = Math.floor(Math.random() * 6) + 1;
-				
-				return proposeDirection(direction);
-				
-/*
-				function returnHex() {
-					
-					
-					var nextHex = proposeDirection(direction);
-					
-					if ( selected.indexOf( nextHex ) === -1 ) {
-						return nextHex;
-					} else {
-						returnHex();
-					}
-				};
-*/
-				
-				
-				function proposeDirection(dir) {
-					
-					var newcol, newrow;
-					
-					switch (dir) {
-						 case 1: 
-						 //odd mode upper right: col + 1, row -1					 
-						 //even mode upper right: col + 1, row =
-						 newcol = col + 1;
-						 newrow = odd ? row - 1 : row;
-						 break;
-						 case 2: 
-						 //odd mode right: col + 2, row =
-						 //even mode right: col + 2, row =
-						 newcol = col + 2;
-						 newrow = row;
-						 break;
-						 case 3:
-						 //odd mode lower right: col + 1, row =
-						 //even mode lower right: col + 1, row +1
-						 newcol = col + 1;
-						 newrow = odd ? row : row + 1;
-						 break;
-						 case 4:
-						 //odd mode lower left right: col - 1, row =
-						 //even mode lower left right: col - 1, row +1
-						 newcol = col - 1;
-						 newrow = odd ? row : row + 1;
-						 break;
-						 case 5:
-						 //odd mode left : col - 2, row =
-						 //even mode left : col - 2, row =
-						 newcol = col - 2;
-						 newrow = row;
-						 break;
-						 case 6:
-						 //odd mode upper left : col - 1, row -1
-						 //even mode upper left : col - 1, row =
-						 newcol = col - 1;
-						 newrow = odd ? row - 1 : row;
-						 break;
-						 default:
-						 newcol = col;
-						 newrow = row;
-					}//switch
-					
-					return newcol + '-' + newrow;
-				
-				}
-				
-				
-				
-				
-			}
-	}();
-	
-	
-	
-	
-/*
-	var hex = function(init) {
-		var start = init ? init : ;
-	}
-*/
-	
-	
 	
 	
 })(jQuery);
