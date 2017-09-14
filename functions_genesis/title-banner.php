@@ -13,7 +13,8 @@ function remove_titles_all_single() {
     if(is_page_template( 'page_landing.php' ) ) 
 	    return false;
 	   
-    if ( is_singular('page') || is_singular('post')  ) {
+    //if ( is_singular('page') || is_singular('post')  ) {
+	if ( is_singular('page') ) {
         remove_action( 'genesis_entry_header', 'genesis_do_post_title' );
     }
     
@@ -33,7 +34,7 @@ function sitekick_after_header() {
 	if ( is_singular('page') || is_singular('post') || is_front_page() || is_search()) {
         add_action('genesis_after_header', 'sitekick_do_post_title', 12);
     } 
-    	   	
+     	   	
 }
 	
 function sitekick_do_post_title() {
@@ -56,6 +57,17 @@ function sitekick_do_post_title() {
 			
 			} elseif( is_search() ) {
 				genesis_do_search_title();
+			} elseif( is_singular('post') ) {
+				
+				$cat = get_the_category();
+				
+				genesis_markup( array(
+					'open'    => '<div %s>',
+					'context' => 'category-title',
+					'content' =>  ($cat[0]) ? ucfirst($cat[0]->name) : '',
+					'close' => '</div>'
+				) );
+			
 			} else {
 				genesis_do_post_title();
 			}

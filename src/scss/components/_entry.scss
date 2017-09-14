@@ -3,13 +3,7 @@
 	/* ====== Copy Elements		*/
 	/* ------ Headers 			*/
 	
-	h2 {
-		color: $darkNeutral;
-	}
 	
-	h3 {
-		color: $brightAccent;
-	}
 	
 	/* ------ Content Elements	*/
 
@@ -50,6 +44,18 @@
 		h4 { color: $brandBlue; }
 		
 		ul, ol { margin-left: 0;}
+		
+		dl{
+			
+			dt {
+				margin: 1.25em 0 .25em;
+				color: $brandBlue;
+			}
+			
+			dd {
+				margin: 0 0;
+			}
+		}
 	}	
 	
 	img {
@@ -61,52 +67,7 @@
 	}
 	}
 	
-	/* ------ Interface		*/
-	.btn,
-	button {
-		background: $brandBlue;
-		color: $brandBlueLight;
-		padding: .5em 1em;
-		border-radius: 4px;
-		border-width: 2px;
-		border-style: solid;
-		border-color: $brandBlueLight;
-		text-decoration: none;
-		font-style: normal;
-		white-space: nowrap;
-		text-align: center;
-		cursor: pointer;
-		line-height: 1;
 		
-	&.btn-download {
-		background: $orange;
-		background: 
-		linear-gradient(to bottom, rgba(255,255,255, 0) 0%, rgba(255,255,255, .2) 50%, rgba(255,255,255, 0) 50%),
-		linear-gradient(to top, $orange, $orangeLight), $orange;
-		transition: border-color 250ms linear, color 250ms linear;
-		color: $orangeText;
-		border: 2px solid $orange;
-		letter-spacing: 1px;
-		text-shadow: 1px 1px 2px $orangeDark;
-	
-	&:hover{
-		border-color: $orangeLight;
-		color: $baseWhite;
-	}
-	}//.btn-download
-	&.btn-rounded { border-radius: 5px;}
-	&.btn-caps { text-transform: uppercase; }
-	&.btn-ucase { text-transform: capitalize; }
-	&.btn-shadow { box-shadow: 0px 1px 2px #333; }
-	
-	&:hover{
-		background: $brightAccent;
-		border-color: $medNeutral;
-		color: $baseWhite;
-	}
-	}// button, .btn
-	
-	
 	.close-btn{
 		font-size: 1.75em;
 		text-align: left;
@@ -184,6 +145,7 @@
 			flex: 2;
 			padding-left: 1em;
 		}
+		
 		}
  
 	&.valign-center{ align-items: center; }
@@ -223,25 +185,14 @@
 	/* ------ Entry Header		*/
 	
 	.entry-header {
+		
 
 		.featured-image {
-			margin: -2em -2em 0 -2em;
+			//margin: -2em -2em 0 -2em;
 			overflow: hidden;
 		}
 	
-	@keyframes move{
-		
-		from {
-			opacity: .25;
-			transform: scale(1.5) translate(0,0);
-		}
-		to {
-			opacity: .75;
-			transform: scale(.9) translate(-15%,-25%);
-		}
-	}
 	
-
 	}//.entry-header
 
 	/* ------ Entry Content		*/

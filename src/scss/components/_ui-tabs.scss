@@ -6,11 +6,10 @@
 	
 @include screen-immobile {	
 	position: relative; 
-	padding: .2em;
 	zoom: 1; 
 	
 	.ui-tabs-nav { 
-		margin: -2em -2em 2em -2em; 
+		margin: 0;
 		padding: 0; 
 		overflow: hidden;
 		background: $brandBlueLight;
@@ -34,6 +33,9 @@
 				color: $brandBlue;
 			
 			&:hover{ color: $baseWhite;}
+			&:focus {
+				outline: 0;
+			}
 			}
 		
 		&.ui-tabs-active { 

@@ -7,14 +7,30 @@
 	    .hex {
 		   fill: #4A4A4A;
 	    }
+	    
 	    .hex.select {
 		   fill: white;
+		   animation: hexActive 3s ease forwards;
 	    }
+	    
+	    @keyframes hexActive {
+		   
+		   to {
+			   opacity: .1;
+		   };
+		   
+		   from {
+			   opacity: 1;
+		   };
+		    
+	    }
+	    
+	    
     </style>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g class="hexBackground" stroke="none" stroke-width="1" fill="blue" fill-rule="evenodd">
-            <g class="Grid" fill="none" transform="translate(-81.000000, -54.000000)">
+    <g class="hexBackground" stroke="none" stroke-width="1" >
+            <g class="grid"  transform="translate(-81.000000, -54.000000)">
                 <polygon class="hex-1-0 hex" points="64 0 119.425626 32 119.425626 96 64 128 8.57437416 96 8.57437416 32"></polygon>
                 <polygon class="hex-3-0 hex" points="179 0 234.425626 32 234.425626 96 179 128 123.574374 96 123.574374 32"></polygon>
                 <polygon class="hex-5-0 hex" points="294 0 349.425626 32 349.425626 96 294 128 238.574374 96 238.574374 32"></polygon>
@@ -86,7 +102,7 @@
                 <polygon class="hex-29-6 hex" points="1674 1200 1729.42563 1232 1729.42563 1296 1674 1328 1618.57437 1296 1618.57437 1232"></polygon>
                 <polygon class="hex-31-6 hex" points="1789 1200 1844.42563 1232 1844.42563 1296 1789 1328 1733.57437 1296 1733.57437 1232"></polygon>
                 <polygon class="hex-33-6 hex" points="1904 1200 1959.42563 1232 1959.42563 1296 1904 1328 1848.57437 1296 1848.57437 1232"></polygon>
-                <polygon class="hex-35.6 hex" points="2020 1200 2075.42563 1232 2075.42563 1296 2020 1328 1964.57437 1296 1964.57437 1232"></polygon>
+                <polygon class="hex-35-6 hex" points="2020 1200 2075.42563 1232 2075.42563 1296 2020 1328 1964.57437 1296 1964.57437 1232"></polygon>
                 <polygon class="hex-1-1 hex" points="64 200 119.425626 232 119.425626 296 64 328 8.57437416 296 8.57437416 232"></polygon>
                 <polygon class="hex-3-1 hex" points="179 200 234.425626 232 234.425626 296 179 328 123.574374 296 123.574374 232"></polygon>
                 <polygon class="hex-5-1 hex" points="294 200 349.425626 232 349.425626 296 294 328 238.574374 296 238.574374 232"></polygon>

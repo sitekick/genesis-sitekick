@@ -94,7 +94,14 @@
 		}
 	});
 	
-		
+	//Owl sliders
+	$('#achievements').owlCarousel({
+    	items:1,
+		loop:true,
+	    nav: false,
+	    dots: true,
+	    autoHeight:true
+	});	
 	
 	
 })(jQuery);

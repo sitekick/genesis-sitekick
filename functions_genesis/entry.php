@@ -12,9 +12,13 @@ function sitekick_featured_image() {
 			'attr'    => array ( 'class' => 'aligncenter responsive' ), // set a default WP image class
 
 		) );
+	
+	$image2 = get_the_post_thumbnail(get_the_ID(), 'full', array( 'class' => 'responsive' ));
+	
+	
 	if ( is_singular()) {
-		if ( $image ) {
-			printf( '<div class="featured-image">%s</div>', $image ); // wraps the featured image in a div with css class you can control
+		if ( $image2 ) {
+			printf( '<div class="featured-image">%s</div>', $image2 ); // wraps the featured image in a div with css class you can control
 		}
 	}
 }

@@ -10,16 +10,19 @@ h1 {
 &.archive-title {
 	font-family: $brand;
 	font-weight: 400;
+}
+}
 
-.home & {
-	font-style: italic;
-}
-}
+.category-title {
+	font-size: 1.75em;
+	font-family: $brand;
+	font-weight: 400;
 }
 
 h2 {
 	font-size: 1.625em;
-	font-family: $sans;
+	font-family: $serif;
+	font-weight: 700;
 
 @include screen-immobile{
 	font-size: 1.75em;
@@ -66,7 +69,6 @@ h6 {
 }	
 }
 
-
 p {
 	font-size: 1em;
 	line-height: 1.5em;
@@ -75,7 +77,6 @@ p {
 &.entry-meta {
 	font-size: 1rem;
 }
-
 @include screen-immobile {
 	font-size: 1.0625rem;
 	margin: 0 0 1.58823em;
@@ -104,7 +105,10 @@ ol {
 .btn,
 button {
 	font-size: 1.25em;
-	
+
+&.btn-small {
+	font-size: .9375rem;
+}	
 &.btn-med {
 	font-size: 1.5em;
 }
@@ -216,5 +220,13 @@ textarea {
 		span {
 			font-size: .75em;
 		}
+	}
+}
+
+blockquote {
+	
+	dt {
+		font-size: 1.0625em;
+		font-weight: bold; 
 	}
 }

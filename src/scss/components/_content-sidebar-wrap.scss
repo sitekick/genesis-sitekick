@@ -1,5 +1,5 @@
 .content-sidebar-wrap {
-	border-color: $brandBlue;
+	border-color: $brightAccent;
 	border-style: solid;
 	border-width: 2px;
 	
@@ -65,7 +65,7 @@
 		}
 	
 	@include screen-immobile {
-		padding: 2em;
+		padding: 4em;
 	}
 	}//.content
 

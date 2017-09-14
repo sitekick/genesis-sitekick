@@ -136,19 +136,16 @@
 			transition-property: background-color;
 			transition-duration: 250ms;
 			transition-timing-function: ease;
-			background-color: $darkNeutral;
+			background-color: transparent;
 			white-space: nowrap;
 			
 			> a {
 				display: block;
 			    padding: .6875rem .3em;
 				color: $brandBlueLight;
+				//color: $baseWhite;
 				text-decoration: none;
 				text-align: center;
-				
-			&:hover{
-				//color: $bra;
-			}
 			}
 		
 		&:hover {
@@ -201,7 +198,6 @@
 			overflow: hidden;
 			transition-property: max-height;
 			white-space: normal;
-			border-top: 1px solid $darkNeutral;
 			
 			li {
 				display: block;
@@ -209,7 +205,7 @@
 				border-radius: 0;
 				margin: 0 0;
 				border: 1px solid $lightNeutral;
-				border-top: 0;
+				border-top-width: 0;
 							
 				a {
 					display: block;
@@ -253,8 +249,11 @@
 				}	
 			}
 			
+			&:first-child { 
+				border-top-width: 1px;
+			}
 			&:last-child { 
-				border-bottom-color: $lightNeutral; 
+				
 				a { padding-bottom: .75em; } }
 			}
 		}// .sub-menu	

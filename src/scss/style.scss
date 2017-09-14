@@ -27,9 +27,9 @@
 @import "base/accessibility";
 @import "base/box";
 @import "base/font";
-//@import "base/anchor";
+@import "base/anchor";
 
-@import "components/background";
+//@import "components/background";
 @import "components/header";
 @import "components/nav";
 @import "components/title-banner";
@@ -38,9 +38,13 @@
 @import "components/entry";
 @import "components/entry-landing";
 @import "components/entry-loop";
+@import "components/entry-single";
 @import "components/form";
 @import "components/footer";
 @import "components/ui-tabs";
 @import "components/service-plans";
+
+@import "owl/owl.carousel.scss";
+@import "owl/owl.theme.default.scss";
 
 @import "base/theme";

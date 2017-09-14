@@ -26,34 +26,39 @@ body {
 }
 
 .site-inner,
-.title-banner,
 .site-header,
+.title-banner,
 .footer-widgets,
 .site-footer {
  	margin-left: auto;
  	margin-right: auto;
  	width: 100%;
  	
-@include screen-medium{ width: calc(100% - 2em); }
-@include screen-large{ width: calc(100% - 12em); }
-@include screen-full{ width: calc(100% - 20em); }
+@include screen-medium{ width: calc(100% - 2rem); }
+@include screen-large{ width: calc(100% - 12rem); }
+@include screen-full{ width: calc(100% - 20rem); }
 }
 
 
 .site-header .wrap,
 .footer-widgets .wrap,
 .site-footer .wrap, {	
-@include screen-immobile {
 	display: flex;
 	align-items: stretch;
 	justify-content: space-between;
+	flex-direction: column;
+
+@include screen-immobile {
+	//display: flex;
+	//align-items: stretch;
+	//justify-content: space-between;
 	flex-direction: row;
 }
 }
 
 .site-header {
 	margin-top: 0;
-	margin-bottom: $boxMargin;
+	margin-bottom: 0;
 	position: fixed; z-index: 1000;
 	top: 0;
 	
@@ -61,7 +66,7 @@ body {
 		margin: 1em 0;
 	
 	@include screen-immobile{
-		margin: 1em auto;
+		margin: 1em auto .5em;
 		align-items: flex-end;
 		justify-content: space-between;
 		
@@ -76,7 +81,7 @@ body {
 		flex-direction: column;
 		
 		.widget-area  {
-			margin-top: $boxMargin;
+			//margin-top: $boxMargin;
 			}
 	}
 	}// .wrap
@@ -91,15 +96,11 @@ body {
 }//.site-header
 
 .title-banner{
-	margin: 0 auto 0;	
-	
-@include screen-immobile {
-	margin: 0 auto;
-	}
+	margin-top: 1em; 
 }
 
 .site-inner {
- 	margin-top: 1em;	 
+ 	margin-top: .5em;	 
  		
 @include screen-medium{ margin-bottom: 1em; }
 @include screen-large{ margin-bottom: 6em; }

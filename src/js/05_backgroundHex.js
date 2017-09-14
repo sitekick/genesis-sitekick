@@ -1,86 +1,149 @@
 //background
 	
-var backgroundImage = function() {
+window.onload = function() {
 	
 	var obj = document.getElementById('svgBg');
+	var svgDoc = obj.contentDocument;
 	
-	var hexPath = [];
-	var hexPos;
-	var rows = 7;
-	var cols = 36;
-	var i = 0;
-	var maxlegs = 8;
+	var hexPath = [],
+		maxrows = 7,
+		maxcols = 36,
+		maxlegs = 5;
+		startPoints = [
+			['5-2',6],
+			['16-0',3],
+			['15-0',4],
+			['23-1',5],
+			['35-0',4],
+			['4-3',6],
+			['3-0',3],
+			['30-0',5],
+			['31-2',1],
+			['5-3',4]
+		];
+		
+		
+	function HexPoint(name, direction) {
+		this.coordinates = getCoordinates(name);
+		this.name = name;
+		this.direction = direction;
+	};
+	
+	HexPoint.prototype.getClassName = function() {
+		return '.hex-' + this.name;
+	}
 	
 	mapPath();
 	
-	function activateHex() {
+	function activateHexPath() {
 		var n = 0;
 		
 		var backgroundTime = setInterval( function() {
 			
-			var currentSelector = '.hex-' + hexPath[n];
+			var currentSelector = hexPath[n].getClassName();
 			
-			var svgDoc = obj.contentDocument;
-			var select = svgDoc.querySelector( currentSelector );
-			select.classList.add('select');
+			var selectHex = svgDoc.querySelector( currentSelector );
 			
+			if(selectHex) {
+				moveBodyBg(selectHex, n);
+				selectHex.classList.add('select');
+			}
+			 
 			n++;
 			if (n === hexPath.length ) clearInterval(backgroundTime);
+			
+		}, 1250);
 		
-		}, 500);
+	}
+	
+	function moveBodyBg(hex, index){
+		
+		var bgRadius = 187;
+		var hexRadius = 64;
+		var offsetBg = bgRadius - hexRadius; 
+		
+		var hexPos = offset(hex);
+		var bodyPosX = Math.floor(hexPos.left) - offsetBg + 'px';
+		var bodyPosY = Math.floor(hexPos.top) - offsetBg + 'px';
+		
+		if(index === 1)
+			document.body.style.transitionDuration = '300ms';
+		
+		document.body.style.backgroundPosition = bodyPosX + ' ' + bodyPosY;
 		
 	}
 	
 	
+	function offset(el) {
+   	 	var rect = el.getBoundingClientRect(),
+   	 	scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+   	 	scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+   	 	return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+	}
+
+		
 	function randHex() {
-		var row = Math.floor( Math.random() * rows ) + 1;
-		var col = Math.floor( Math.random() * cols ) + 1;
+		
+		var row = Math.floor( Math.random() * maxrows ) + 1;
+		var col = Math.floor( Math.random() * maxcols ) + 1;
 	
 		return col + '-' + row;
 	}
 	
 	function mapPath() {
-		
-		var hexCoordinate;
-		
-		while ( i < maxlegs ) {	
+	
+		for(var i=0; i < maxlegs; i++ ){
+			
+			var hex;
 			
 			if( i > 0 ) {
-				hexCoordinate = directHex(hexPath[i-1]);
+				var prevHex = hexPath[i-1];
+				hex = new HexPoint( nextHex( prevHex ), varyDirection( prevHex.direction ) );
 			} else {
-				hexCoordinate = randHex();
+				
+				var startPt = startPoints[ Math.floor(Math.random() * startPoints.length) ];
+				//console.log(startPt);
+				hex = new HexPoint( startPt[0], startPt[1]) ;
 			}
-		
-			validateCoordinate(hexCoordinate);
+			
+			
+			if( isUnique(hex) && inBounds(hex) ) {
+				hexPath.push(hex);
+			} else {
+				break;
+			}
+			
 		}
 		
-		activateHex()
-		
+		if(hexPath.length == maxlegs){
+			activateHexPath();
+		} else {
+			hexPath = [];
+			mapPath();
+		}
+			
 	}
 	
-	function validateCoordinate(coordinate) {
+	function isUnique(hexObj) {
 		
-/*
-		tests:
-		1) Does not exist in path
-		2) Does not run off board
-*/
+			var latch = true;
+			for (var i=0; i < hexPath.length; i++ ) {
+				if(hexObj.name === hexPath[i].name) {
+					latch = false;
+					break;
+				}
+			}
 		
-		if( isUnique() && inBounds() ) {
-			hexPath.push(coordinate);
-			return i++;
-		};
+			return latch;
 		
-		function isUnique() {
-			return hexPath.indexOf( coordinate ) === -1 ? true : false;
 		}
 		
-		function inBounds() {
-			var position = getCoordinates(coordinate);
-			return position.col <= cols && position.col > 0 && position.row <= rows && position.row > 0;
-		}
-		
+	function inBounds(hexObj) {
+		return hexObj.coordinates.col <= maxcols && hexObj.coordinates.col > 0 && hexObj.coordinates.row <= maxrows && hexObj.coordinates.row >= 0;
 	}
+
+
+	
 	
 	function getCoordinates(hex){
 			
@@ -92,57 +155,66 @@ var backgroundImage = function() {
 			}
 	}
 	
+	function varyDirection(dirIndex) {
+		
+		var dirs = [
+		(dirIndex === 1) ? 6 : dirIndex - 1, 
+		dirIndex, 
+		(dirIndex === 6) ? 1 : dirIndex + 1
+		];
+		
+		return dirs[ Math.floor(Math.random() * 3) ];
+		
+	}
 	
-	function directHex(hex) {
+	function nextHex(hexObj) {
 			
-			var position = getCoordinates(hex);
-			var odd = position.col % 2 > 0 ? true : false;
+			var odd = hexObj.coordinates.col % 2 ? true : false;
 			var newcol, newrow;
-			var direction = Math.floor(Math.random() * 6) + 1;
 			
-			switch (direction) {
+			switch (hexObj.direction) {
 				 case 1: 
 				 //odd mode upper right: col + 1, row -1					 
 				 //even mode upper right: col + 1, row =
-				 newcol = position.col + 1;
-				 newrow = odd ? position.row - 1 : position.row;
+				 newcol = hexObj.coordinates.col + 1;
+				 newrow = odd ? hexObj.coordinates.row - 1 : hexObj.coordinates.row;
 				 break;
 				 case 2: 
 				 //odd mode right: col + 2, row =
 				 //even mode right: col + 2, row =
-				 newcol = position.col + 2;
-				 newrow = position.row;
+				 newcol = hexObj.coordinates.col + 2;
+				 newrow = hexObj.coordinates.row;
 				 break;
 				 case 3:
 				 //odd mode lower right: col + 1, row =
 				 //even mode lower right: col + 1, row +1
-				 newcol = position.col + 1;
-				 newrow = odd ? position.row : position.row + 1;
+				 newcol = hexObj.coordinates.col + 1;
+				 newrow = odd ? hexObj.coordinates.row : hexObj.coordinates.row + 1;
 				 break;
 				 case 4:
 				 //odd mode lower left right: col - 1, row =
 				 //even mode lower left right: col - 1, row +1
-				 newcol = position.col - 1;
-				 newrow = odd ? position.row : position.row + 1;
+				 newcol = hexObj.coordinates.col - 1;
+				 newrow = odd ? hexObj.coordinates.row : hexObj.coordinates.row + 1;
 				 break;
 				 case 5:
 				 //odd mode left : col - 2, row =
 				 //even mode left : col - 2, row =
-				 newcol = position.col - 2;
-				 newrow = position.row;
+				 newcol = hexObj.coordinates.col - 2;
+				 newrow = hexObj.coordinates.row;
 				 break;
 				 case 6:
 				 //odd mode upper left : col - 1, row -1
 				 //even mode upper left : col - 1, row =
-				 newcol = position.col - 1;
-				 newrow = odd ? position.row - 1 : position.row;
+				 newcol = hexObj.coordinates.col - 1;
+				 newrow = odd ? hexObj.coordinates.row - 1 : hexObj.coordinates.row;
 				 break;
 				 default:
-				 newcol = position.col;
-				 newrow = position.row;
+				 newcol = hexObj.coordinates.col;
+				 newrow = hexObj.coordinates.row;
 			}//switch
 				
-			return newcol + '-' + newrow;
+				return newcol + '-' + newrow;
 			
 		}
-}();
+};

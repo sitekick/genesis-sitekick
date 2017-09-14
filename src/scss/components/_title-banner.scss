@@ -1,13 +1,13 @@
 .title-banner {
 	
-	.entry-title,
-	.archive-title {
+	h1,
+	.category-title {
 		margin: 0;
 		text-indent: 5px;
-	}
-	
-	.archive-title {
+
+	&.archive-title {
 		text-transform: capitalize;
+	}	
 	}
-	
+		
 }

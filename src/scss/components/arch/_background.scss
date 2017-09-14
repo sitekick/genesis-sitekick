@@ -1,23 +1,14 @@
-
 .site-container {
 	
 	object {
 		position: fixed; z-index: -1;
 		margin-top: -2em;
-		
-		#hexBackground {
-			//fill: red;
-		}
-		
 	}
 	
 	> * {
 		
 	&:not(.background) {
-		display: none;
+		opacity: 1;
 	}	
 	}
-	
-
 }
-

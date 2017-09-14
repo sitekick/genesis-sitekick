@@ -14,7 +14,7 @@
  */
 
 // This file handles pages, but only exists for the sake of child theme forward compatibility.
-
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 // Site footer elements.
 add_filter( 'genesis_attr_entry', 'sitekick_entry_tabs' );
 

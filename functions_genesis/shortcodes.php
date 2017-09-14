@@ -82,3 +82,4 @@ function sitekick_to_top_shortcode( $atts ) {
 	return apply_filters( 'sitekick_to_top_shortcode', $output, $atts );
 
 }
+

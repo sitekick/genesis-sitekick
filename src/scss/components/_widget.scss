@@ -100,11 +100,12 @@
 		display: inline-block;
 		
 		.search-form {
-			background: $darkNeutral;
+			//background: $darkNeutral;
+			background: transparent;
 			padding: .1875rem;
 			cursor: pointer;
 			white-space: nowrap;
-			border-left: 1px solid $darkNeutral;
+			margin-left: 1px;
 			
 			input[type=search] {
 				padding: .6875rem 5px .6875rem 0;
@@ -231,6 +232,15 @@
 	@include screen-immobile{
 		flex-flow: row nowrap;
 	}
+	}
+}
+&.widget_profile{
+
+	overflow: hidden;
+	
+	.gravatar {
+		float: left;
+		margin-right: 10px;
 	}
 }	
 }//. widget

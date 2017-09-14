@@ -1,25 +1,63 @@
 body {
-	//background: $darkNeutral;
-	background: #575757;
+	background-color: $darkNeutral;
+	background-image: url('assets/img/bodybgblue.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: -1000px -1000px;
+	transition: background-position 0 ease;
+}
+
+.site-container {
+	
+	object {
+		position: fixed; z-index: -1;
+		margin-top: -2em;
+	}
+	
+/*
+	> * {
+		
+	&:not(.background) {
+		opacity: 1;
+	}	
+	}
+*/
 }
 
 .site-header {
-	//background: $darkNeutral;
-
+	background-color: $darkNeutral;
+	
+@include screen-immobile {
+	background-color: transparent;
 }
+}
+
 
 .title-banner {
 	
-	.entry-title,
-	.archive-title {
-		color: $baseWhite;
+	h1,
+	.category-title {
+		color: $lightNeutral;
 	}
+
 }
 
 .content-sidebar-wrap{
 	background: $baseWhite;
 
+
+	.entry {
+		
+		
+		h2 {
+			color: $darkNeutral;
+		}
 	
+		h3 {
+			color: $brightAccent;
+		}
+	
+	}
 	
 	.sidebar-primary {
 		background: $medNeutral;	

@@ -105,19 +105,25 @@ article.type-tip,
 .page-template-page_tabs & {
 	
 	.entry-header {
+		
+		
 		.tabs-menu { 
 			
 			li { 
-				margin-bottom: .75em;} 
+				margin-bottom: .75em;
 			
 				a {
 				 	color: $brandBlue;
 				}
-			}
+			} 
+		}
+	@include screen-immobile{
+		margin: -4em -4em 3em -4em;
+	}
 	}
 	
 	.entry-content{
-		min-height: 400px;
+		//min-height: 400px;
 	}
 @include screen-immobile{
 	.entry-header {
